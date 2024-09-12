@@ -1,0 +1,26 @@
+.Logo {
+  display: flex;
+  padding-bottom: 40px;
+  flex-direction: column;
+  color: #00aaff;
+}
+
+.Logo .hi-arc-logo img {
+  object-fit: cover;
+}
+
+.Logo .banner {
+  display: flex;
+  justify-content: space-between;
+
+  font-size: 10px;
+}
+.Logo .banner .origin {
+  padding-top: 12px;
+}
+
+.Logo .banner .slogan {
+  margin-top: 10px;
+  font-size: 30px;
+  font-weight: 800;
+}

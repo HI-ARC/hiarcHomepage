@@ -1,0 +1,23 @@
+html,
+body {
+  margin: 0px;
+  width: 100%;
+  background-color: #fffced;
+}
+@font-face {
+  font-family: "/NanumSquareNeo";
+  src: url("/NanumSquareNeo-Variable.ttf");
+}
+
+body * {
+  font-family: "/NanumSquareNeo";
+  src: url("/NanumSquareNeo-Variable.ttf");
+}
+
+#root {
+  max-width: 600px;
+  margin: 0 auto;
+  min-height: 100vh;
+  height: 100%;
+  padding: 0px 20px;
+}

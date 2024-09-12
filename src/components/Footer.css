@@ -1,0 +1,49 @@
+.Footer {
+  margin-top: 150px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 15px;
+  align-items: center;
+  color: #00aaff;
+  text-align: left;
+}
+
+.Footer .introduce > img {
+  width: 40px;
+  height: 48px;
+  margin-top: 20px;
+  margin-right: 20px;
+}
+
+.Footer .introduce {
+  display: flex;
+  font-weight: 100;
+}
+
+.Footer .introduce .intro div {
+  font-weight: 200;
+  font-size: 10px;
+}
+
+.Footer .introduce .intro h4 {
+  margin-bottom: 5px; /* 제목과 아래 내용 사이의 간격 조절 */
+  font-weight: 500;
+}
+
+.Footer .contact {
+  display: flex;
+}
+
+.Footer .contact .media {
+  text-align: right;
+}
+
+.Footer .contact .middle {
+  padding: 0 5px;
+}
+
+/* .Footer .contact > div {
+  font-size: 10px;
+  margin-bottom: 5px;
+  font-weight: 200;
+} */
