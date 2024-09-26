@@ -1,0 +1,41 @@
+.Test {
+  background: url(./../assets/newHome.png);
+  background-size: contain;
+  background-position: center; /* 이미지를 가운데 정렬 */
+  background-repeat: no-repeat; /* 이미지 반복을 막음 */
+  height: 500px;
+  width: 600px;
+}
+
+.Test .introAcademy {
+  color: blue;
+  left: 55px;
+  top: 125px;
+  position: relative;
+  padding: 30px 60px;
+  border: none;
+  background-color: rgba(0, 0, 0, 0);
+  cursor: pointer;
+}
+
+.Test .Activity {
+  color: blue;
+  position: relative;
+  padding: 30px 60px;
+  top: 190px;
+  left: 115px;
+  background-color: rgba(0, 0, 0, 0);
+  border: none;
+  cursor: pointer;
+}
+
+.Test .Study {
+  color: blue;
+  position: relative;
+  padding: 30px 60px;
+  top: 125px;
+  left: 180px;
+  background-color: rgba(0, 0, 0, 0);
+  border: none;
+  cursor: pointer;
+}

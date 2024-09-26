@@ -1,9 +1,10 @@
 import Header from "../components/Header";
+import AcademyIntroduce from "../components/AcademyIntroduce";
 const Introhiarc = () => {
   return (
     <div>
       <Header />
-      Intro
+      <AcademyIntroduce />
     </div>
   );
 };

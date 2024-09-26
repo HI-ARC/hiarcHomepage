@@ -5,7 +5,7 @@ const Header = () => {
   return (
     <div className="Header">
       <div className="HI_ARC" onClick={() => nav("/")}>
-        HI_ARC
+        HI-ARC
       </div>
       <div>
         <a href="http://hi-arc.quest/home/">하이팅</a>

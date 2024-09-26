@@ -4,7 +4,7 @@ import Logo from "./../components/logo";
 import Himain from "./../components/Himain";
 import Footer from "./../components/Footer";
 import Introducer from "./../components/Introducer";
-
+import Test from "../components/test";
 const Home = () => {
   return (
     <>
@@ -12,6 +12,7 @@ const Home = () => {
       <Logo />
       <Himain />
       <Introducer />
+
       <Footer />
     </>
   );
