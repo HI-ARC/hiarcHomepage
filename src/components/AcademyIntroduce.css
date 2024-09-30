@@ -1,38 +1,4 @@
 .AcademyIntroduce {
   color: #00aaff;
-}
-
-.AcademyIntroduce .LogoIntroduce {
   display: flex;
-  align-items: center;
-  margin-top: 70px;
-}
-
-.AcademyIntroduce .LogoIntroduce .IntroLetter {
-  display: flex;
-  flex-direction: column;
-  font-size: 60px;
-  font-weight: 600;
-  justify-content: center;
-}
-.AcademyIntroduce .LogoIntroduce .Logo {
-  width: 60px;
-  height: 67.84px;
-  padding: 0px;
-  margin-right: 30px;
-}
-
-.AcademyIntroduce .content1 {
-  margin-top: 30px;
-  line-height: 1.5;
-}
-
-.AcademyIntroduce .BUTTONS {
-  margin-top: 10px;
-  display: flex;
-  justify-content: flex-end;
-}
-
-.AcademyIntroduce .BUTTONS .Collect {
-  margin-right: 30px;
 }

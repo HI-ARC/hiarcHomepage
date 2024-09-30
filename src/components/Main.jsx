@@ -1,6 +1,12 @@
-import "./Test.css";
+import "./Main.css";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 const Test = () => {
+  const [isOn, setisOn] = useState(false);
+  const toggleHandler = () => {
+    setisOn(!isOn);
+  };
+
   const nav = useNavigate();
   return (
     <div className="Test">

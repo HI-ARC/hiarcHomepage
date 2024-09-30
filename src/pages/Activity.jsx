@@ -4,7 +4,7 @@ const Activity = () => {
   return (
     <div>
       <Header />
-      Activity
+      Activity activity
     </div>
   );
 };

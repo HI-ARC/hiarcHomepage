@@ -7,10 +7,8 @@ const Logo = () => {
       <img className="hi-arc-logo" src={logo} alt="" />
       <section className="banner">
         <section className="origin">
-          <div>@since 2017</div>
-          <div>@Hongik Algoritm Research Club</div>
+          <div>@제 1회 하이콘 대회 배경</div>
         </section>
-        <section className="slogan">solve with us </section>
       </section>
     </div>
   );

@@ -1,4 +1,4 @@
-import Test from "../components/test";
+import Main from "../components/Main";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import "./NewHome.css";
@@ -7,7 +7,7 @@ const NewHome = () => {
     <div className="NewHome">
       <Header />
       <div className="Test">
-        <Test />
+        <Main />
       </div>
       <Footer />
     </div>
