@@ -39,3 +39,14 @@
   border: none;
   cursor: pointer;
 }
+
+.Test .Awards {
+  color: blue;
+  position: relative;
+  padding: 30px 60px;
+  top: 310px;
+  left: 130px;
+  background-color: rgba(0, 0, 0, 0);
+  border: none;
+  cursor: pointer;
+}

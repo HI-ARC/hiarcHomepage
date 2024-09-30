@@ -3,6 +3,7 @@ import Home from "./pages/Home";
 import Activity from "./pages/Activity";
 import Introhiarc from "./pages/Introhiarc";
 import Study from "./pages/Study";
+import Awards from "./pages/Awards";
 import Notfound from "./pages/Notfound";
 import NewHome from "./pages/NewHome";
 
@@ -13,6 +14,7 @@ function App() {
       <Route path="/Introhiarc" element={<Introhiarc />} />
       <Route path="/Activity" element={<Activity />} />
       <Route path="/Study" element={<Study />} />
+      <Route path="/Awards" element={<Awards />} />
       <Route path="*" element={<Notfound />} />
     </Routes>
   );

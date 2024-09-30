@@ -1,6 +1,7 @@
 import "./Main.css";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+
 const Test = () => {
   const [isOn, setisOn] = useState(false);
   const toggleHandler = () => {
@@ -16,6 +17,7 @@ const Test = () => {
       ></button>
       <button className="Activity" onClick={() => nav("/Activity")}></button>
       <button className="Study" onClick={() => nav("/Study")}></button>
+      <button className="Awards" onClick={() => nav("/Awards")}></button>
     </div>
   );
 };
