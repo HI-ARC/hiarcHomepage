@@ -1,0 +1,58 @@
+/* 연도 바를 담는 컨테이너 */
+.year-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  padding: 20px 0;
+}
+
+/* 수평선 스타일 */
+.line {
+  position: absolute;
+  top: 35%;
+  left: 0%;
+  right: 0%;
+  height: 2px;
+  background-color: #7cbfff;
+  z-index: 0;
+}
+
+/* 연도 목록 */
+.years {
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+}
+
+/* 각 연도를 감싸는 컨테이너 */
+.year-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* 동그라미 (연도 버튼) */
+.circle {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #7cbfff;
+  border: none;
+  cursor: pointer;
+  z-index: 1;
+  transition: background-color 0.3s;
+}
+
+/* 선택된 연도 버튼 스타일 */
+.circle.selected {
+  background-color: #007bff; /* 선택된 동그라미 색상 */
+}
+
+/* 연도 텍스트 */
+.year-label {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #007bff;
+}
