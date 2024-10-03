@@ -1,4 +1,10 @@
 .AcademyIntroduce {
   color: #00aaff;
   display: flex;
+  margin-bottom: 30px;
+}
+
+.AcademyIntroduce .intro-img {
+  width: 200px;
+  margin-right: 50px;
 }
