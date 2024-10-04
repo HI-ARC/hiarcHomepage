@@ -4,8 +4,8 @@
   justify-content: space-between;
 }
 .ContestAndIcpc .imgsection .OTCIMG {
-  width: 10em;
-  height: 10em;
+  width: 12em;
+  height: 12em;
 }
 
 .ContestAndIcpc .imgsection {
@@ -20,4 +20,16 @@
   border-radius: 40px;
   margin-top: 30px;
   text-decoration: none;
+  cursor: pointer;
+}
+
+.ContestAndIcpc .writing {
+  line-height: 1.5;
+  display: flex;
+  flex-direction: column;
+  margin-right: 30px;
+}
+
+.ContestAndIcpc .writing .CompetitionCollect {
+  margin-bottom: 30px;
 }
