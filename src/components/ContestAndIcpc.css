@@ -1,0 +1,23 @@
+.ContestAndIcpc {
+  color: #00aaff;
+  display: flex;
+  justify-content: space-between;
+}
+.ContestAndIcpc .imgsection .OTCIMG {
+  width: 10em;
+  height: 10em;
+}
+
+.ContestAndIcpc .imgsection {
+  display: flex;
+  flex-direction: column;
+}
+
+.ContestAndIcpc .imgsection .IcpcButton {
+  background-color: #02a24b;
+  color: white;
+  padding: 15px 20px;
+  border-radius: 40px;
+  margin-top: 30px;
+  text-decoration: none;
+}
