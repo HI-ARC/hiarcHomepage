@@ -35,23 +35,39 @@
 }
 
 .ContestAndIcpc .writing .toggleButton1 {
-  color: red;
+  color: #00aaff;
   background-color: inherit;
   border: none;
   cursor: pointer;
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: center; /* 가로로 중앙 정렬 */
+  align-items: center;
 }
 
 .ContestAndIcpc .writing .toggleButton2 {
-  color: red;
+  color: #00aaff;
   background-color: inherit;
   border: none;
   cursor: pointer;
+  margin-top: 30px;
+  display: flex;
+  justify-content: center; /* 가로로 중앙 정렬 */
+  align-items: center;
 }
 
 .ContestAndIcpc .hiddenpage2 {
-  color: yellowgreen !important;
+  margin-top: 30px;
 }
 
 .ContestAndIcpc .hiddenpage {
-  color: yellowgreen !important;
+  margin-bottom: 30px;
+}
+
+.ContestAndIcpc .writing .toggleButton2 .button_img {
+  width: 30px;
+}
+
+.ContestAndIcpc .writing .toggleButton1 .button_img {
+  width: 30px;
 }
