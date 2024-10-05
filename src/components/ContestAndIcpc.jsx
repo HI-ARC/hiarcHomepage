@@ -1,7 +1,18 @@
 import OTC from "./../assets/OrganizingTheContest.png";
 import "./ContestAndIcpc.css";
+import React, { useState } from "react";
 
 const ContestAndIcpc = () => {
+  const [showPage, setShowPage] = useState(false);
+  const togglePage = () => {
+    setShowPage(!showPage);
+  };
+
+  const [showPage2, setShowPage2] = useState(false);
+  const togglePage2 = () => {
+    setShowPage2(!showPage2);
+  };
+
   return (
     <div className="ContestAndIcpc">
       <div className="writing">
@@ -13,12 +24,34 @@ const ContestAndIcpc = () => {
           기여하고 있습니다. 이 대회는 단순한 경쟁을 넘어, 학생들이 프로그래밍
           실력을 한 단계 더 발전시킬 수 있는 소중한 기회가 되고 있습니다.
         </div>
+        <div>
+          <button onClick={togglePage} className="toggleButton1">
+            {showPage ? "Hide Page" : "Show Page"}
+          </button>
+          {showPage && (
+            <div className="hiddenpage">
+              <h1>동환이바보</h1>
+              <p>왕바보</p>
+            </div>
+          )}
+        </div>
+
         <div className="FindSinchon">
           더 나아가 신촌 소속의 대학들(연세, 이화, 숙명, 서강)의 알고리즘
           학회들과 ICPC 신촌 연합을 맺어 같이 학회원들에게 알고리즘을 소개하고
           실력향상을 위해 힘쓰고 있습니다.
         </div>
-        <div collec></div>
+        <div>
+          <button onClick={togglePage2} className="toggleButton2">
+            {showPage2 ? "Hide Page" : "Show Page"}
+          </button>
+          {showPage2 && (
+            <div className="hiddenpage2">
+              <h1>동환이바보</h1>
+              <p>왕바보</p>
+            </div>
+          )}
+        </div>
       </div>
       <div className="imgsection">
         <img src={OTC} className="OTCIMG"></img>

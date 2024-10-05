@@ -33,3 +33,25 @@
 .ContestAndIcpc .writing .CompetitionCollect {
   margin-bottom: 30px;
 }
+
+.ContestAndIcpc .writing .toggleButton1 {
+  color: red;
+  background-color: inherit;
+  border: none;
+  cursor: pointer;
+}
+
+.ContestAndIcpc .writing .toggleButton2 {
+  color: red;
+  background-color: inherit;
+  border: none;
+  cursor: pointer;
+}
+
+.ContestAndIcpc .hiddenpage2 {
+  color: yellowgreen !important;
+}
+
+.ContestAndIcpc .hiddenpage {
+  color: yellowgreen !important;
+}
