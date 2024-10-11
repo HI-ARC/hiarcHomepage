@@ -1,22 +1,21 @@
 import { Routes, Route } from "react-router-dom";
-import Home from "./pages/Home";
-import Activity from "./pages/Activity";
-import Introhiarc from "./pages/Introhiarc";
-import Study from "./pages/Study";
-import Awards from "./pages/Awards";
-import Notfound from "./pages/Notfound";
-import NewHome from "./pages/NewHome";
+import ActivityPage from "./component/page/ActivityPage";
+import IntroduceHiarcPage from "./component/page/IntroduceHiarcPage";
+import StudyPage from "./component/page/StudyPage";
+import AwardPage from "./component/page/AwardPage";
+import Notfound from "./component/page/NotfoundPage";
+import HomePage from "./component/page/HomePage";
 
 function App() {
   return (
-    <Routes>
-      <Route path="/" element={<NewHome />} />
-      <Route path="/Introhiarc" element={<Introhiarc />} />
-      <Route path="/Activity" element={<Activity />} />
-      <Route path="/Study" element={<Study />} />
-      <Route path="/Awards" element={<Awards />} />
+    <Routes >
+      <Route path="/" element={<HomePage />} />
+      <Route path="/introduce_hiarc" element={<IntroduceHiarcPage />} />
+      <Route path="/activity" element={<ActivityPage />} />
+      <Route path="/study" element={<StudyPage />} />
+      <Route path="/award" element={<AwardPage />} />
       <Route path="*" element={<Notfound />} />
-    </Routes>
+    </Routes >
   );
 }
 
