@@ -1,4 +1,7 @@
 const FontStyle = {
+  display2Heavy: "font-size: 12rem; letter-spacing: 10px; line-height: 12rem; font-weight: 700; font-family: \"NanumSquareNeoHeavy\";",
+  display1Heavy: "font-size: 2.8rem; font-weight: 700; font-family: \"NanumSquareNeoHeavy\";",
+  display1ExtraBold: "font-size: 2.8rem; font-weight: 700; font-family: \"NanumSquareNeoExtraBold\";",
   display3Bold: "font-size: 3.2rem; font-weight: 700; font-family: \"NanumSquareNeo\";",
   display3SemiBold: "font-size: 3.2rem; font-weight: 600; font-family: \"NanumSquareNeo\";",
   display2Bold: "font-size: 2.8rem; font-weight: 700; font-family: \"NanumSquareNeo\";", 
