@@ -8,6 +8,7 @@ const YearBarContainer = styled.div`
   align-items: center;
   position: relative;
   width: 100%;
+  max-width: 800px;
   padding: 20px 0;
 `;
 
@@ -74,9 +75,9 @@ const YearBar = ({ startYear, endYear }) => {
   }
 
   return (
-    <YearBarContainer >
+    <YearBarContainer>
       <Line /> {/* 수평선 */}
-      <YearsContainer >
+      <YearsContainer>
         {years.map((year) => (
           <YearWrapper key={year}>
             {/* 각 연도 버튼 */}
@@ -84,11 +85,11 @@ const YearBar = ({ startYear, endYear }) => {
               className={selectedYear === year ? "selected" : ""}
               onClick={() => handleYearClick(year)}
             />
-            <YearLabel > {year} </YearLabel >
-          </YearWrapper >
+            <YearLabel> {year} </YearLabel>
+          </YearWrapper>
         ))}
-      </YearsContainer >
-    </YearBarContainer >
+      </YearsContainer>
+    </YearBarContainer>
   );
 };
 
