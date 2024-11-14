@@ -1,9 +1,11 @@
 import styled, { keyframes } from "styled-components";
-import StudyPlan from "../block/StudyPlan";
-import StudyTable2024_1 from "../block/StudyTable2024_1";
 import Layout from "../ui/Layout";
 import TextCircle from "../atom/TextCircle";
 import Color from "../ui/Color";
+import StudyTableIntro from "../block/StudyTableIntro";
+import StudyTable from "../block/StudyTable";
+import Data from "../ui/Data";
+import StudyHeader from "../block/StudyHeader";
 
 const StudyPlanWrapper = styled.div`
   display: flex;
@@ -11,17 +13,12 @@ const StudyPlanWrapper = styled.div`
 
 const PSTitleWrapper = styled.div`
   display: flex;
-
-  justify-content: center;
-  padding-right: 45%;
+  justify-content: flex-start;
+  padding-left: 20px;
 `;
 
 const PSWrapper = styled.div`
-  margin-right: 100%;
-`;
-
-const TableWrapper = styled.div`
-  padding-right: 30%;
+  margin-right: 370px;
 `;
 
 const fadeIn = keyframes`
@@ -45,26 +42,27 @@ const StudyPage = () => {
   return (
     <Layout>
       <AnimatedContainer delay="0s">
-        <StudyTable2024_1
+        <StudyHeader />
+        <StudyTableIntro
           semester={"1학기"}
           studyName1={"기초 스터디"}
           studyName2={"초급 스터디"}
         />
         <StudyPlanWrapper>
-          <StudyPlan />
-          <StudyPlan />
+          <StudyTable data={Data.studyContent2024_1_1} />
+          <StudyTable data={Data.studyContent2024_1_2} />
         </StudyPlanWrapper>
       </AnimatedContainer>
 
       <AnimatedContainer delay="0.5s">
-        <StudyTable2024_1
+        <StudyTableIntro
           semester={"2학기"}
           studyName1={"초급 스터디"}
           studyName2={"중급 스터디"}
         />
         <StudyPlanWrapper>
-          <StudyPlan />
-          <StudyPlan />
+          <StudyTable data={Data.studyContent2024_2_1} />
+          <StudyTable data={Data.studyContent2024_2_2} />
         </StudyPlanWrapper>
       </AnimatedContainer>
 
@@ -79,9 +77,7 @@ const StudyPage = () => {
               padding="12px 30px"
             />
           </PSTitleWrapper>
-          <TableWrapper>
-            <StudyPlan />
-          </TableWrapper>
+          <StudyTable data={Data.studyContent2024_2_3} />
         </PSWrapper>
       </AnimatedContainer>
     </Layout>

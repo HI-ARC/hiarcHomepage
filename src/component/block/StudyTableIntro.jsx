@@ -5,16 +5,12 @@ import Color from "../ui/Color";
 import pythonIcon from "./../../assets/python 3.png";
 import cppIcon from "./../../assets/c++icon.png";
 
-const Wrapper = styled.div`
-  display: flex;
-`;
-
 const StudyIntroWrapper = styled.div`
   display: flex;
   gap: 18px;
-  justify-content: ;
+  justify-content: flex-start;
   align-items: center;
-  padding-right: 12%;
+  padding: 0px 10px;
 `;
 
 const LanguageImage = styled.img`
@@ -22,7 +18,7 @@ const LanguageImage = styled.img`
   height: 48px;
 `;
 
-const StudyTable2024_1 = ({ semester, studyName1, studyName2 }) => {
+const StudyTableIntro = ({ semester, studyName1, studyName2 }) => {
   return (
     <StudyIntroWrapper>
       <TextCircle
@@ -53,4 +49,4 @@ const StudyTable2024_1 = ({ semester, studyName1, studyName2 }) => {
   );
 };
 
-export default StudyTable2024_1;
+export default StudyTableIntro;

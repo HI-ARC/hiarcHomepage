@@ -12,7 +12,7 @@ const CircleStyle = styled.div`
   border: ${(props) => props.border};
   border-color: ${(props) => props.borderColor};
   padding: ${(props) => props.padding};
-  font-size: 15px;
+  font-size: ${(props) => props.fontSize};
   font-weight: 900;
   white-space: nowrap;
 `;
@@ -25,6 +25,7 @@ const TextCircle = ({
   border,
   borderColor,
   padding = "12px 15px",
+  fontSize = "15px",
 }) => {
   return (
     <CircleStyle
@@ -33,6 +34,7 @@ const TextCircle = ({
       border={border}
       borderColor={borderColor}
       padding={padding}
+      fontSize={fontSize}
     >
       {text}
     </CircleStyle>
