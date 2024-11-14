@@ -36,13 +36,15 @@ const Header = () => {
   const navigate = useNavigate();
 
   return (
-    <HeaderStyle >
-      <ContentStyle >
-        <TextButton text={"HI-ARC"} onClick={() => navigate("/")} > </TextButton >
-        <AnkerStyle href="http://hi-arc.quest/home/" > 하이팅 </AnkerStyle >
-      </ContentStyle >
-    </HeaderStyle >
+    <HeaderStyle>
+      <ContentStyle>
+        <TextButton text={"HI-ARC"} onClick={() => navigate("/")}>
+          {" "}
+        </TextButton>
+        <AnkerStyle href="http://hi-arc.quest/home/"> 하이팅 </AnkerStyle>
+      </ContentStyle>
+    </HeaderStyle>
   );
-}
+};
 
 export default Header;

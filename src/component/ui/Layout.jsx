@@ -13,7 +13,7 @@ const MainContent = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  flex-grow: 1;  /* 남는 공간을 차지하여 Footer를 아래로 밀어냄 */
+  flex-grow: 1; /* 남는 공간을 차지하여 Footer를 아래로 밀어냄 */
   align-self: center;
   width: 100%;
 `;
@@ -26,6 +26,6 @@ const Layout = ({ children }) => {
       <Footer />
     </LayoutWrapper>
   );
-}
+};
 
 export default Layout;
