@@ -59,12 +59,13 @@ const YearLabel = styled.span`
   color: #007bff;
 `;
 
-const YearBar = ({ startYear, endYear }) => {
+const YearBar = ({ startYear, endYear, onYearSelect }) => {
   const [selectedYear, setSelectedYear] = useState(null); // 선택된 연도 관리
 
   // 연도 클릭 시 호출되는 함수
   const handleYearClick = (year) => {
     setSelectedYear(year);
+    onYearSelect(year);
   };
 
   // startYear부터 endYear까지의 연도 배열 생성
@@ -74,9 +75,9 @@ const YearBar = ({ startYear, endYear }) => {
   }
 
   return (
-    <YearBarContainer >
+    <YearBarContainer>
       <Line /> {/* 수평선 */}
-      <YearsContainer >
+      <YearsContainer>
         {years.map((year) => (
           <YearWrapper key={year}>
             {/* 각 연도 버튼 */}
@@ -84,11 +85,11 @@ const YearBar = ({ startYear, endYear }) => {
               className={selectedYear === year ? "selected" : ""}
               onClick={() => handleYearClick(year)}
             />
-            <YearLabel > {year} </YearLabel >
-          </YearWrapper >
+            <YearLabel> {year} </YearLabel>
+          </YearWrapper>
         ))}
-      </YearsContainer >
-    </YearBarContainer >
+      </YearsContainer>
+    </YearBarContainer>
   );
 };
 

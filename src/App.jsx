@@ -5,17 +5,18 @@ import StudyPage from "./component/page/StudyPage";
 import AwardPage from "./component/page/AwardPage";
 import Notfound from "./component/page/NotfoundPage";
 import HomePage from "./component/page/HomePage";
-
+import TestPage from "./component/page/TestPage";
 function App() {
   return (
-    <Routes >
+    <Routes>
       <Route path="/" element={<HomePage />} />
       <Route path="/introduce_hiarc" element={<IntroduceHiarcPage />} />
       <Route path="/activity" element={<ActivityPage />} />
       <Route path="/study" element={<StudyPage />} />
       <Route path="/award" element={<AwardPage />} />
+      <Route path="/test" element={<TestPage />} />
       <Route path="*" element={<Notfound />} />
-    </Routes >
+    </Routes>
   );
 }
 
