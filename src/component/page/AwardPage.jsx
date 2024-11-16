@@ -1,12 +1,12 @@
 import Layout from "../ui/Layout";
-import YearBar from "../block/YearBar"
+import YearBar from "../block/YearBar";
 
 const AwardPage = () => {
   return (
-    <Layout >
+    <Layout>
       <YearBar startYear={2017} endYear={2024} />
-    </Layout >
+    </Layout>
   );
-}
+};
 
 export default AwardPage;
