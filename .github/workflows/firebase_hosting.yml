@@ -10,30 +10,23 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 1. Repository checkout
-      - name: Checkout Repository
-        uses: actions/checkout@v3
+    - name: Checkout Repository
+      uses: actions/checkout@v3
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '20'
 
-      # 2. Set up Node.js environment
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: "20" # Node.js 버전은 프로젝트에 맞게 변경
+    - name: Install Dependencies
+      run: npm install
+    
+    - name: Build Project
+      run: npm run build
 
-      # 3. Install dependencies
-      - name: Install Dependencies
-        run: npm install
-
-      # 4. Build project
-      - name: Build Project
-        run: npm run build # build 스크립트는 프로젝트에 맞게 변경
-
-      # 5. Set up Firebase Authentication
-      - name: Set up Firebase Authentication
-        run: echo "${{ secrets.FIREBASE_SERVICE_ACCOUNT_KEY }}" > serviceAccountKey.json
-
-      # 6. Deploy to Firebase
-      - name: Deploy to Firebase
-        run: firebase deploy --only hosting --project your-project-id
-        env:
-          GOOGLE_APPLICATION_CREDENTIALS: serviceAccountKey.json
+    - name: Deploy to Firebase
+      uses: w9jds/firebase-action@v2.2.1
+      with:
+        args: deploy --only hosting
+      env:
+        FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
