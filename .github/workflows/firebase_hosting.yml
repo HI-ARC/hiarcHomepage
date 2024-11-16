@@ -28,16 +28,23 @@ jobs:
       - name: Build Project
         run: npm run build # build 스크립트는 프로젝트에 맞게 변경
 
-      # 5. Move build output to dist folder
+      # 5. Ensure build directory exists and move output to dist folder
       - name: Move Build Output to Dist
         run: |
-          mkdir -p dist
-          mv ./build/* ./dist/ # 빌드된 폴더명을 프로젝트에 맞게 변경
+          if [ -d "./build" ]; then
+            mkdir -p dist
+            mv ./build/* ./dist/
+          else
+            echo "Build directory not found. Check your build step and output path."
+            exit 1
+          fi
 
-      # 6. Deploy to Firebase Hosting
+      # 6. Set up Firebase Authentication
+      - name: Set up Firebase Authentication
+        run: echo "${{ secrets.FIREBASE_SERVICE_ACCOUNT_KEY }}" > serviceAccountKey.json
+
+      # 7. Deploy to Firebase
       - name: Deploy to Firebase
-        uses: w9jds/firebase-action@v2.2.1
-        with:
-          args: deploy --only hosting
+        run: firebase deploy --only hosting --project your-project-id
         env:
-          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+          GOOGLE_APPLICATION_CREDENTIALS: serviceAccountKey.json
