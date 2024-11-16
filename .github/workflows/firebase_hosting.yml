@@ -10,21 +10,30 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    # 1. Checkout the repository
     - name: Checkout Repository
       uses: actions/checkout@v3
       
+    # 2. Setup Node.js environment
     - name: Setup Node.js
       uses: actions/setup-node@v3
       with:
-        node-version: '20'
+        node-version: '20' # 필요한 Node.js 버전으로 조정
+    
+    # 3. Install Firebase CLI globally
+    - name: Install Firebase CLI
+      run: npm install -g firebase-tools
 
+    # 4. Install project dependencies
     - name: Install Dependencies
       run: npm install
     
+    # 5. Build the project
     - name: Build Project
       run: npm run build
 
+    # 6. Deploy to Firebase Hosting
     - name: Deploy to Firebase Hosting
-      run: npx firebase deploy --only hosting --project hiarchomepage
+      run: firebase deploy --only hosting --project hiarchomepage
       env:
         FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
