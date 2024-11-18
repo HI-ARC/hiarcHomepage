@@ -49,5 +49,7 @@ const AwardPage = () => {
     </Layout>
   );
 };
+};
 
 export default AwardPage;
+

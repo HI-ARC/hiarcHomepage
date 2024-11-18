@@ -8,6 +8,7 @@ const YearBarContainer = styled.div`
   align-items: center;
   position: relative;
   width: 100%;
+  max-width: 800px;
   padding: 20px 0;
 `;
 
