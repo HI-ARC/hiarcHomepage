@@ -3,19 +3,22 @@ import styled from "styled-components";
 const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
+  background-color: ${({ isOdd }) =>
+    isOdd % 2 !== 0 ? "#E2F5FF4D" : "transparent"};
+  padding: 5px 3px;
+  font-wieght: 800;
+  font-size: 14px;
 `;
 const ResultWrapper = styled.div`
-  font-size: 14px;
   color: #333;
 `;
 const WinnerNameWrapper = styled.div`
-  font-size: 14px;
   width: 50%;
 `;
 
-const Winner = ({ result, winnerName }) => {
+const Winner = ({ isOdd, result, winnerName }) => {
   return (
-    <Wrapper>
+    <Wrapper isOdd={isOdd}>
       <ResultWrapper>{result}</ResultWrapper>
       <WinnerNameWrapper>{winnerName}</WinnerNameWrapper>
     </Wrapper>

@@ -20,12 +20,10 @@ const OriginTextStyle = styled.section`
 
 const Logo = () => {
   return (
-    <LogoWrapperStyle >
+    <LogoWrapperStyle>
       <AssetImage src={logo} alt="HI-ARC Logo" />
-      <OriginTextStyle >
-        @제 1회 하이콘 대회 배경
-      </OriginTextStyle >
-    </LogoWrapperStyle >
+      <OriginTextStyle>@제 1회 하이콘 대회 배경</OriginTextStyle>
+    </LogoWrapperStyle>
   );
 };
 
