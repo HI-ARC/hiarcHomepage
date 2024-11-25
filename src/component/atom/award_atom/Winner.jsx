@@ -5,8 +5,8 @@ const Wrapper = styled.div`
   justify-content: space-between;
   background-color: ${(props) => props.color};
   padding: 5px 3px;
-  font-weight: 800;
   font-size: 14px;
+  font-weight: 400;
 `;
 const ResultWrapper = styled.div`
   color: #333;
