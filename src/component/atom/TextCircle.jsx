@@ -8,7 +8,7 @@ const CircleStyle = styled.div`
   color: ${(props) => props.color};
   ${FontStyle.display1Bold}
   background-color: ${(props) => props.backgroundColor};
-  border-radius: 20px;
+  border-radius: 25px;
   border: ${(props) => props.border};
   border-color: ${(props) => props.borderColor};
   padding: ${(props) => props.padding};
