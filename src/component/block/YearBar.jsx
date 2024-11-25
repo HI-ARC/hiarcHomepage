@@ -60,12 +60,13 @@ const YearLabel = styled.span`
   color: #007bff;
 `;
 
-const YearBar = ({ startYear, endYear }) => {
+const YearBar = ({ startYear, endYear, onYearSelect }) => {
   const [selectedYear, setSelectedYear] = useState(null); // 선택된 연도 관리
 
   // 연도 클릭 시 호출되는 함수
   const handleYearClick = (year) => {
     setSelectedYear(year);
+    onYearSelect(year);
   };
 
   // startYear부터 endYear까지의 연도 배열 생성
