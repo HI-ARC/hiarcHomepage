@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import winnerData from "../../ui/WinnerData";
 import Winner from "../../atom/award_atom/Winner";
+import Color from "../../ui/Color";
 
 const Wrapper = styled.div`
   display: flex;
@@ -29,8 +30,13 @@ const Competition = ({ competitionName }) => {
     <Wrapper>
       <NameWrapper>| {competitionName}</NameWrapper>
       <WinnerWrapper>
-        {competitionWinner.map(([isOdd, result, name], index) => (
-          <Winner key={index} result={result} winnerName={name} isOdd={isOdd} />
+        {competitionWinner.map(([winnerIndex, result, name], index) => (
+          <Winner
+            key={index}
+            result={result}
+            winnerName={name}
+            color={winnerIndex % 2 == 1 ? Color.toggleColor : Color.transparent}
+          />
         ))}
       </WinnerWrapper>
     </Wrapper>

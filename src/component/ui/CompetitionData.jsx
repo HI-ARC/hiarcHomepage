@@ -28,7 +28,7 @@ const competitionData = {
     "SUAPC 2021 Winter",
     "SUAPC 2021 Summer",
     "UCPC 2021 예선",
-    "홍익대학교 HI-ARC 프로그래밍 경진대회",
+    "홍익대학교 HI-ARC 프로그래밍 경진대회 (2021)",
   ],
   2022: [
     "SCPC 2022 예선",
