@@ -6,6 +6,7 @@ import Footer from "../block/Footer";
 const LayoutWrapper = styled.div`
   display: flex;
   flex-direction: column;
+
   /* width: 1252px; */
 `;
 

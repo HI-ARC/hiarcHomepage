@@ -2,10 +2,12 @@ import Layout from "../ui/Layout";
 import SideImageLayout from "../block/SideImageLayout";
 import ContentText from "../atom/ContentText";
 import Label from "../ui/Label";
-import introImg from "../../assets/introduceAcademy.png";
-import OTC from "../../assets/OrganizingTheContest.png";
-import styled, { keyframes } from "styled-components";
+import introImg from "../../assets/introduceHiarc2.png";
+import OTC from "../../assets/OrganizingTheContest2.png";
+import styled, {keyframes} from "styled-components";
 import Logo from "../block/Logo";
+import ToggleButton from "../atom/ToggleButton";
+import ToggleLabel from "../atom/ToggleLabel";
 
 // 페이드 인 애니메이션 정의
 const fadeIn = keyframes`
@@ -43,12 +45,19 @@ const IntroduceHiarcPage = () => {
 
       {/* 두 번째 이미지와 텍스트 */}
       <AnimatedContainer delay="1s">
-        <SideImageLayout imgSrc={OTC} width={200} maxWidth={200} isLeft={false}>
+        <SideImageLayout
+          imgSrc={OTC}
+          width={200}
+          maxWidth={200}
+          isLeft={false}
+          isToggleBar={true}
+        >
           <ContentText contentText={Label.contestIntroduce} />
+          <ToggleButton text="대회 모아보기" innerText={ToggleLabel} />
         </SideImageLayout>
       </AnimatedContainer>
     </Layout>
   );
-}
+};
 
 export default IntroduceHiarcPage;
