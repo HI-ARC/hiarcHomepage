@@ -2,10 +2,13 @@ import Layout from "../ui/Layout";
 import SideImageLayout from "../block/SideImageLayout";
 import ContentText from "../atom/ContentText";
 import Label from "../ui/Label";
-import introImg from "../../assets/introduceAcademy.png";
-import OTC from "../../assets/OrganizingTheContest.png";
-import styled, { keyframes } from "styled-components";
+import introImg from "../../assets/introduceHiarc2.png";
+import OTC from "../../assets/OrganizingTheContest2.png";
+import styled, {keyframes} from "styled-components";
 import Logo from "../block/Logo";
+import ToggleButton from "../atom/ToggleButton";
+import ToggleLabel from "../atom/ToggleLabel";
+import BlueButton from "../atom/SinchonBlueButton";
 
 // 페이드 인 애니메이션 정의
 const fadeIn = keyframes`
@@ -26,6 +29,14 @@ const AnimatedContainer = styled.div`
   animation-delay: ${(props) => props.delay || "0s"};
 `;
 
+const ContextAndButton = styled.div`
+  gap: 15px;
+  max-width: 800px;
+  display: flex;
+  margin-top: 15px;
+  margin-bottom: 15px;
+`;
+
 const IntroduceHiarcPage = () => {
   return (
     <Layout>
@@ -43,12 +54,31 @@ const IntroduceHiarcPage = () => {
 
       {/* 두 번째 이미지와 텍스트 */}
       <AnimatedContainer delay="1s">
-        <SideImageLayout imgSrc={OTC} width={200} maxWidth={200} isLeft={false}>
+        <SideImageLayout
+          imgSrc={OTC}
+          width={200}
+          maxWidth={200}
+          isLeft={false}
+          isToggleBar={true}
+        >
           <ContentText contentText={Label.contestIntroduce} />
+          <ToggleButton text="대회 모아보기" innerText={ToggleLabel} />
         </SideImageLayout>
+      </AnimatedContainer>
+
+      {/* 세 번째 이미지와 텍스트 */}
+      <AnimatedContainer delay="1.5s">
+        <ContextAndButton>
+          <ContentText contentText={Label.MoreIntroduce} />
+          <BlueButton text="ICPC 신촌" />
+        </ContextAndButton>
+        <ToggleButton
+          text="ICPC 신촌 자세히 알아보기"
+          innerText={Label.DetailSinchon}
+        />
       </AnimatedContainer>
     </Layout>
   );
-}
+};
 
 export default IntroduceHiarcPage;
