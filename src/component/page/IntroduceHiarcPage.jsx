@@ -8,6 +8,7 @@ import styled, {keyframes} from "styled-components";
 import Logo from "../block/Logo";
 import ToggleButton from "../atom/ToggleButton";
 import ToggleLabel from "../atom/ToggleLabel";
+import BlueButton from "../atom/SinchonBlueButton";
 
 // 페이드 인 애니메이션 정의
 const fadeIn = keyframes`
@@ -26,6 +27,14 @@ const AnimatedContainer = styled.div`
   opacity: 0;
   animation: ${fadeIn} 1s ease-in-out forwards;
   animation-delay: ${(props) => props.delay || "0s"};
+`;
+
+const ContextAndButton = styled.div`
+  gap: 15px;
+  max-width: 800px;
+  display: flex;
+  margin-top: 15px;
+  margin-bottom: 15px;
 `;
 
 const IntroduceHiarcPage = () => {
@@ -55,6 +64,18 @@ const IntroduceHiarcPage = () => {
           <ContentText contentText={Label.contestIntroduce} />
           <ToggleButton text="대회 모아보기" innerText={ToggleLabel} />
         </SideImageLayout>
+      </AnimatedContainer>
+
+      {/* 세 번째 이미지와 텍스트 */}
+      <AnimatedContainer delay="1.5s">
+        <ContextAndButton>
+          <ContentText contentText={Label.MoreIntroduce} />
+          <BlueButton text="ICPC 신촌" />
+        </ContextAndButton>
+        <ToggleButton
+          text="ICPC 신촌 자세히 알아보기"
+          innerText={Label.DetailSinchon}
+        />
       </AnimatedContainer>
     </Layout>
   );

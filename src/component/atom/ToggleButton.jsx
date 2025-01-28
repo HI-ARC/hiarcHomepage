@@ -5,7 +5,7 @@ import {useState} from "react";
 const OutWrapper = styled.div`
   display: flex;
   font-size: 18px;
-  height: 20px;
+  height: 25px;
   align-items: center;
   color: #00aaff;
   font-weight: 800;
@@ -22,16 +22,17 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   position: relative; /* 드롭다운이 이 요소 안에서 배치 */
+  overflow: visible;
 `;
 
 const DropdownMenu = styled.div`
   width: 500px;
-  background-color: #ffffff;
-  border: 1px solid #ddd;
+  background-color: #fffced;
+  border: none;
   border-radius: 8px;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  margin-top: 10px; /* 버튼과 드롭다운 메뉴 사이 간격 */
+  font-size: 16px;
+  padding: 5px;
+
   display: ${(props) => (props.visible ? "block" : "none")};
   text-align: left;
 `;
