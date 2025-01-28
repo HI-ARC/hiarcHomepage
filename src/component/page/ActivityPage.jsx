@@ -4,7 +4,7 @@ import HitingIntro from "../block/HitingIntro";
 import ICPCIntro from "../block/ICPCIntro";
 import Layout from "../ui/Layout";
 import React from "react";
-import styled, { keyframes } from "styled-components";
+import styled, {keyframes} from "styled-components";
 
 const fadeIn = keyframes`
   from {

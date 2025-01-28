@@ -62,35 +62,35 @@ const WantList = styled.div``;
 
 const Footer = () => {
   return (
-    <Wrapper >
-      <FooterWrapper >
-        <IntroduceWrapper >
+    <Wrapper>
+      <FooterWrapper>
+        <IntroduceWrapper>
           <LogoImage src={reallogo} alt="HI-ARC 로고" />
           <div className="intro">
             <IntroTitle>HI-ARC 하이아크</IntroTitle>
             <IntroText>홍익대학교 컴퓨터공학과 알고리즘 학회</IntroText>
           </div>
-        </IntroduceWrapper >
+        </IntroduceWrapper>
 
-        <ContactWrapper >
-          <MediaList >
+        <ContactWrapper>
+          <MediaList>
             <div>instagram</div>
             <div>email</div>
             <div>kakao</div>
-          </MediaList >
+          </MediaList>
           <MiddleDivider>
             <div> |</div>
             <div> |</div>
             <div> |</div>
-          </MiddleDivider >
-          <WantList >
+          </MiddleDivider>
+          <WantList>
             <div>@hi-arc.official</div>
             <div>hiarc.offcial@gmail.com</div>
             <div>@hi-arc</div>
-          </WantList >
-        </ContactWrapper >
-      </FooterWrapper >
-    </Wrapper >
+          </WantList>
+        </ContactWrapper>
+      </FooterWrapper>
+    </Wrapper>
   );
 };
 

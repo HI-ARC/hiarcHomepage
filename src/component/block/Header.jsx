@@ -1,7 +1,7 @@
-import { useNavigate } from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import styled from "styled-components";
 import TextButton from "../atom/TextButton";
-
+import {useState} from "react";
 const HeaderStyle = styled.div`
   color: #00aaff;
   display: flex;
@@ -32,8 +32,50 @@ const AnkerStyle = styled.a`
   color: #00aaff;
 `;
 
+const DropdownMenu = styled.div`
+  position: absolute;
+  width: 120px;
+  top: 100%;
+  right: 0;
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  display: ${(props) => (props.visible ? "block" : "none")};
+  z-index: 1000;
+  text-align: left;
+`;
+
+const MenuItem = styled.div`
+  margin: 0 10px;
+  color: #00aaff;
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+  }
+`;
+const MenuButton = styled.div`
+  font-size: 24px;
+  cursor: pointer;
+  color: #00aaff;
+`;
+
+const RightWrapper = styled.div`
+  width: 15%;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+`;
+
 const Header = () => {
   const navigate = useNavigate();
+  const [menuVisible, setMenuVisible] = useState(false);
+
+  const toggleMenu = () => {
+    setMenuVisible(!menuVisible);
+  };
 
   return (
     <HeaderStyle>
@@ -41,7 +83,17 @@ const Header = () => {
         <TextButton text={"HI-ARC"} onClick={() => navigate("/")}>
           {" "}
         </TextButton>
-        <AnkerStyle href="http://hi-arc.quest/home/"> 하이팅 </AnkerStyle>
+        <RightWrapper>
+          <AnkerStyle href="http://hi-arc.quest/home/">하이팅</AnkerStyle>
+          <MenuButton onClick={toggleMenu}>☰</MenuButton>
+          <DropdownMenu visible={menuVisible}>
+            <MenuItem onClick={() => navigate("/introduce_hiarc")}>
+              학회소개
+            </MenuItem>
+            <MenuItem onClick={() => navigate("/activity")}>학회 활동</MenuItem>
+            <MenuItem onClick={() => navigate("/study")}>스터디</MenuItem>
+          </DropdownMenu>
+        </RightWrapper>
       </ContentStyle>
     </HeaderStyle>
   );

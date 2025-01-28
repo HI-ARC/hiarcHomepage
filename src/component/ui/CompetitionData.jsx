@@ -33,13 +33,15 @@ const competitionData = {
   2022: [
     "SCPC 2022 예선",
     "Google Kick Start 2022",
-    "SUAPC 2022 Summer",
     "SUAPC 2022 Winter",
+    "SUAPC 2022 Summer",
     "UCPC 2022 예선",
     "UCPC 2022 본선",
     "22 현대모비스 알고리즘 경진대회",
     "홍익대학교 HI-ARC 프로그래밍 경진대회",
   ],
+  2023: ["SUAPC 2023 Winter", "SUAPC 2023 Summer"],
+  2024: ["2024 하이콘", "SUAPC 2024 Winter", "SUAPC 2024 Summer"],
 };
 
 export default competitionData;

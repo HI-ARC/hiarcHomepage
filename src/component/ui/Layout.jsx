@@ -6,6 +6,8 @@ import Footer from "../block/Footer";
 const LayoutWrapper = styled.div`
   display: flex;
   flex-direction: column;
+
+  /* width: 1252px; */
 `;
 
 const MainContent = styled.div`
@@ -18,7 +20,7 @@ const MainContent = styled.div`
   width: 100%;
 `;
 
-const Layout = ({ children }) => {
+const Layout = ({children}) => {
   return (
     <LayoutWrapper>
       <Header />

@@ -9,12 +9,12 @@ const ContentTextStyle = styled.div`
   align-items: center;
   ${FontStyle.body1Medium}
   line-height: 1.75;
-  color: ${Color.primary};
+  /* color: ${Color.primary}; */
   width: ${SizeValue.width.full};
 `;
 
-const ContentText = ({ contentText }) => {
-  return <ContentTextStyle > {contentText} </ContentTextStyle >;
-}
+const ContentText = ({contentText}) => {
+  return <ContentTextStyle> {contentText} </ContentTextStyle>;
+};
 
 export default ContentText;
