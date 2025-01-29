@@ -12,9 +12,13 @@ const CircleStyle = styled.div`
   border: ${(props) => props.border};
   border-color: ${(props) => props.borderColor};
   padding: ${(props) => props.padding};
-  font-size: ${(props) => props.fontSize};
-  font-weight: 900;
+  ${FontStyle.body2Medium}
   white-space: nowrap;
+
+  /* 🎯 화면 크기가 800px 이하일 때 폰트 크기를 줄임 */
+  @media (max-width: 800px) {
+    ${FontStyle.captionMedium}
+  }
 `;
 
 // 텍스트 담고, 글자색과 배경색 디폴트값 설정
