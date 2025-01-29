@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import HiarcCompetition from "../ui/HiarcCompetition";
 const Wrapper = styled.div`
-  padding: 10px;
   display: flex;
   flex-direction: column;
   gap: 10px; /* 항목 간 간격 추가 */

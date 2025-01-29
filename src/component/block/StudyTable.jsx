@@ -21,21 +21,21 @@ const Table = styled.table`
 `;
 
 const TableRow = styled.tr`
-  &:nth-child(even) {
-    background-color: ${Color.yellow}; /* 짝수 행의 배경색 */
+  &:nth-child(odd) {
+    background-color: #ffa80005; /* 짝수 행의 배경색 */
   }
 `;
 
-const StudyTable = ({ data }) => {
+const StudyTable = ({data}) => {
   return (
     <TableContainer>
       <Table>
-        <thead>
+        {/* <thead>
           <TableRow>
             <WeekHeader weekHeader={"Week"}></WeekHeader>
             <TopicHeader topicHeader={"Topic"}></TopicHeader>
           </TableRow>
-        </thead>
+        </thead> */}
         <tbody>
           {data.map((item, index) => (
             <TableRow key={index}>

@@ -22,7 +22,6 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   position: relative; /* 드롭다운이 이 요소 안에서 배치 */
-  overflow: visible;
 `;
 
 const DropdownMenu = styled.div`
@@ -32,9 +31,13 @@ const DropdownMenu = styled.div`
   border-radius: 8px;
   font-size: 16px;
   padding: 5px;
-
-  display: ${(props) => (props.visible ? "block" : "none")};
   text-align: left;
+
+  max-height: ${(props) => (props.visible ? "300px" : 0)};
+  opacity: ${(props) => (props.visible ? 1 : 0)};
+  overflow: hidden;
+  transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out;
+  pointer-events: ${(props) => (props.visible ? "auto" : "none")};
 `;
 
 const ToggleButton = ({text, innerText}) => {
@@ -50,11 +53,10 @@ const ToggleButton = ({text, innerText}) => {
         <img src={toggleImg} alt="Introduce HIARC" onClick={toggleMenu} />
         {text}
       </OutWrapper>
-      {menuVisible && (
-        <DropdownMenu visible={menuVisible}>
-          {typeof innerText === "function" ? innerText() : innerText}
-        </DropdownMenu>
-      )}
+
+      <DropdownMenu visible={menuVisible}>
+        {typeof innerText === "function" ? innerText() : innerText}
+      </DropdownMenu>
     </Wrapper>
   );
 };

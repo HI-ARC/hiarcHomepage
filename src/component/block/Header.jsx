@@ -2,6 +2,8 @@ import {useNavigate} from "react-router-dom";
 import styled from "styled-components";
 import TextButton from "../atom/TextButton";
 import {useState} from "react";
+
+///위에까지가 에니메이션
 const HeaderStyle = styled.div`
   color: #00aaff;
   display: flex;
@@ -42,9 +44,12 @@ const DropdownMenu = styled.div`
   border-radius: 8px;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   padding: 20px;
-  display: ${(props) => (props.visible ? "block" : "none")};
   z-index: 1000;
   text-align: left;
+  opacity: ${(props) => (props.visible ? 1 : 0)};
+  transform: ${(props) =>
+    props.visible ? "translateY(0)" : "translateY(-10px)"};
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
 `;
 
 const MenuItem = styled.div`
@@ -68,6 +73,8 @@ const RightWrapper = styled.div`
   justify-content: space-between;
   position: relative;
 `;
+
+///여기서 부터 코드
 
 const Header = () => {
   const navigate = useNavigate();

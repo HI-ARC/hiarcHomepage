@@ -9,7 +9,7 @@ const WeekCellWrapper = styled.td`
   border-left: none;
 `;
 
-const WeekCell = ({ weekCell }) => {
+const WeekCell = ({weekCell}) => {
   return <WeekCellWrapper>{weekCell}</WeekCellWrapper>;
 };
 
