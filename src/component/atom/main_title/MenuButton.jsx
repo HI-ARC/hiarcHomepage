@@ -6,10 +6,11 @@ const ButtonContainerStyle = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: ${prop => prop.width}px;
-  height: ${prop => prop.height}px;
-  border-radius: ${prop => prop.height}px;
-  background-color: ${prop => prop.color};
+  width: ${(prop) => prop.width}px;
+  height: ${(prop) => prop.height}px;
+  border-radius: ${(prop) => prop.height}px;
+  background-color: ${(prop) => prop.color};
+  cursor: pointer;
   border: none;
 `;
 
@@ -18,20 +19,27 @@ const ButtonTextStyle = styled.div`
   ${FontStyle.display1Heavy}
 `;
 
-const MenuButton = ({ color = Color.primary, buttonText, width, height, onClick, onMouseEnter, onMouseLeave }) => {
+const MenuButton = ({
+  color = Color.primary,
+  buttonText,
+  width,
+  height,
+  onClick,
+  onMouseEnter,
+  onMouseLeave,
+}) => {
   return (
     <ButtonContainerStyle
-          onMouseEnter={onMouseEnter}
-          onMouseLeave={onMouseLeave}
-          color={color}
-          width={width}
-          height={height}
-          onClick={onClick}  >
-      <ButtonTextStyle>
-        {buttonText}
-      </ButtonTextStyle>
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+      color={color}
+      width={width}
+      height={height}
+      onClick={onClick}
+    >
+      <ButtonTextStyle>{buttonText}</ButtonTextStyle>
     </ButtonContainerStyle>
   );
-}
+};
 
 export default MenuButton;
