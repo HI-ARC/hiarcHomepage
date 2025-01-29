@@ -1,14 +1,16 @@
 import toggleImg from "../../assets/toggleButton.png";
 import styled from "styled-components";
-import {useState} from "react";
+import { useState } from "react";
+import FontStyle from "../ui/FontStyle";
 
 const OutWrapper = styled.div`
   display: flex;
-  font-size: 18px;
+  ${FontStyle.body1Medium}
   height: 25px;
   align-items: center;
   color: #00aaff;
   font-weight: 800;
+  gap: 5px;
 
   img {
     vertical-align: middle;
@@ -37,7 +39,7 @@ const DropdownMenu = styled.div`
   text-align: left;
 `;
 
-const ToggleButton = ({text, innerText}) => {
+const ToggleButton = ({ text, innerText }) => {
   const [menuVisible, setMenuVisible] = useState(false);
 
   const toggleMenu = () => {
