@@ -21,7 +21,7 @@ const ContentStyle = styled.div`
   align-items: center;
   width: 100%;
   max-width: 800px;
-  padding: 0 20px;
+
   box-sizing: border-box;
 
   @media (max-width: 650px) {

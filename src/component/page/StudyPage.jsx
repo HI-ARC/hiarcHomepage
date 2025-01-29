@@ -1,4 +1,4 @@
-import styled, { keyframes } from "styled-components";
+import styled, {keyframes} from "styled-components";
 import Layout from "../ui/Layout";
 import TextCircle from "../atom/TextCircle";
 import Color from "../ui/Color";

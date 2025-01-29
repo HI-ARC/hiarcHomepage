@@ -39,8 +39,16 @@ const StudyTable = ({data}) => {
         <tbody>
           {data.map((item, index) => (
             <TableRow key={index}>
-              <WeekCell weekCell={item.week}></WeekCell>
-              <TopicCell topicCell={item.topic}></TopicCell>
+              <WeekCell
+                weekCell={item.week}
+                isFirst={index === 0}
+                isLast={index === data.length - 1}
+              />
+              <TopicCell
+                topicCell={item.topic}
+                isFirst={index === 0}
+                isLast={index === data.length - 1}
+              />
             </TableRow>
           ))}
         </tbody>

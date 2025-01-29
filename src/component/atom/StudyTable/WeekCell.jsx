@@ -5,12 +5,16 @@ import Color from "../../ui/Color";
 const WeekCellWrapper = styled.td`
   font-size: 12px;
   padding: 12px;
-  border: 1px solid ${Color.gray};
-  border-left: none;
+  border-top: ${(props) => (props.isFirst ? "1px solid #ffa800" : "none")};
+  border-bottom: ${(props) => (props.isLast ? "1px solid #ffa800" : "none")};
 `;
 
-const WeekCell = ({weekCell}) => {
-  return <WeekCellWrapper>{weekCell}</WeekCellWrapper>;
+const WeekCell = ({weekCell, isFirst, isLast}) => {
+  return (
+    <WeekCellWrapper isFirst={isFirst} isLast={isLast}>
+      {weekCell}
+    </WeekCellWrapper>
+  );
 };
 
 export default WeekCell;

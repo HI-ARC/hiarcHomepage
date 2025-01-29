@@ -32,7 +32,7 @@ const DropdownMenu = styled.div`
   font-size: 16px;
   padding: 5px;
   text-align: left;
-
+  line-height: 1.75;
   max-height: ${(props) => (props.visible ? "300px" : 0)};
   opacity: ${(props) => (props.visible ? 1 : 0)};
   overflow: hidden;

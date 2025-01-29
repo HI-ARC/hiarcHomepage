@@ -18,7 +18,7 @@ const LanguageImage = styled.img`
   height: 48px;
 `;
 
-const StudyTableIntro = ({ semester, studyName1, studyName2 }) => {
+const StudyTableIntro = ({semester, studyName1, studyName2}) => {
   return (
     <StudyIntroWrapper>
       <TextCircle
