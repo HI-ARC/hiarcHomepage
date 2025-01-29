@@ -11,11 +11,20 @@ const StudyIntroWrapper = styled.div`
   width: 100%;
   margin-right: auto;
   flex: 1;
+
+  @media (max-width: 800px) {
+    gap: 10px;
+  }
 `;
 
 const LanguageImage = styled.img`
   width: 40px;
   height: 48px;
+
+  @media (max-width: 800px) {
+    width: 30px;
+    height: 38px;
+  }
 `;
 
 const StudyTableIntro = ({ semester, studyName, isSemester, icon }) => {
@@ -26,7 +35,6 @@ const StudyTableIntro = ({ semester, studyName, isSemester, icon }) => {
           text={semester}
           color={Color.white}
           backgroundColor={Color.orange}
-          padding="12px 35px"
         />
       )}
       <TextCircle
@@ -35,7 +43,6 @@ const StudyTableIntro = ({ semester, studyName, isSemester, icon }) => {
         backgroundColor={Color.background}
         border="0.5px solid"
         borderColor={Color.orange}
-        padding="12px 50px"
       />
       <LanguageImage src={icon} />
     </StudyIntroWrapper>
