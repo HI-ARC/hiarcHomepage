@@ -9,7 +9,6 @@ const OutWrapper = styled.div`
   height: 25px;
   align-items: center;
   color: #00aaff;
-  font-weight: 800;
   gap: 5px;
 
   img {
@@ -24,19 +23,15 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   position: relative; /* 드롭다운이 이 요소 안에서 배치 */
-  overflow: visible;
 `;
 
 const DropdownMenu = styled.div`
-  width: 500px;
-  background-color: #fffced;
   border: none;
   border-radius: 8px;
-  font-size: 16px;
   padding: 5px;
-
+  line-height: 1.6;
   display: ${(props) => (props.visible ? "block" : "none")};
-  text-align: left;
+  ${FontStyle.body1Regular}
 `;
 
 const ToggleButton = ({ text, innerText }) => {
