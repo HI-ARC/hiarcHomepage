@@ -8,7 +8,7 @@ const HiconnectIntroWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-self: center; /* 부모 컨테이너에서 수직 정렬 제어 */
-  width: 800px;
+  max-width: 800px;
   padding-left: 1%;
   box-sizing: border-box;
   margin-top: 40px;

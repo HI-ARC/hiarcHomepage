@@ -8,8 +8,7 @@ const HitingIntroWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-self: center; /* 부모 컨테이너에서 수직 정렬 제어 */
-  width: 800px;
-  padding-left: 1%;
+  max-width: 800px;
   box-sizing: border-box;
   margin-bottom: 40px;
 `;
@@ -37,7 +36,7 @@ const HitingIntro = () => {
         />
         <TextCircle
           text={"hi-arc.quest/home"}
-          border={"1px solid"}
+          border={"0.5px solid"}
           backgroundColor={Color.background}
           padding="5px 10px"
         />
