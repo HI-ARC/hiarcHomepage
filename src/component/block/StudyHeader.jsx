@@ -6,9 +6,10 @@ import Color from "../ui/Color";
 
 const Wrapper = styled.div`
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 18px;
-  padding: 10px 10px;
+  margin: 10px 0px;
+  margin-right: auto;
 `;
 
 const LogoImage = styled.img`

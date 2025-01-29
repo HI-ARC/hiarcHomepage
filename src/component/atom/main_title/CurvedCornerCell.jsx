@@ -7,16 +7,17 @@ import Color from "../../ui/Color";
 const BackgroundRectangleStyle = styled.div`
   background-color: ${(props) => props.backgroundColor || "white"};
   border-radius: 10%;
-  width: ${(props) => (props.isHovered ? "95%" : "0%")};  /* hover 시 크기 증가 */
-  height: ${(props) => (props.isHovered ? "95%" : "0%")};
+  width: ${(props) =>
+    props.$isHovered ? "97%" : "0%"}; /* hover 시 크기 증가 */
+  height: ${(props) => (props.$isHovered ? "97%" : "0%")};
   position: absolute;
   bottom: 1px; /* 왼쪽 아래에서 커지기 시작 */
-  left: 0;
+  left: 1px;
   transform-origin: bottom left; /* 왼쪽 아래에서 시작 */
   transition: transform 0.5s ease, width 0.5s ease, height 0.5s ease;
   /* hover 상태 및 sequence에 따른 delay 설정 */
   transition-delay: ${(props) => {
-    if (props.isHovered) {
+    if (props.$isHovered) {
       return props.sequence === 1 ? "0ms" : props.delay ? "500ms" : "0ms";
     } else {
       return props.sequence === 1 ? "500ms" : "0ms";
@@ -36,6 +37,7 @@ const CellBackgroundStyle = styled.div`
   overflow: hidden; /* 곡선이 그리드 아이템을 벗어나지 않도록 */
   transform: ${(props) => `rotate(${props.rotate}deg)`}; /* 회전 적용 */
   z-index: 0; /* 겹치는 컨테이너 중 가장 위에 위치 */
+  pointer-events: none;
 `;
 
 const CurvedCornerStyle = styled.div`
@@ -45,15 +47,19 @@ const CurvedCornerStyle = styled.div`
   background-color: ${(props) => props.color || "transparent"};
   transform: rotate(180deg);
   z-index: 1; /* 곡선은 그리드 아이템 위에 위치 */
-  
-  ${(props) => props.position === "topLeft" && `
+
+  ${(props) =>
+    props.position === "topLeft" &&
+    `
     top: 0;
     left: 0;
     border-top-left-radius: 100%;
     background-color: ${props.color};
   `}
-  
-  ${(props) => props.position === "bottomRight" && `
+
+  ${(props) =>
+    props.position === "bottomRight" &&
+    `
     bottom: 0;
     right: 0;
     border-bottom-right-radius: 100%;
@@ -62,7 +68,6 @@ const CurvedCornerStyle = styled.div`
 `;
 
 const CurvedCornerCell = ({
-  index,
   backgroundColor,
   cellSize,
   curveSize,
@@ -70,7 +75,7 @@ const CurvedCornerCell = ({
   type,
   isHovered,
   delay = false,
-  sequence
+  sequence,
 }) => {
   // type에 따른 회전 값 설정
   const getRotation = (type) => {
@@ -92,19 +97,24 @@ const CurvedCornerCell = ({
 
   return (
     <CellBackgroundStyle
-      key={index}
       size={cellSize}
       color={Color.transparent}
       rotate={rotation}
+      onMouseEnter={() => handleMouseEnter(index)}
+      onMouseLeave={() => handleMouseLeave(index)}
     >
       <BackgroundRectangleStyle
         backgroundColor={backgroundColor}
-        isHovered={isHovered}
+        $isHovered={isHovered}
         delay={delay}
         sequence={sequence}
       />
       <CurvedCornerStyle size={curveSize} color={color} position={"topLeft"} />
-      <CurvedCornerStyle size={curveSize} color={color} position={"bottomRight"} />
+      <CurvedCornerStyle
+        size={curveSize}
+        color={color}
+        position={"bottomRight"}
+      />
     </CellBackgroundStyle>
   );
 };

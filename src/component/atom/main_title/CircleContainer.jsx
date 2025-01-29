@@ -38,21 +38,32 @@ const ChildrenContainer = styled.div`
   align-items: center;
   justify-content: center;
   display: flex;
-  opacity: ${(props) => (props.isHover ? 1 : 0)};
+  opacity: ${(props) => (props.$isHovered ? 1 : 0)};
   ${FontStyle.display1ExtraBold}
-  color: ${(props) => props.contentColor};
+  color: ${(props) => props.$contentColor};
 
   ${(props) =>
     props.animate &&
     css`
-      animation: ${props.isHover ? fadeIn : fadeOut} 0.5s forwards;
+      animation: ${props.$isHovered ? fadeIn : fadeOut} 0.5s forwards;
     `};
 `;
 
-const CircleContainer = ({ color, contentColor=Color.primary, size, children, isHover = true, animate = false }) => {
+const CircleContainer = ({
+  color,
+  contentColor = Color.primary,
+  size,
+  children,
+  isHovered = true,
+  animate = false,
+}) => {
   return (
     <CircleContainerStyle color={color} size={size}>
-      <ChildrenContainer isHover={isHover} animate={animate} contentColor={contentColor}>
+      <ChildrenContainer
+        $isHovered={isHovered}
+        animate={animate}
+        $contentColor={contentColor}
+      >
         {children}
       </ChildrenContainer>
     </CircleContainerStyle>

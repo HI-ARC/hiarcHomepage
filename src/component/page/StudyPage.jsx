@@ -6,19 +6,23 @@ import StudyTableIntro from "../block/StudyTableIntro";
 import StudyTable from "../block/StudyTable";
 import Data from "../ui/Data";
 import StudyHeader from "../block/StudyHeader";
+import cppIcon from "../../assets/c++icon.png";
+import pythonIcon from "./../../assets/python 3.png";
 
 const StudyPlanWrapper = styled.div`
   display: flex;
+  flex-direction: column;
+  width: 100%;
+  flex: 1;
+
+  @media (max-width: 800px) {
+    width: 100%;
+  }
 `;
 
 const PSTitleWrapper = styled.div`
   display: flex;
   justify-content: flex-start;
-  padding-left: 20px;
-`;
-
-const PSWrapper = styled.div`
-  margin-right: 370px;
 `;
 
 const fadeIn = keyframes`
@@ -32,53 +36,95 @@ const fadeIn = keyframes`
   }
 `;
 
+const SemesterWrapper = styled.div`
+  display: flex;
+  gap: 20px;
+  width: 100%;
+
+  @media (max-width: 800px) {
+    flex-direction: column;
+    gap: 40px;
+  }
+`;
+
 const AnimatedContainer = styled.div`
   opacity: 0;
   animation: ${fadeIn} 1s ease-in-out forwards;
   animation-delay: ${(props) => props.delay || "0s"};
+  width: 100%;
+`;
+
+const Blank = styled.div`
+  display: flex;
+  flex: 1;
+  width: 100%;
+  height: 30px;
+
+  @media (max-width: 800px) {
+    display: none;
+  }
 `;
 
 const StudyPage = () => {
   return (
     <Layout>
+      <StudyHeader />
       <AnimatedContainer delay="0s">
-        <StudyHeader />
-        <StudyTableIntro
-          semester={"1학기"}
-          studyName1={"기초 스터디"}
-          studyName2={"초급 스터디"}
-        />
-        <StudyPlanWrapper>
-          <StudyTable data={Data.studyContent2024_1_1} />
-          <StudyTable data={Data.studyContent2024_1_2} />
-        </StudyPlanWrapper>
+        <SemesterWrapper>
+          <StudyPlanWrapper>
+            <StudyTableIntro
+              isSemester={true}
+              semester={"1학기"}
+              studyName={"기초 스터디"}
+              icon={cppIcon}
+            />
+            <StudyTable data={Data.studyContent2024_1_1} />
+          </StudyPlanWrapper>
+          <StudyPlanWrapper>
+            <StudyTableIntro
+              semester={"2학기"}
+              studyName={"초급 스터디"}
+              icon={pythonIcon}
+            />
+            <StudyTable data={Data.studyContent2024_1_2} />
+          </StudyPlanWrapper>
+        </SemesterWrapper>
       </AnimatedContainer>
 
       <AnimatedContainer delay="0.5s">
-        <StudyTableIntro
-          semester={"2학기"}
-          studyName1={"초급 스터디"}
-          studyName2={"중급 스터디"}
-        />
-        <StudyPlanWrapper>
-          <StudyTable data={Data.studyContent2024_2_1} />
-          <StudyTable data={Data.studyContent2024_2_2} />
-        </StudyPlanWrapper>
+        <SemesterWrapper>
+          <StudyPlanWrapper>
+            <StudyTableIntro
+              isSemester={true}
+              semester={"2학기"}
+              studyName={"초급 스터디"}
+              icon={cppIcon}
+            />
+            <StudyTable data={Data.studyContent2024_2_1} />
+          </StudyPlanWrapper>
+          <StudyPlanWrapper>
+            <StudyTableIntro studyName={"중급 스터디"} icon={pythonIcon} />
+            <StudyTable data={Data.studyContent2024_2_2} />
+          </StudyPlanWrapper>
+        </SemesterWrapper>
       </AnimatedContainer>
 
       <AnimatedContainer delay="1s">
-        <PSWrapper>
-          <PSTitleWrapper>
-            <TextCircle
-              text={"PS사용설명서"}
-              color={Color.orange}
-              backgroundColor={Color.background}
-              border={"1px solid"}
-              padding="12px 30px"
-            />
-          </PSTitleWrapper>
-          <StudyTable data={Data.studyContent2024_2_3} />
-        </PSWrapper>
+        <SemesterWrapper>
+          <StudyPlanWrapper>
+            <PSTitleWrapper>
+              <TextCircle
+                text={"PS사용설명서"}
+                color={Color.orange}
+                backgroundColor={Color.background}
+                border={"1px solid"}
+                padding="12px 30px"
+              />
+            </PSTitleWrapper>
+            <StudyTable data={Data.studyContent2024_2_3} />
+          </StudyPlanWrapper>
+          <Blank />
+        </SemesterWrapper>
       </AnimatedContainer>
     </Layout>
   );

@@ -18,6 +18,7 @@ const FooterWrapper = styled.div`
   font-size: 15px;
   color: #00aaff;
   text-align: left;
+  margin-top: 50px;
   width: 100%; /* FooterWrapper가 전체 너비를 차지하도록 설정 */
 `;
 

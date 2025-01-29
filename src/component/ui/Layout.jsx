@@ -6,8 +6,7 @@ import Footer from "../block/Footer";
 const LayoutWrapper = styled.div`
   display: flex;
   flex-direction: column;
-
-  /* width: 1252px; */
+  width: 100%;
 `;
 
 const MainContent = styled.div`
@@ -15,12 +14,13 @@ const MainContent = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  flex-grow: 1; /* 남는 공간을 차지하여 Footer를 아래로 밀어냄 */
+  flex-grow: 1;
   align-self: center;
+  max-width: 800px;
   width: 100%;
 `;
 
-const Layout = ({children}) => {
+const Layout = ({ children }) => {
   return (
     <LayoutWrapper>
       <Header />
