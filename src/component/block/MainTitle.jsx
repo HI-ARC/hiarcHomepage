@@ -3,7 +3,6 @@ import Color from "../ui/Color";
 import CurvedCornerType from "../../enum/CurevedCornerType";
 import CellType from "../../enum/CellType";
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 
 import BottomLayerGridItem from "../atom/main_title/BottomLayerGridItem";
 import TopLayerGridItem from "../atom/main_title/TopLayerGridItem";
@@ -22,8 +21,6 @@ const GridContainer1 = styled.div`
   align-items: start;
   top: ${(props) => props.padding}px;
   left: ${(props) => props.padding}px;
-  width: 100%;
-  height: 100%;
 `;
 
 const GridContainer2 = styled.div`
