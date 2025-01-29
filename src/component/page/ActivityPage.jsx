@@ -1,10 +1,12 @@
 import ActivityHeader from "../block/ActivityHeader";
 import HiconnectIntro from "../block/HiconnectIntro";
 import HitingIntro from "../block/HitingIntro";
-import ICPCIntro from "../block/ICPCIntro";
+import ActiviySection from "../block/ActivitySection";
+import ICPCIntro from "../block/ActivitySection";
+import Label from "../ui/Label";
 import Layout from "../ui/Layout";
 import React from "react";
-import styled, {keyframes} from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 const fadeIn = keyframes`
   from {
@@ -31,12 +33,27 @@ const ActivityPage = () => {
       </AnimatedContainer>
 
       <AnimatedContainer delay="0.5s">
-        <HiconnectIntro />
-        <ICPCIntro />
+        <ActiviySection
+          titleText={"HI-CONNECT"}
+          tagList={["OB 선배들과의 만남"]}
+          content={Label.HiconnectIntroduce}
+        />
       </AnimatedContainer>
 
       <AnimatedContainer delay="1s">
-        <HitingIntro />
+        <ActiviySection
+          titleText={"ICPC"}
+          tagList={["국제 대학생 프로그래밍 대회", "예선"]}
+          content={Label.ICPCIntroduce}
+        />
+      </AnimatedContainer>
+
+      <AnimatedContainer delay="1.5s">
+        <ActiviySection
+          titleText={"하이팅"}
+          tagList={["hi-arc.quest/home"]}
+          content={Label.HitingIntroduce}
+        />
       </AnimatedContainer>
     </Layout>
   );

@@ -7,6 +7,12 @@ const ContainerStyle = styled.div`
   justify-content: center;
   align-items: flex-start;
   gap: 20px;
+
+  /* 🎯 화면 크기가 800px 이하일 때 세로 정렬 */
+  @media (max-width: 800px) {
+    flex-direction: column;
+    align-items: center; /* 중앙 정렬 */
+  }
 `;
 
 const ChildrenWrapper = styled.div`
@@ -14,6 +20,10 @@ const ChildrenWrapper = styled.div`
   flex-direction: column;
   align-items: flex-start;
   gap: 20px;
+
+  @media (max-width: 800px) {
+    flex-direction: column;
+  }
 `;
 
 const SideImageLayout = ({
@@ -36,13 +46,13 @@ const SideImageLayout = ({
     return (
       <ContainerStyle>
         <AssetImage src={imgSrc} width={width} maxWidth={maxWidth} />
-        {children}
+        <ChildrenWrapper>{children}</ChildrenWrapper>
       </ContainerStyle>
     );
 
   return (
     <ContainerStyle>
-      {children}
+      <ChildrenWrapper>{children}</ChildrenWrapper>
       <AssetImage src={imgSrc} width={width} maxWidth={maxWidth} />
     </ContainerStyle>
   );

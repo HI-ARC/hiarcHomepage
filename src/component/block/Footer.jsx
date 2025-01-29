@@ -1,11 +1,16 @@
 import styled from "styled-components";
 import reallogo from "./../../assets/hiarc-reallogo.png";
+import FontStyle from "../ui/FontStyle";
+import ContactInfo from "../atom/MediaListCell";
 
 const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
+  @media (max-width: 800px) {
+    align-items: flex-start;
+  }
 `;
 
 const FooterWrapper = styled.div`
@@ -20,6 +25,10 @@ const FooterWrapper = styled.div`
   text-align: left;
   margin-top: 50px;
   width: 100%; /* FooterWrapper가 전체 너비를 차지하도록 설정 */
+  @media (max-width: 800px) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 `;
 
 const IntroduceWrapper = styled.div`
@@ -36,30 +45,21 @@ const LogoImage = styled.img`
 `;
 
 const IntroText = styled.div`
-  font-weight: 200;
-  font-size: 10px;
+  ${FontStyle.body1Regular}
+  white-space: nowrap;
 `;
 
 const IntroTitle = styled.h4`
   margin-bottom: 5px;
-  font-weight: 500;
+  ${FontStyle.body1Regular}
+  white-space: nowrap;
 `;
 
-const ContactWrapper = styled.div`
+const IntroWrapper = styled.div`
   display: flex;
-  flex: 1;
-  justify-content: flex-end;
+  flex-direction: column;
+  gap: 5px;
 `;
-
-const MediaList = styled.div`
-  text-align: right;
-`;
-
-const MiddleDivider = styled.div`
-  padding: 0 5px;
-`;
-
-const WantList = styled.div``;
 
 const Footer = () => {
   return (
@@ -67,29 +67,13 @@ const Footer = () => {
       <FooterWrapper>
         <IntroduceWrapper>
           <LogoImage src={reallogo} alt="HI-ARC 로고" />
-          <div className="intro">
+          <IntroWrapper>
             <IntroTitle>HI-ARC 하이아크</IntroTitle>
             <IntroText>홍익대학교 컴퓨터공학과 알고리즘 학회</IntroText>
-          </div>
+          </IntroWrapper>
         </IntroduceWrapper>
 
-        <ContactWrapper>
-          <MediaList>
-            <div>instagram</div>
-            <div>email</div>
-            <div>kakao</div>
-          </MediaList>
-          <MiddleDivider>
-            <div> |</div>
-            <div> |</div>
-            <div> |</div>
-          </MiddleDivider>
-          <WantList>
-            <div>@hi-arc.official</div>
-            <div>hiarc.offcial@gmail.com</div>
-            <div>@hi-arc</div>
-          </WantList>
-        </ContactWrapper>
+        <ContactInfo />
       </FooterWrapper>
     </Wrapper>
   );

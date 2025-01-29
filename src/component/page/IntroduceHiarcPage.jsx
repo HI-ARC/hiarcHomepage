@@ -4,7 +4,7 @@ import ContentText from "../atom/ContentText";
 import Label from "../ui/Label";
 import introImg from "../../assets/introduceHiarc2.png";
 import OTC from "../../assets/OrganizingTheContest2.png";
-import styled, {keyframes} from "styled-components";
+import styled, { keyframes } from "styled-components";
 import Logo from "../block/Logo";
 import ToggleButton from "../atom/ToggleButton";
 import ToggleLabel from "../atom/ToggleLabel";
@@ -29,12 +29,21 @@ const AnimatedContainer = styled.div`
   animation-delay: ${(props) => props.delay || "0s"};
 `;
 
-const ContextAndButton = styled.div`
+const ContextAndToggle = styled.div`
   gap: 15px;
   max-width: 800px;
   display: flex;
-  margin-top: 15px;
+  flex-direction: column;
   margin-bottom: 15px;
+`;
+
+const ICPCSinchonLayout = styled.div`
+  display: flex;
+  gap: 15px;
+  padding-top: 20px;
+  @media (max-width: 800px) {
+    flex-direction: column;
+  }
 `;
 
 const IntroduceHiarcPage = () => {
@@ -68,14 +77,16 @@ const IntroduceHiarcPage = () => {
 
       {/* 세 번째 이미지와 텍스트 */}
       <AnimatedContainer delay="1.5s">
-        <ContextAndButton>
-          <ContentText contentText={Label.MoreIntroduce} />
+        <ICPCSinchonLayout>
+          <ContextAndToggle>
+            <ContentText contentText={Label.MoreIntroduce} />
+            <ToggleButton
+              text="ICPC 신촌 자세히 알아보기"
+              innerText={Label.DetailSinchon}
+            />
+          </ContextAndToggle>
           <BlueButton text="ICPC 신촌" />
-        </ContextAndButton>
-        <ToggleButton
-          text="ICPC 신촌 자세히 알아보기"
-          innerText={Label.DetailSinchon}
-        />
+        </ICPCSinchonLayout>
       </AnimatedContainer>
     </Layout>
   );

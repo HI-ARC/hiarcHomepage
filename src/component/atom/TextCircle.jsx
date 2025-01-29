@@ -6,18 +6,17 @@ import FontStyle from "../ui/FontStyle";
 // 글자 담긴 원형 스타일
 const CircleStyle = styled.div`
   color: ${(props) => props.color};
-  ${FontStyle.display1Bold}
+  ${(props) => props.textStyle ?? FontStyle.subhead3ExtraBold}
   background-color: ${(props) => props.backgroundColor};
   border-radius: 25px;
   border: ${(props) => props.border};
   border-color: ${(props) => props.borderColor};
   padding: ${(props) => props.padding};
-  ${FontStyle.body2Medium}
   white-space: nowrap;
 
   /* 🎯 화면 크기가 800px 이하일 때 폰트 크기를 줄임 */
   @media (max-width: 800px) {
-    ${FontStyle.captionMedium}
+    ${(props) => props.mobileTextStyle ?? FontStyle.subhead1ExtraBold}
   }
 `;
 
@@ -30,6 +29,8 @@ const TextCircle = ({
   borderColor,
   padding = "12px 15px",
   fontSize = "15px",
+  textStyle,
+  mobileTextStyle,
 }) => {
   return (
     <CircleStyle
@@ -39,6 +40,8 @@ const TextCircle = ({
       borderColor={borderColor}
       padding={padding}
       fontSize={fontSize}
+      textStyle={textStyle}
+      mobileTextStyle={mobileTextStyle}
     >
       {text}
     </CircleStyle>
