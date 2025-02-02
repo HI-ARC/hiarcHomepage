@@ -1,67 +1,54 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import Color from "../ui/Color";
+import FontStyle from "../ui/FontStyle";
 
-// 연도 바를 담는 컨테이너
-const YearBarContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  width: 100%;
-  max-width: 800px;
-  padding: 20px 0;
-`;
-
-// 수평선 스타일
-const Line = styled.div`
-  position: absolute;
-  top: 35%;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background-color: #7cbfff;
-  z-index: 0;
-`;
-
-// 연도 목록
-const YearsContainer = styled.div`
+const YearBarList = styled.div`
   display: flex;
   justify-content: space-between;
-  width: 90%;
+  width: 100%;
+  position: relative; /* 🎯 선(Line)이 원들 뒤에서 배치되도록 설정 */
+  padding-bottom: 20px;
 `;
 
-// 각 연도를 감싸는 컨테이너
-const YearWrapper = styled.div`
+// 원들 뒤에 관통하는 선 스타일
+const Line = styled.div`
+  position: absolute;
+  top: 5px;
+  width: 100%;
+  max-width: 800px;
+  height: 2px;
+  background-color: ${Color.primary}; /* 선 색상 */
+  z-index: -1; /* 🎯 원들보다 뒤에 배치 */
+  transform: translateY(-50%);
+`;
+
+const YearBarItemWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  gap: 10px;
   align-items: center;
 `;
 
-// 동그라미 (연도 버튼)
 const CircleButton = styled.button`
-  width: 20px;
-  height: 20px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
-  background-color: #7cbfff;
   border: none;
-  cursor: pointer;
-  z-index: 1;
-  transition: background-color 0.3s;
-
-  &.selected {
-    background-color: #007bff; /* 선택된 동그라미 색상 */
-  }
+  padding: 0;
+  background-color: ${(props) =>
+    props.selected ? Color.toggledButtonColor : Color.primary};
+  z-index: 1; /* 🎯 원들이 선보다 앞으로 오도록 배치 */
 `;
 
-// 연도 텍스트
-const YearLabel = styled.span`
-  margin-top: 10px;
-  font-size: 14px;
-  color: #007bff;
+const YearText = styled.div`
+  ${FontStyle.subhead2Bold}
+  color: ${(props) =>
+    props.selected ? Color.toggledButtonColor : Color.primary};
 `;
 
 const YearBar = ({ startYear, endYear, onYearSelect }) => {
-  const [selectedYear, setSelectedYear] = useState(null); // 선택된 연도 관리
+  const [selectedYear, setSelectedYear] = useState(2017); // 선택된 연도 관리
 
   // 연도 클릭 시 호출되는 함수
   const handleYearClick = (year) => {
@@ -76,21 +63,18 @@ const YearBar = ({ startYear, endYear, onYearSelect }) => {
   }
 
   return (
-    <YearBarContainer>
-      <Line /> {/* 수평선 */}
-      <YearsContainer>
-        {years.map((year) => (
-          <YearWrapper key={year}>
-            {/* 각 연도 버튼 */}
-            <CircleButton
-              className={selectedYear === year ? "selected" : ""}
-              onClick={() => handleYearClick(year)}
-            />
-            <YearLabel> {year} </YearLabel>
-          </YearWrapper>
-        ))}
-      </YearsContainer>
-    </YearBarContainer>
+    <YearBarList>
+      <Line /> {/* 🎯 원들 뒤에 배치되는 선 */}
+      {years.map((year) => (
+        <YearBarItemWrapper key={year}>
+          <CircleButton
+            selected={selectedYear === year}
+            onClick={() => handleYearClick(year)}
+          />
+          <YearText selected={selectedYear === year}>{year}</YearText>
+        </YearBarItemWrapper>
+      ))}
+    </YearBarList>
   );
 };
 

@@ -2,6 +2,7 @@ import styled from "styled-components";
 import winnerData from "../../ui/WinnerData";
 import Winner from "../../atom/award_atom/Winner";
 import Color from "../../ui/Color";
+import FontStyle from "../../ui/FontStyle";
 
 const Wrapper = styled.div`
   display: flex;
@@ -10,9 +11,13 @@ const Wrapper = styled.div`
 `;
 
 const NameWrapper = styled.div`
-  font-size: 14px;
   display: flex;
-  font-weight: 900;
+  ${FontStyle.subhead2Bold}
+
+  @media (max-width: 500px) {
+    max-width: 40%;
+    line-height: 1.6;
+  }
 `;
 
 const WinnerWrapper = styled.div`
@@ -20,6 +25,7 @@ const WinnerWrapper = styled.div`
   display: flex;
   flex-direction: column; /* 우승자 목록 세로 정렬 */
   gap: 3px; /* 각 우승자 간 간격 추가 */
+  ${FontStyle.body1Regular}
 `;
 
 //대회명 받아와서 랜더링한다. winner데이터를 다루는곳

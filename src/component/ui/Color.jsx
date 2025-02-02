@@ -11,6 +11,7 @@ const Color = {
   orange05: "#FFA8000D",
   transparent: "transparent",
   toggleColor: "#E2F5FF4D", //색 추가했음 수상경력페이지에 토글되는 색
+  toggledButtonColor: "#516EBE", //색 추가했음 수상경력페이지에 토글되는 색
 };
 
 export default Color;
