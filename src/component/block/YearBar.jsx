@@ -45,6 +45,10 @@ const YearText = styled.div`
   ${FontStyle.subhead2Bold}
   color: ${(props) =>
     props.selected ? Color.toggledButtonColor : Color.primary};
+
+  @media (max-width: 500px) {
+    ${FontStyle.descriptionBold}
+  }
 `;
 
 const YearBar = ({ startYear, endYear, onYearSelect }) => {

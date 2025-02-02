@@ -55,6 +55,8 @@ const FontStyle = {
     'font-size: 1.2rem; font-weight: 400; font-family: "NanumSquareNeo";',
   descriptionMedium:
     'font-size: 1rem; font-weight: 500; font-family: "NanumSquareNeo";',
+  descriptionBold:
+    'font-size: 0.8rem; font-weight: 700; font-family: "NanumSquareNeo";',
   descriptionRegular:
     'font-size: 1rem; font-weight: 400; font-family: "NanumSquareNeo";',
 };
