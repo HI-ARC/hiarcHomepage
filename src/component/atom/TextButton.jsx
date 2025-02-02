@@ -4,7 +4,7 @@ import FontStyle from "../ui/FontStyle";
 
 const ButtonStyle = styled.button`
   color: ${Color.primary};
-  ${FontStyle.display1Bold}
+  ${FontStyle.headlineBold}
   border: none;
   background-color: transparent;
   cursor: pointer;

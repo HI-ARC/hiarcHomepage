@@ -6,12 +6,11 @@ import Color from "../ui/Color";
 import FontStyle from "../ui/FontStyle";
 
 const HeaderStyle = styled.div`
+  ${FontStyle.body3Medium}
   color: #00aaff;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 25px;
-  font-weight: 800;
   padding: 30px 0px;
   width: 100%;
 `;
@@ -27,7 +26,7 @@ const ContentStyle = styled.div`
 
 const AnkerStyle = styled.a`
   text-decoration: none;
-  ${FontStyle.display1Bold}
+  ${FontStyle.headlineBold}
   color: ${Color.primary};
   padding: 4px 8px;
   border-radius: 8px;
@@ -54,7 +53,8 @@ const DropdownWrapper = styled.div`
   display: none;
 
   @media (max-width: 800px) {
-    display: block;
+    display: flex;
+    gap: 20px;
   }
 `;
 
@@ -123,11 +123,13 @@ const Header = () => {
               onClick={() => navigate("/activity")}
             />
             <TextButton text="스터디" onClick={() => navigate("/study")} />
+            <TextButton text="수상경력" onClick={() => navigate("/award")} />
             <AnkerStyle href="http://hi-arc.quest/home/">하이팅</AnkerStyle>
           </MenuWrapper>
         ) : (
           /* 너비 800px 이하: 드롭다운 메뉴 */
           <DropdownWrapper>
+            <AnkerStyle href="http://hi-arc.quest/home/">하이팅</AnkerStyle>
             <MenuButton onClick={toggleMenu}>☰</MenuButton>
             <DropdownMenu visible={menuVisible}>
               <MenuItem onClick={() => navigate("/introduce_hiarc")}>
@@ -137,6 +139,7 @@ const Header = () => {
                 학회 활동
               </MenuItem>
               <MenuItem onClick={() => navigate("/study")}>스터디</MenuItem>
+              <MenuItem onClick={() => navigate("/award")}>수상경력</MenuItem>
             </DropdownMenu>
           </DropdownWrapper>
         )}
