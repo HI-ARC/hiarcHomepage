@@ -1,10 +1,11 @@
 import { Routes, Route } from "react-router-dom";
-import ActivityPage from "./component/page/ActivityPage";
-import IntroduceHiarcPage from "./component/page/IntroduceHiarcPage";
-import StudyPage from "./component/page/StudyPage";
-import AwardPage from "./component/page/AwardPage";
-import Notfound from "./component/page/NotfoundPage";
-import HomePage from "./component/page/HomePage";
+import ActivityPage from "./components/page/ActivityPage";
+import IntroduceHiarcPage from "./components/page/IntroduceHiarcPage";
+import StudyPage from "./components/page/StudyPage";
+import AwardPage from "./components/page/AwardPage";
+import Notfound from "./components/page/NotfoundPage";
+import HomePage from "./components/page/HomePage";
+
 function App() {
   return (
     <Routes>
