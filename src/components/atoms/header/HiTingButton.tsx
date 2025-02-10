@@ -3,7 +3,7 @@ import React from "react";
 const HiTingButton: React.FC = () => {
   return (
     <a
-      href="http://hi-arc.quest/home/"
+      href="https://hi-rating-front-end.vercel.app/"
       className={`
       text-primary
       subhead3ExtraBold

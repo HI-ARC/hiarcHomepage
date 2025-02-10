@@ -71,7 +71,7 @@ const AwardPage = () => {
   };
 
   return (
-    <Layout>
+    <Layout align="top">
       <Wrapper>
         <YearBar
           startYear={2017}

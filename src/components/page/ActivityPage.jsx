@@ -27,7 +27,7 @@ const AnimatedContainer = styled.div`
 
 const ActivityPage = () => {
   return (
-    <Layout>
+    <Layout align="top">
       <AnimatedContainer delay="0s">
         <ActivityHeader />
       </AnimatedContainer>

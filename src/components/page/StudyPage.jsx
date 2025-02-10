@@ -67,7 +67,7 @@ const Blank = styled.div`
 
 const StudyPage = () => {
   return (
-    <Layout>
+    <Layout align="top">
       <StudyHeader />
       <AnimatedContainer delay="0s">
         <SemesterWrapper>

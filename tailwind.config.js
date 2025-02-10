@@ -7,6 +7,14 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      screens: {
+        xs: "480px", // xs 사이즈 (480px)
+        sm: "640px", // 기본 sm 사이즈
+        md: "768px", // 기본 md 사이즈
+        lg: "1024px", // 기본 lg 사이즈
+        xl: "1280px", // 기본 xl 사이즈
+        "2xl": "1536px", // 기본 2xl 사이즈
+      },
       // 공유 모듈의 Colors를 그대로 확장에 넣습니다.
       colors: {
         primary: "#00AAFF",

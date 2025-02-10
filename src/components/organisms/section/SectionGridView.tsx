@@ -109,7 +109,7 @@ const SectionGridView: React.FC<SectionGridViewProps> = ({
   // 동적 너비 계산 함수
   const getDynamicWidth = () => {
     const remValue = remToPx(6.0);
-    return Math.min(800, Math.max(600, window.innerWidth - remValue)); // 최대 800px로 제한
+    return Math.min(800, Math.max(700, window.innerWidth - remValue)); // 최대 800px로 제한
   };
 
   // 내부에서 관리하는 동적 너비 상태

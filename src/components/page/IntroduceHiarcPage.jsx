@@ -1,19 +1,16 @@
+// src/components/IntroduceHiarcPage.tsx
 import Layout from "../templates/PageTemplate";
-import SideImageLayout from "../blocks/SideImageLayout";
-import ContentText from "../atoms/ContentText";
 import Label from "../ui/Label";
-import introImg from "../../assets/introduceHiarc2.png";
-import OTC from "../../assets/OrganizingTheContest2.png";
 import styled, { keyframes } from "styled-components";
-import Logo from "../blocks/Logo";
-import ToggleButton from "../atoms/ToggleButton";
-import ToggleLabel from "../atoms/ToggleLabel";
-import BlueButton from "../atoms/SinchonBlueButton";
+import logo from "../../assets/hiarc-logo.png";
 import SectionTemplate from "../templates/SectionTemplate";
 import IntroduceHiarcBottom from "@/constants/data/introduce_hiarc/IntroduceHiarcBottom";
 import IntroduceHiarcTop from "@/constants/data/introduce_hiarc/IntroduceHiarcTop";
 import ContestIntroduceBottom from "@/constants/data/introduce_hiarc/ContestIntroduceBottom";
 import ContestIntroduceTop from "@/constants/data/introduce_hiarc/ContestIntroduceTop";
+import AssetImage from "../atoms/image/AssetImage";
+import ICPCIntroduceTop from "@/constants/data/introduce_hiarc/ICPCIntroduceTop";
+import HiarcCompetition from "../ui/HiarcCompetition";
 
 // 페이드 인 애니메이션 정의
 const fadeIn = keyframes`
@@ -34,23 +31,6 @@ const AnimatedContainer = styled.div`
   animation-delay: ${(props) => props.delay || "0s"};
 `;
 
-const ContextAndToggle = styled.div`
-  gap: 15px;
-  max-width: 800px;
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 15px;
-`;
-
-const ICPCSinchonLayout = styled.div`
-  display: flex;
-  gap: 15px;
-  padding-top: 20px;
-  @media (max-width: 800px) {
-    flex-direction: column;
-  }
-`;
-
 const IntroduceHiarcPage = () => {
   return (
     <Layout>
@@ -60,16 +40,17 @@ const IntroduceHiarcPage = () => {
           colCount={3}
           topLayerData={IntroduceHiarcTop}
           bottomLayerData={IntroduceHiarcBottom}
-        >
-          <div className="flex-1 text-[clamp(14px,2vw,18px)] font-NanumSquareNeo">
-            {Label.academyIntroduce}
-          </div>
-        </SectionTemplate>
+          contentText={Label.academyIntroduce}
+        />
       </AnimatedContainer>
 
-      {/* 로고 */}
       <AnimatedContainer delay="0.5s">
-        <Logo />
+        <AssetImage
+          src={logo}
+          alt="하이아크 소개 이미지"
+          padding={"py-10"}
+          caption="@ 제 1회 하이콘 대회 배경"
+        />
       </AnimatedContainer>
 
       <AnimatedContainer delay="1s">
@@ -79,25 +60,34 @@ const IntroduceHiarcPage = () => {
           colCount={3}
           topLayerData={ContestIntroduceTop}
           bottomLayerData={ContestIntroduceBottom}
+          contentText={Label.contestIntroduce}
+          showToggle={true}
+          toggleText="대회 자세히 알아보기"
         >
-          <div className="flex-1 text-[clamp(14px,2vw,18px)] font-NanumSquareNeo">
-            {Label.academyIntroduce}
-          </div>
+          <ul className="list-none pl-10 text-[clamp(14px,2vw,18px)] font-NanumSquareNeo mb-2">
+            {HiarcCompetition.map((item, index) => (
+              <li key={index}>{item}</li>
+            ))}
+          </ul>
         </SectionTemplate>
       </AnimatedContainer>
 
       {/* 세 번째 이미지와 텍스트 */}
       <AnimatedContainer delay="1.5s">
-        <ICPCSinchonLayout>
-          <ContextAndToggle>
-            <ContentText contentText={Label.MoreIntroduce} />
-            <ToggleButton
-              text="ICPC 신촌 자세히 알아보기"
-              innerText={Label.DetailSinchon}
-            />
-          </ContextAndToggle>
-          <BlueButton text="ICPC 신촌" />
-        </ICPCSinchonLayout>
+        <SectionTemplate
+          align="right"
+          rowCount={1}
+          colCount={3}
+          topLayerData={ICPCIntroduceTop}
+          bottomLayerData={[]}
+          contentText={Label.ICPCIntroduce}
+          showToggle={true}
+          toggleText="ICPC 신촌 자세히 알아보기"
+        >
+          <p className="text-[clamp(14px,2vw,18px)] font-NanumSquareNeo mb-2">
+            {Label.DetailSinchon}
+          </p>
+        </SectionTemplate>
       </AnimatedContainer>
     </Layout>
   );

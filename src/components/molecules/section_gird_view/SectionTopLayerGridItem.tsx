@@ -30,8 +30,6 @@ const SectionTopGridItem: React.FC<SectionTopGridItemProps> = ({
   handleMouseLeave,
   visibleItems,
 }) => {
-  const navigate = useNavigate();
-
   // data.delay가 있으면 visibleItems에 포함되어야 보이도록 처리합니다.
   const isVisible = data.delay ? visibleItems.includes(data.delay) : true;
 
@@ -39,9 +37,14 @@ const SectionTopGridItem: React.FC<SectionTopGridItemProps> = ({
   const gridStyle: React.CSSProperties = {
     gridColumn: data.position[0],
     gridRow: data.position[1],
-    gridColumnEnd: `span 1`, // columnSpan이 별도로 전달되지 않았으므로 기본값 1
+    gridColumnEnd: `span 1`, // columnSpan 기본값 1
     gridRowEnd: `span 1`, // rowSpan 기본값 1
     opacity: isVisible ? 1 : 0,
+  };
+
+  // 클릭 시 항상 https://icpc-sinchon.github.io/ 로 이동합니다.
+  const handleNavigation = () => {
+    window.location.href = "https://icpc-sinchon.github.io/";
   };
 
   return (
@@ -91,6 +94,9 @@ const SectionTopGridItem: React.FC<SectionTopGridItemProps> = ({
           height={circleSize}
           width={circleSize3X}
           text={data.text as string}
+          textColor={data.color === Color.yellow ? Color.primary : Color.white}
+          isButton={true}
+          onClick={handleNavigation}
         />
       )}
 
@@ -111,7 +117,7 @@ const SectionTopGridItem: React.FC<SectionTopGridItemProps> = ({
           width={circleSize2X}
           onMouseEnter={() => handleMouseEnter(data.index!)}
           onMouseLeave={() => handleMouseLeave(data.index!)}
-          onClick={() => navigate(data.url || "")}
+          onClick={handleNavigation}
         />
       )}
 

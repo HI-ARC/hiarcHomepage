@@ -16,7 +16,7 @@ const Line = styled.div`
   position: absolute;
   top: 5px;
   width: 100%;
-  max-width: 800px;
+  max-width: 1000px;
   height: 2px;
   background-color: ${Color.primary}; /* 선 색상 */
   z-index: -1; /* 🎯 원들보다 뒤에 배치 */
