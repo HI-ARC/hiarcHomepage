@@ -5,7 +5,12 @@ const FooterLogo: React.FC = () => {
   return (
     <div className="flex items-center justify-center space-x-4">
       {/* AssetImage 사용 */}
-      <AssetImage src={HiarcLogo} maxWidth={120} height="w-14 h-14" />
+      <AssetImage
+        src={HiarcLogo}
+        minWidth={40}
+        maxWidth={120}
+        height="w-14 h-14"
+      />
       <div className="flex flex-col gap-1">
         <div className="text-base text-primary tracking-tighter subhead2SemiBold whitespace-nowrap">
           HI-ARC 하이아크
