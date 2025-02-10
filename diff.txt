@@ -1,0 +1,3494 @@
+diff --git a/src/App.jsx b/src/App.jsx
+index 8886b96..fe892a8 100644
+--- a/src/App.jsx
++++ b/src/App.jsx
+@@ -1,10 +1,11 @@
+ import { Routes, Route } from "react-router-dom";
+-import ActivityPage from "./component/page/ActivityPage";
+-import IntroduceHiarcPage from "./component/page/IntroduceHiarcPage";
+-import StudyPage from "./component/page/StudyPage";
+-import AwardPage from "./component/page/AwardPage";
+-import Notfound from "./component/page/NotfoundPage";
+-import HomePage from "./component/page/HomePage";
++import ActivityPage from "./components/page/ActivityPage";
++import IntroduceHiarcPage from "./components/page/IntroduceHiarcPage";
++import StudyPage from "./components/page/StudyPage";
++import AwardPage from "./components/page/AwardPage";
++import Notfound from "./components/page/NotfoundPage";
++import HomePage from "./components/page/HomePage";
++
+ function App() {
+   return (
+     <Routes>
+diff --git a/src/component/atom/AssetImage.jsx b/src/component/atom/AssetImage.jsx
+deleted file mode 100644
+index 169b38d..0000000
+--- a/src/component/atom/AssetImage.jsx
++++ /dev/null
+@@ -1,20 +0,0 @@
+-import styled from "styled-components";
+-import SizeValue from "../ui/SizeValue";
+-
+-// 단위를 자동으로 추가해주는 함수
+-const addUnit = value => {
+-  return typeof value === "number" ? `${value}px` : value;
+-};
+-
+-const ImageStyle = styled.img`
+-  max-width: ${(props) => addUnit(props.maxWidth)};
+-  width: ${(props) => addUnit(props.width)};
+-  height: auto;
+-  object-fit: cover;
+-`;
+-
+-const AssetImage = ({ src, maxWidth = 800, width = SizeValue.width.full }) => {
+-  return <ImageStyle src={src} maxWidth={maxWidth} width={width} />;
+-}
+-
+-export default AssetImage;
+\ No newline at end of file
+diff --git a/src/component/atom/ContentText.jsx b/src/component/atom/ContentText.jsx
+deleted file mode 100644
+index c6c2157..0000000
+--- a/src/component/atom/ContentText.jsx
++++ /dev/null
+@@ -1,20 +0,0 @@
+-import styled from "styled-components";
+-import FontStyle from "../ui/FontStyle";
+-import Color from "../ui/Color";
+-import SizeValue from "../ui/SizeValue";
+-
+-const ContentTextStyle = styled.div`
+-  display: flex;
+-  justify-content: center;
+-  align-items: center;
+-  ${FontStyle.body1Medium}
+-  line-height: 1.75;
+-  /* color: ${Color.primary}; */
+-  width: ${SizeValue.width.full};
+-`;
+-
+-const ContentText = ({contentText}) => {
+-  return <ContentTextStyle> {contentText} </ContentTextStyle>;
+-};
+-
+-export default ContentText;
+diff --git a/src/component/atom/MediaListCell.jsx b/src/component/atom/MediaListCell.jsx
+deleted file mode 100644
+index 8dc126d..0000000
+--- a/src/component/atom/MediaListCell.jsx
++++ /dev/null
+@@ -1,84 +0,0 @@
+-import React from "react";
+-import styled from "styled-components";
+-import Color from "../ui/Color";
+-import FontStyle from "../ui/FontStyle";
+-
+-const ContactContainer = styled.div`
+-  display: flex;
+-  flex-direction: column;
+-  align-items: center;
+-  justify-content: center;
+-  gap: 6px;
+-  font-size: 18px;
+-  font-weight: 500;
+-  color: ${Color?.primary || "#42a5f5"};
+-  background-color: #fffdf0;
+-  padding: 10px;
+-  width: 100%;
+-  @media (max-width: 800px) {
+-    align-items: flex-start;
+-  }
+-`;
+-
+-const ContactItem = styled.div`
+-  ${() => FontStyle.body1Regular} /* ✅ 올바른 적용 방식 */
+-  display: flex;
+-  align-items: center;
+-  justify-content: space-between;
+-  width: 100%;
+-  max-width: 400px;
+-
+-  @media (max-width: 800px) {
+-    align-items: flex-start;
+-    gap: 5px;
+-  }
+-`;
+-
+-const ContactType = styled.span`
+-  text-align: right;
+-  width: 50%;
+-
+-  @media (max-width: 800px) {
+-    text-align: left;
+-    width: 25%;
+-  }
+-`;
+-
+-const Divider = styled.span`
+-  text-align: center;
+-  width: 10px;
+-  color: ${Color?.primary || "#42a5f5"};
+-`;
+-
+-const ContactValue = styled.span`
+-  text-align: left;
+-  width: 50%;
+-
+-  @media (max-width: 800px) {
+-    width: 100%;
+-  }
+-`;
+-
+-const ContactInfo = () => {
+-  return (
+-    <ContactContainer>
+-      <ContactItem>
+-        <ContactType>instagram</ContactType>
+-        <Divider>|</Divider>
+-        <ContactValue>@hi-arc.official</ContactValue>
+-      </ContactItem>
+-      <ContactItem>
+-        <ContactType>email</ContactType>
+-        <Divider>|</Divider>
+-        <ContactValue>hiarc.official@gmail.com</ContactValue>
+-      </ContactItem>
+-      <ContactItem>
+-        <ContactType>kakao</ContactType>
+-        <Divider>|</Divider>
+-        <ContactValue>@hi-arc</ContactValue>
+-      </ContactItem>
+-    </ContactContainer>
+-  );
+-};
+-
+-export default ContactInfo;
+diff --git a/src/component/atom/SinchonBlueButton.jsx b/src/component/atom/SinchonBlueButton.jsx
+deleted file mode 100644
+index c756be2..0000000
+--- a/src/component/atom/SinchonBlueButton.jsx
++++ /dev/null
+@@ -1,50 +0,0 @@
+-import React from "react";
+-import styled from "styled-components";
+-
+-// 버튼 스타일 정의
+-const StyledButton = styled.button`
+-  display: flex;
+-  align-items: center;
+-  justify-content: center;
+-  gap: 10px; /* 텍스트와 아이콘 사이 간격 */
+-  width: 200px;
+-  height: 50px;
+-  background-color: #00aaff; /* 버튼 배경색 */
+-  color: white; /* 텍스트 색상 */
+-  font-size: 20px;
+-  font-weight: bold;
+-  border: none;
+-  border-radius: 40px; /* 둥근 모서리 */
+-  cursor: pointer;
+-  outline: none;
+-  transition: opacity 0.3s ease-in-out;
+-
+-  &:hover {
+-    opacity: 0.8; /* 호버 효과 */
+-  }
+-`;
+-
+-// 아이콘 스타일
+-const Icon = styled.span`
+-  width: 24px;
+-  height: 24px;
+-  border: 1px solid white; /* 아이콘 원 테두리 */
+-  border-radius: 50%;
+-  display: flex;
+-  align-items: center;
+-  justify-content: center;
+-  font-size: 18px;
+-`;
+-
+-const SinchonBlueButton = ({text}) => {
+-  return (
+-    <a href="https://www.icpc-sinchon.io/" style={{textDecoration: "none"}}>
+-      <StyledButton>
+-        {text}
+-        <Icon>→</Icon>
+-      </StyledButton>
+-    </a>
+-  );
+-};
+-
+-export default SinchonBlueButton;
+diff --git a/src/component/atom/StudyTable/TopicCell.jsx b/src/component/atom/StudyTable/TopicCell.jsx
+deleted file mode 100644
+index 16d4fa0..0000000
+--- a/src/component/atom/StudyTable/TopicCell.jsx
++++ /dev/null
+@@ -1,18 +0,0 @@
+-import React from "react";
+-import styled from "styled-components";
+-import Color from "../../ui/Color";
+-
+-const TopicCellWrapper = styled.td`
+-  font-size: 12px;
+-  padding-left: 10px;
+-
+-  border: 1px solid ${Color.gray};
+-  border-right: none;
+-  white-space: nowrap;
+-`;
+-
+-const TopicCell = ({ topicCell }) => {
+-  return <TopicCellWrapper>{topicCell}</TopicCellWrapper>;
+-};
+-
+-export default TopicCell;
+diff --git a/src/component/atom/StudyTable/TopicHeader.jsx b/src/component/atom/StudyTable/TopicHeader.jsx
+deleted file mode 100644
+index 6c1116b..0000000
+--- a/src/component/atom/StudyTable/TopicHeader.jsx
++++ /dev/null
+@@ -1,20 +0,0 @@
+-import React from "react";
+-import styled from "styled-components";
+-import Color from "../../ui/Color";
+-
+-const TopicHeaderWrapper = styled.th`
+-  font-size: 12px;
+-  background-color: ${Color.gray100};
+-  font-weight: bold;
+-  padding: 10px;
+-  border: 1px solid ${Color.gray};
+-  border-right: none;
+-  text-align: left;
+-  white-space: nowrap;
+-`;
+-
+-const TopicHeader = ({ topicHeader }) => {
+-  return <TopicHeaderWrapper>{topicHeader}</TopicHeaderWrapper>;
+-};
+-
+-export default TopicHeader;
+diff --git a/src/component/atom/StudyTable/WeekCell.jsx b/src/component/atom/StudyTable/WeekCell.jsx
+deleted file mode 100644
+index 1440bd4..0000000
+--- a/src/component/atom/StudyTable/WeekCell.jsx
++++ /dev/null
+@@ -1,16 +0,0 @@
+-import React from "react";
+-import styled from "styled-components";
+-import Color from "../../ui/Color";
+-
+-const WeekCellWrapper = styled.td`
+-  font-size: 12px;
+-  padding: 12px;
+-  border: 1px solid ${Color.gray};
+-  border-left: none;
+-`;
+-
+-const WeekCell = ({ weekCell }) => {
+-  return <WeekCellWrapper>{weekCell}</WeekCellWrapper>;
+-};
+-
+-export default WeekCell;
+diff --git a/src/component/atom/StudyTable/WeekHeader.jsx b/src/component/atom/StudyTable/WeekHeader.jsx
+deleted file mode 100644
+index 6408644..0000000
+--- a/src/component/atom/StudyTable/WeekHeader.jsx
++++ /dev/null
+@@ -1,20 +0,0 @@
+-import React from "react";
+-import styled from "styled-components";
+-import Color from "../../ui/Color";
+-
+-const ThWrapper = styled.th`
+-  font-size: 12px;
+-  background-color: ${Color.gray100};
+-  font-weight: bold;
+-  padding: 12px;
+-  border: 1px solid ${Color.gray};
+-  border-left: none;
+-  text-align: left;
+-  white-space: nowrap;
+-`;
+-
+-const WeekHeader = ({ weekHeader }) => {
+-  return <ThWrapper>{weekHeader}</ThWrapper>;
+-};
+-
+-export default WeekHeader;
+diff --git a/src/component/atom/TextButton.jsx b/src/component/atom/TextButton.jsx
+deleted file mode 100644
+index f7b0421..0000000
+--- a/src/component/atom/TextButton.jsx
++++ /dev/null
+@@ -1,25 +0,0 @@
+-import styled from "styled-components";
+-import Color from "../ui/Color";
+-import FontStyle from "../ui/FontStyle";
+-
+-const ButtonStyle = styled.button`
+-  color: ${Color.primary};
+-  ${FontStyle.headlineBold}
+-  border: none;
+-  background-color: transparent;
+-  cursor: pointer;
+-  padding: 4px 8px;
+-  border-radius: 8px;
+-
+-  &:hover {
+-    background-color: ${Color.primary};
+-    color: white;
+-    transition: 0.5s;
+-  }
+-`;
+-
+-const TextButton = ({ text, onClick }) => {
+-  return <ButtonStyle onClick={onClick}> {text} </ButtonStyle>;
+-};
+-
+-export default TextButton;
+diff --git a/src/component/atom/TextCircle.jsx b/src/component/atom/TextCircle.jsx
+deleted file mode 100644
+index 287b3aa..0000000
+--- a/src/component/atom/TextCircle.jsx
++++ /dev/null
+@@ -1,51 +0,0 @@
+-import React from "react";
+-import styled from "styled-components";
+-import Color from "../ui/Color";
+-import FontStyle from "../ui/FontStyle";
+-
+-// 글자 담긴 원형 스타일
+-const CircleStyle = styled.div`
+-  color: ${(props) => props.color};
+-  ${(props) => props.textStyle ?? FontStyle.subhead3ExtraBold}
+-  background-color: ${(props) => props.backgroundColor};
+-  border-radius: 25px;
+-  border: ${(props) => props.border};
+-  border-color: ${(props) => props.borderColor};
+-  padding: ${(props) => props.padding};
+-  white-space: nowrap;
+-
+-  /* 🎯 화면 크기가 800px 이하일 때 폰트 크기를 줄임 */
+-  @media (max-width: 800px) {
+-    ${(props) => props.mobileTextStyle ?? FontStyle.subhead1ExtraBold}
+-  }
+-`;
+-
+-// 텍스트 담고, 글자색과 배경색 디폴트값 설정
+-const TextCircle = ({
+-  text,
+-  color = Color.primary,
+-  backgroundColor = Color.yellow,
+-  border,
+-  borderColor,
+-  padding = "12px 15px",
+-  fontSize = "15px",
+-  textStyle,
+-  mobileTextStyle,
+-}) => {
+-  return (
+-    <CircleStyle
+-      color={color}
+-      backgroundColor={backgroundColor}
+-      border={border}
+-      borderColor={borderColor}
+-      padding={padding}
+-      fontSize={fontSize}
+-      textStyle={textStyle}
+-      mobileTextStyle={mobileTextStyle}
+-    >
+-      {text}
+-    </CircleStyle>
+-  );
+-};
+-
+-export default TextCircle;
+diff --git a/src/component/atom/ToggleButton.jsx b/src/component/atom/ToggleButton.jsx
+deleted file mode 100644
+index c32eff9..0000000
+--- a/src/component/atom/ToggleButton.jsx
++++ /dev/null
+@@ -1,59 +0,0 @@
+-import toggleImg from "../../assets/toggleButton.png";
+-import styled from "styled-components";
+-import { useState } from "react";
+-import FontStyle from "../ui/FontStyle";
+-
+-const OutWrapper = styled.div`
+-  display: flex;
+-  ${FontStyle.body1Medium}
+-  height: 25px;
+-  align-items: center;
+-  color: #00aaff;
+-  gap: 5px;
+-
+-  img {
+-    vertical-align: middle;
+-    height: 25px;
+-    margin-right: 4px;
+-    cursor: pointer; /* 클릭 가능한 커서 */
+-  }
+-`;
+-
+-const Wrapper = styled.div`
+-  display: flex;
+-  flex-direction: column;
+-  position: relative; /* 드롭다운이 이 요소 안에서 배치 */
+-`;
+-
+-const DropdownMenu = styled.div`
+-  border: none;
+-  border-radius: 8px;
+-  padding: 5px;
+-  line-height: 1.6;
+-  display: ${(props) => (props.visible ? "block" : "none")};
+-  ${FontStyle.body1Regular}
+-`;
+-
+-const ToggleButton = ({ text, innerText }) => {
+-  const [menuVisible, setMenuVisible] = useState(false);
+-
+-  const toggleMenu = () => {
+-    setMenuVisible(!menuVisible);
+-  };
+-
+-  return (
+-    <Wrapper>
+-      <OutWrapper>
+-        <img src={toggleImg} alt="Introduce HIARC" onClick={toggleMenu} />
+-        {text}
+-      </OutWrapper>
+-      {menuVisible && (
+-        <DropdownMenu visible={menuVisible}>
+-          {typeof innerText === "function" ? innerText() : innerText}
+-        </DropdownMenu>
+-      )}
+-    </Wrapper>
+-  );
+-};
+-
+-export default ToggleButton;
+diff --git a/src/component/atom/ToggleLabel.jsx b/src/component/atom/ToggleLabel.jsx
+deleted file mode 100644
+index 1aa3f7f..0000000
+--- a/src/component/atom/ToggleLabel.jsx
++++ /dev/null
+@@ -1,25 +0,0 @@
+-import styled from "styled-components";
+-import HiarcCompetition from "../ui/HiarcCompetition";
+-const Wrapper = styled.div`
+-  padding: 10px;
+-  display: flex;
+-  flex-direction: column;
+-  gap: 10px; /* 항목 간 간격 추가 */
+-`;
+-const CompetitionItem = styled.div`
+-  font-size: 16px;
+-  color: #333;
+-  line-height: 1.5;
+-`;
+-
+-const ToggleLabel = () => {
+-  return (
+-    <Wrapper>
+-      {HiarcCompetition.map((item, index) => (
+-        <CompetitionItem key={index}>{item}</CompetitionItem>
+-      ))}
+-    </Wrapper>
+-  );
+-};
+-
+-export default ToggleLabel;
+diff --git a/src/component/atom/award_atom/Winner.jsx b/src/component/atom/award_atom/Winner.jsx
+deleted file mode 100644
+index cb5b400..0000000
+--- a/src/component/atom/award_atom/Winner.jsx
++++ /dev/null
+@@ -1,27 +0,0 @@
+-import styled from "styled-components";
+-
+-const Wrapper = styled.div`
+-  display: flex;
+-  justify-content: space-between;
+-  background-color: ${(props) => props.color};
+-  padding: 5px 3px;
+-  font-size: 14px;
+-  font-weight: 400;
+-`;
+-const ResultWrapper = styled.div`
+-  color: #333;
+-`;
+-const WinnerNameWrapper = styled.div`
+-  width: 50%;
+-`;
+-
+-const Winner = ({ color, result, winnerName }) => {
+-  return (
+-    <Wrapper color={color}>
+-      <ResultWrapper>{result}</ResultWrapper>
+-      <WinnerNameWrapper>{winnerName}</WinnerNameWrapper>
+-    </Wrapper>
+-  );
+-};
+-
+-export default Winner;
+diff --git a/src/component/atom/main_title/BottomLayerGridItem.jsx b/src/component/atom/main_title/BottomLayerGridItem.jsx
+deleted file mode 100644
+index d1fc05f..0000000
+--- a/src/component/atom/main_title/BottomLayerGridItem.jsx
++++ /dev/null
+@@ -1,78 +0,0 @@
+-import styled from "styled-components";
+-import CurvedCornerCell from "./CurvedCornerCell";
+-import CellType from "../../../enum/CellType";
+-import Color from "../../ui/Color";
+-
+-const BottomLayerGridItemStyle = styled.div`
+-  grid-column: ${(props) => props.$gridColumn};
+-  grid-row: ${(props) => props.$gridRow};
+-  grid-column-end: span ${(props) => props.columnSpan || 1};
+-  grid-row-end: span ${(props) => props.rowSpan || 1};
+-  opacity: ${(props) => (props.$isVisible ? 1 : 0)};
+-  transition: opacity 0.5s ease-in-out;
+-  pointer-events: auto;
+-`;
+-
+-/// data는 BottomLayerGridData의 객체를 받습니다.
+-/// 객체 에시)
+-/// {
+-///   position: [8, 5],
+-///   type: CellType.ANIMATE_CURVE_WITH_DELAY,
+-///   direction: CurvedCornerType.BOTTOM_LEFT,
+-///   backgroundColor: Color.primary,
+-///   index: 3,
+-///   sequence: 1,
+-/// },
+-function BottomLayerGridItem({
+-  data,
+-  itemSize,
+-  cornerCurveSize,
+-  isHovered,
+-  visibleItems,
+-}) {
+-  return (
+-    <BottomLayerGridItemStyle
+-      $gridColumn={data.position[0]}
+-      $gridRow={data.position[1]}
+-      $isVisible={data.delay ? visibleItems.includes(data.delay) : true}
+-    >
+-      {data.type === CellType.CURVE && (
+-        <CurvedCornerCell
+-          key={data.index}
+-          cellSize={itemSize}
+-          backgroundColor={data.backgroundColor}
+-          color={Color.background}
+-          curveSize={cornerCurveSize}
+-          type={data.direction}
+-          isHovered={true}
+-        />
+-      )}
+-      {data.type === CellType.ANIMATE_CURVE && (
+-        <CurvedCornerCell
+-          key={data.index}
+-          cellSize={itemSize}
+-          backgroundColor={data.backgroundColor}
+-          color={Color.background}
+-          curveSize={cornerCurveSize}
+-          type={data.direction}
+-          isHovered={isHovered[data.index]}
+-        />
+-      )}
+-      {data.type === CellType.ANIMATE_CURVE_WITH_DELAY && (
+-        <CurvedCornerCell
+-          key={data.index}
+-          cellSize={itemSize}
+-          backgroundColor={data.backgroundColor}
+-          color={Color.background}
+-          curveSize={cornerCurveSize}
+-          type={data.direction}
+-          isHovered={isHovered[data.index]}
+-          delay={true}
+-          sequence={data.sequence}
+-        />
+-      )}
+-    </BottomLayerGridItemStyle>
+-  );
+-}
+-
+-export default BottomLayerGridItem;
+diff --git a/src/component/atom/main_title/CircleContainer.jsx b/src/component/atom/main_title/CircleContainer.jsx
+deleted file mode 100644
+index 21b0af4..0000000
+--- a/src/component/atom/main_title/CircleContainer.jsx
++++ /dev/null
+@@ -1,73 +0,0 @@
+-import styled, { keyframes, css } from "styled-components";
+-import FontStyle from "../../ui/FontStyle";
+-import Color from "../../ui/Color";
+-
+-// fadeIn 애니메이션 정의
+-const fadeIn = keyframes`
+-  from {
+-    opacity: 0;
+-  }
+-  to {
+-    opacity: 1;
+-  }
+-`;
+-
+-// fadeOut 애니메이션 정의
+-const fadeOut = keyframes`
+-  from {
+-    opacity: 1;
+-  }
+-  to {
+-    opacity: 0;
+-  }
+-`;
+-
+-// CircleContainer 스타일 정의
+-const CircleContainerStyle = styled.div`
+-  display: flex;
+-  justify-content: center;
+-  align-items: center;
+-  width: ${(props) => props.size}px;
+-  height: ${(props) => props.size}px;
+-  border-radius: 50%;
+-  background-color: ${(props) => props.color};
+-`;
+-
+-// children 스타일 정의 (애니메이션 적용)
+-const ChildrenContainer = styled.div`
+-  align-items: center;
+-  justify-content: center;
+-  display: flex;
+-  opacity: ${(props) => (props.$isHovered ? 1 : 0)};
+-  ${FontStyle.display1ExtraBold}
+-  color: ${(props) => props.$contentColor};
+-
+-  ${(props) =>
+-    props.animate &&
+-    css`
+-      animation: ${props.$isHovered ? fadeIn : fadeOut} 0.5s forwards;
+-    `};
+-`;
+-
+-const CircleContainer = ({
+-  color,
+-  contentColor = Color.primary,
+-  size,
+-  children,
+-  isHovered = true,
+-  animate = false,
+-}) => {
+-  return (
+-    <CircleContainerStyle color={color} size={size}>
+-      <ChildrenContainer
+-        $isHovered={isHovered}
+-        animate={animate}
+-        $contentColor={contentColor}
+-      >
+-        {children}
+-      </ChildrenContainer>
+-    </CircleContainerStyle>
+-  );
+-};
+-
+-export default CircleContainer;
+diff --git a/src/component/atom/main_title/CurvedCornerCell.jsx b/src/component/atom/main_title/CurvedCornerCell.jsx
+deleted file mode 100644
+index a7fa4ec..0000000
+--- a/src/component/atom/main_title/CurvedCornerCell.jsx
++++ /dev/null
+@@ -1,122 +0,0 @@
+-import React from "react";
+-import styled from "styled-components";
+-import CurvedCornerType from "../../../enum/CurevedCornerType";
+-import Color from "../../ui/Color";
+-
+-// 사각형 배경 스타일 (가장 아래에 위치)
+-const BackgroundRectangleStyle = styled.div`
+-  background-color: ${(props) => props.backgroundColor || "white"};
+-  border-radius: 10%;
+-  width: ${(props) =>
+-    props.$isHovered ? "97%" : "0%"}; /* hover 시 크기 증가 */
+-  height: ${(props) => (props.$isHovered ? "97%" : "0%")};
+-  position: absolute;
+-  bottom: 1px; /* 왼쪽 아래에서 커지기 시작 */
+-  left: 1px;
+-  transform-origin: bottom left; /* 왼쪽 아래에서 시작 */
+-  transition: transform 0.5s ease, width 0.5s ease, height 0.5s ease;
+-  /* hover 상태 및 sequence에 따른 delay 설정 */
+-  transition-delay: ${(props) => {
+-    if (props.$isHovered) {
+-      return props.sequence === 1 ? "0ms" : props.delay ? "500ms" : "0ms";
+-    } else {
+-      return props.sequence === 1 ? "500ms" : "0ms";
+-    }
+-  }};
+-  z-index: -1; /* 가장 아래에 배치 */
+-`;
+-
+-const CellBackgroundStyle = styled.div`
+-  background-color: ${(props) => props.color || "lightgray"};
+-  width: ${(props) => props.size}px;
+-  height: ${(props) => props.size}px;
+-  position: relative;
+-  display: flex;
+-  align-items: center; /* 수직 중앙 정렬 */
+-  justify-content: center; /* 수평 중앙 정렬 */
+-  overflow: hidden; /* 곡선이 그리드 아이템을 벗어나지 않도록 */
+-  transform: ${(props) => `rotate(${props.rotate}deg)`}; /* 회전 적용 */
+-  z-index: 0; /* 겹치는 컨테이너 중 가장 위에 위치 */
+-  pointer-events: none;
+-`;
+-
+-const CurvedCornerStyle = styled.div`
+-  position: absolute;
+-  width: ${(props) => props.size}px;
+-  height: ${(props) => props.size}px;
+-  background-color: ${(props) => props.color || "transparent"};
+-  transform: rotate(180deg);
+-  z-index: 1; /* 곡선은 그리드 아이템 위에 위치 */
+-
+-  ${(props) =>
+-    props.position === "topLeft" &&
+-    `
+-    top: 0;
+-    left: 0;
+-    border-top-left-radius: 100%;
+-    background-color: ${props.color};
+-  `}
+-
+-  ${(props) =>
+-    props.position === "bottomRight" &&
+-    `
+-    bottom: 0;
+-    right: 0;
+-    border-bottom-right-radius: 100%;
+-    background-color: ${props.color};
+-  `}
+-`;
+-
+-const CurvedCornerCell = ({
+-  backgroundColor,
+-  cellSize,
+-  curveSize,
+-  color,
+-  type,
+-  isHovered,
+-  delay = false,
+-  sequence,
+-}) => {
+-  // type에 따른 회전 값 설정
+-  const getRotation = (type) => {
+-    switch (type) {
+-      case CurvedCornerType.TOP_RIGHT:
+-        return 0;
+-      case CurvedCornerType.BOTTOM_RIGHT:
+-        return 90;
+-      case CurvedCornerType.BOTTOM_LEFT:
+-        return 180;
+-      case CurvedCornerType.TOP_LEFT:
+-        return 270;
+-      default:
+-        return 0;
+-    }
+-  };
+-
+-  const rotation = getRotation(type);
+-
+-  return (
+-    <CellBackgroundStyle
+-      size={cellSize}
+-      color={Color.transparent}
+-      rotate={rotation}
+-      onMouseEnter={() => handleMouseEnter(index)}
+-      onMouseLeave={() => handleMouseLeave(index)}
+-    >
+-      <BackgroundRectangleStyle
+-        backgroundColor={backgroundColor}
+-        $isHovered={isHovered}
+-        delay={delay}
+-        sequence={sequence}
+-      />
+-      <CurvedCornerStyle size={curveSize} color={color} position={"topLeft"} />
+-      <CurvedCornerStyle
+-        size={curveSize}
+-        color={color}
+-        position={"bottomRight"}
+-      />
+-    </CellBackgroundStyle>
+-  );
+-};
+-
+-export default CurvedCornerCell;
+diff --git a/src/component/atom/main_title/MenuButton.jsx b/src/component/atom/main_title/MenuButton.jsx
+deleted file mode 100644
+index 67e809c..0000000
+--- a/src/component/atom/main_title/MenuButton.jsx
++++ /dev/null
+@@ -1,45 +0,0 @@
+-import styled from "styled-components";
+-import Color from "../../ui/Color";
+-import FontStyle from "../../ui/FontStyle";
+-
+-const ButtonContainerStyle = styled.button`
+-  display: flex;
+-  justify-content: center;
+-  align-items: center;
+-  width: ${(prop) => prop.width}px;
+-  height: ${(prop) => prop.height}px;
+-  border-radius: ${(prop) => prop.height}px;
+-  background-color: ${(prop) => prop.color};
+-  cursor: pointer;
+-  border: none;
+-`;
+-
+-const ButtonTextStyle = styled.div`
+-  color: ${Color.white};
+-  ${FontStyle.display1Heavy}
+-`;
+-
+-const MenuButton = ({
+-  color = Color.primary,
+-  buttonText,
+-  width,
+-  height,
+-  onClick,
+-  onMouseEnter,
+-  onMouseLeave,
+-}) => {
+-  return (
+-    <ButtonContainerStyle
+-      onMouseEnter={onMouseEnter}
+-      onMouseLeave={onMouseLeave}
+-      color={color}
+-      width={width}
+-      height={height}
+-      onClick={onClick}
+-    >
+-      <ButtonTextStyle>{buttonText}</ButtonTextStyle>
+-    </ButtonContainerStyle>
+-  );
+-};
+-
+-export default MenuButton;
+diff --git a/src/component/atom/main_title/RoundedRectangleContainer.jsx b/src/component/atom/main_title/RoundedRectangleContainer.jsx
+deleted file mode 100644
+index 11812d4..0000000
+--- a/src/component/atom/main_title/RoundedRectangleContainer.jsx
++++ /dev/null
+@@ -1,30 +0,0 @@
+-import styled from "styled-components";
+-import FontStyle from "../../ui/FontStyle";
+-import Color from "../../ui/Color";
+-
+-const RoundedRectangleContainerStyle = styled.div`
+-  display: flex;
+-  justify-content: center;
+-  align-items: center;
+-  width: ${prop => prop.width}px;
+-  height: ${prop => prop.height}px;
+-  border-radius: ${prop => prop.height}px;
+-  background-color: ${prop => prop.color};
+-`;
+-
+-const TextStyle = styled.div`
+-  color: ${Color.primary};
+-  ${FontStyle.display1ExtraBold}
+-`;
+-
+-const RoundedRectangleContainer = ({ color, width, height, text }) => {
+-  return (
+-    <RoundedRectangleContainerStyle color={color} width={width} height={height} >
+-      <TextStyle>
+-        {text}
+-      </TextStyle>
+-    </RoundedRectangleContainerStyle >
+-  );
+-}
+-
+-export default RoundedRectangleContainer;
+\ No newline at end of file
+diff --git a/src/component/atom/main_title/TopLayerGridItem.jsx b/src/component/atom/main_title/TopLayerGridItem.jsx
+deleted file mode 100644
+index 91aea9b..0000000
+--- a/src/component/atom/main_title/TopLayerGridItem.jsx
++++ /dev/null
+@@ -1,104 +0,0 @@
+-import styled from "styled-components";
+-import CellType from "../../../enum/CellType";
+-import Color from "../../ui/Color";
+-import CircleContainer from "./CircleContainer";
+-import RoundedRectangleContainer from "./RoundedRectangleContainer";
+-import MenuButton from "./MenuButton";
+-import FontStyle from "../../ui/FontStyle";
+-import NavigateArrow from "../../../assets/icon/navigate_arrow.svg?react";
+-import { useNavigate } from "react-router-dom";
+-
+-const TopLayerGridItemStyle = styled.div`
+-  grid-column: ${(props) => props.$gridColumn};
+-  grid-row: ${(props) => props.$gridRow};
+-  grid-column-end: span ${(props) => props.columnSpan || 1};
+-  grid-row-end: span ${(props) => props.rowSpan || 1};
+-  opacity: ${(props) => (props.$isVisible ? 1 : 0)};
+-  transition: opacity 0.5s ease-in-out;
+-`;
+-
+-const TitleStyle = styled.div`
+-  display: flex;
+-  text-align: start;
+-  color: ${Color.primary};
+-  ${FontStyle.display2Heavy}
+-`;
+-
+-function TopLayerGridItem({
+-  data,
+-  circleSize,
+-  circleSize2X,
+-  circleSize3X,
+-  isHovered,
+-  handleMouseEnter,
+-  handleMouseLeave,
+-  visibleItems,
+-}) {
+-  const navigate = useNavigate();
+-
+-  return (
+-    <TopLayerGridItemStyle
+-      $gridColumn={data.position[0]}
+-      $gridRow={data.position[1]}
+-      $isVisible={data.delay ? visibleItems.includes(data.delay) : true}
+-    >
+-      {data.type === CellType.CIRCLE && (
+-        <CircleContainer color={data.color} size={circleSize} />
+-      )}
+-      {data.type === CellType.CIRCLE_WITH_TEXT && (
+-        <CircleContainer color={data.color} size={circleSize}>
+-          {data.text}
+-        </CircleContainer>
+-      )}
+-      {data.type === CellType.CIRCLE_WITH_ICON && (
+-        <CircleContainer
+-          color={data.color}
+-          size={circleSize}
+-          isHovered={isHovered[data.index]}
+-          animate={true}
+-          contentColor={Color.white}
+-        >
+-          <NavigateArrow width={"30px"} height={"30px"} />
+-        </CircleContainer>
+-      )}
+-      {data.type === CellType.HORIZONTAL_RECTANGLE && (
+-        <RoundedRectangleContainer
+-          color={data.color}
+-          height={circleSize}
+-          width={circleSize2X}
+-        />
+-      )}
+-      {data.type === CellType.LONG_HORIZONTAL_RECTANGLE && (
+-        <RoundedRectangleContainer
+-          color={data.color}
+-          height={circleSize}
+-          width={circleSize3X}
+-          text={data.text}
+-        />
+-      )}
+-      {data.type === CellType.VERTICAL_RECTANGLE && (
+-        <RoundedRectangleContainer
+-          color={data.color}
+-          height={circleSize2X}
+-          width={circleSize}
+-        />
+-      )}
+-      {data.type === CellType.BUTTON && (
+-        <MenuButton
+-          buttonText={data.buttonText}
+-          color={data.color}
+-          height={circleSize}
+-          width={circleSize2X}
+-          onMouseEnter={() => handleMouseEnter(data.index)}
+-          onMouseLeave={() => handleMouseLeave(data.index)}
+-          onClick={() => {
+-            navigate(data.url);
+-          }}
+-        />
+-      )}
+-      {data.type === CellType.TEXT && <TitleStyle>HI- ARC</TitleStyle>}
+-    </TopLayerGridItemStyle>
+-  );
+-}
+-
+-export default TopLayerGridItem;
+diff --git a/src/component/block/ActivityHeader.jsx b/src/component/block/ActivityHeader.jsx
+deleted file mode 100644
+index 2cf9b7a..0000000
+--- a/src/component/block/ActivityHeader.jsx
++++ /dev/null
+@@ -1,125 +0,0 @@
+-import React from "react";
+-import styled from "styled-components";
+-import cppIcon from "./../../assets/hiarc-reallogo.png";
+-import TextCircle from "../atom/TextCircle";
+-import Color from "../ui/Color";
+-import activity1 from "./../../assets/activity_1.png";
+-import activity2 from "./../../assets/activity_2.png";
+-import activity3 from "./../../assets/activity_3.png";
+-
+-const ActivityHeaderWrapper = styled.div`
+-  display: flex;
+-  flex-direction: column;
+-  align-self: center;
+-  max-width: 800px; /* 최대 너비 */
+-  width: 100%;
+-  box-sizing: border-box;
+-  padding: 10px;
+-`;
+-
+-const LogoImg = styled.img`
+-  width: 50px;
+-  height: 50px;
+-`;
+-
+-const FirstLayer = styled.div`
+-  display: flex;
+-  justify-content: flex-start;
+-  align-items: center;
+-  gap: 20px;
+-  padding: 10px 0;
+-`;
+-
+-const ActivityImage = styled.img`
+-  width: 100%;
+-  height: auto;
+-  aspect-ratio: 400 / 188;
+-  border-radius: 20px;
+-`;
+-
+-const TagList = styled.div`
+-  display: flex;
+-  justify-content: space-between;
+-  gap: 10px;
+-  width: 100%;
+-  margin-bottom: 10px;
+-`;
+-
+-const ImageWithTag = styled.div`
+-  display: flex;
+-  flex-direction: column;
+-  align-items: center;
+-  flex-grow: 1;
+-  min-width: 200px;
+-  flex-basis: 30%; /* 기본적으로 3개 한 줄 */
+-
+-  @media (max-width: 800px) {
+-    flex-basis: 48%; /* 🎯 800px 이하일 때 2개씩 배치 */
+-  }
+-
+-  @media (max-width: 500px) {
+-    flex-basis: 100%; /* 🎯 500px 이하일 때 1개씩 배치 */
+-  }
+-`;
+-
+-const ImageWithTagWrapper = styled.div`
+-  display: flex;
+-  flex-wrap: wrap; /* 🎯 화면 크기에 따라 자동 줄 바꿈 */
+-  justify-content: space-between;
+-  gap: 10px;
+-`;
+-
+-const ActivityHeader = () => {
+-  return (
+-    <ActivityHeaderWrapper>
+-      <FirstLayer>
+-        <LogoImg src={cppIcon} />
+-      </FirstLayer>
+-      <ImageWithTagWrapper>
+-        <ImageWithTag>
+-          <TagList>
+-            <TextCircle
+-              text={"학회활동"}
+-              backgroundColor={Color.primary}
+-              color={Color.white}
+-              padding="13px 30px"
+-            />
+-          </TagList>
+-          <ActivityImage src={activity1} />
+-        </ImageWithTag>
+-
+-        <ImageWithTag>
+-          <TagList>
+-            <TextCircle
+-              text={"ICPC"}
+-              backgroundColor={Color.primary}
+-              color={Color.white}
+-              padding="13px 30px"
+-            />
+-            <TextCircle
+-              text={"하이팅"}
+-              backgroundColor={Color.primary}
+-              color={Color.white}
+-              padding="13px 30px"
+-            />
+-          </TagList>
+-          <ActivityImage src={activity2} />
+-        </ImageWithTag>
+-
+-        <ImageWithTag>
+-          <TagList>
+-            <TextCircle
+-              text={"스터디"}
+-              backgroundColor={Color.primary}
+-              color={Color.white}
+-              padding="13px 35px"
+-            />
+-          </TagList>
+-          <ActivityImage src={activity3} />
+-        </ImageWithTag>
+-      </ImageWithTagWrapper>
+-    </ActivityHeaderWrapper>
+-  );
+-};
+-
+-export default ActivityHeader;
+diff --git a/src/component/block/ActivitySection.jsx b/src/component/block/ActivitySection.jsx
+deleted file mode 100644
+index 1a672f5..0000000
+--- a/src/component/block/ActivitySection.jsx
++++ /dev/null
+@@ -1,56 +0,0 @@
+-import React from "react";
+-import styled from "styled-components";
+-import Color from "../ui/Color";
+-import TextCircle from "../atom/TextCircle";
+-import FontStyle from "../ui/FontStyle";
+-
+-const ActivitySectionStyle = styled.div`
+-  display: flex;
+-  flex-direction: column;
+-  align-self: center; /* 부모 컨테이너에서 수직 정렬 제어 */
+-  max-width: 800px;
+-  box-sizing: border-box;
+-  margin-top: 40px;
+-  align-items: flex-start;s
+-`;
+-
+-const FirstLayer = styled.div`
+-  display: flex;
+-  align-items: center;
+-  gap: 10px;
+-  margin-bottom: 10px;
+-`;
+-
+-const TitleText = styled.div`
+-  ${FontStyle.subhead3ExtraBold}
+-  color: ${Color.primary};
+-  white-space: nowrap;
+-`;
+-
+-const SecondLayer = styled.div`
+-  display: flex;
+-  font-size: 17px;
+-`;
+-const ActiviySection = ({ titleText, tagList, content }) => {
+-  return (
+-    <ActivitySectionStyle>
+-      <FirstLayer>
+-        <TitleText>{titleText}</TitleText>
+-        {tagList.map((tag, index) => (
+-          <TextCircle
+-            key={index}
+-            text={tag}
+-            border={"0.5px solid"}
+-            backgroundColor={Color.background}
+-            padding="5px 10px"
+-            textStyle={FontStyle.body1Regular}
+-            mobileTextStyle={FontStyle.body1Regular}
+-          />
+-        ))}
+-      </FirstLayer>
+-      <SecondLayer>{content}</SecondLayer>
+-    </ActivitySectionStyle>
+-  );
+-};
+-
+-export default ActiviySection;
+diff --git a/src/component/block/Footer.jsx b/src/component/block/Footer.jsx
+deleted file mode 100644
+index bfbfe45..0000000
+--- a/src/component/block/Footer.jsx
++++ /dev/null
+@@ -1,82 +0,0 @@
+-import styled from "styled-components";
+-import reallogo from "./../../assets/hiarc-reallogo.png";
+-import FontStyle from "../ui/FontStyle";
+-import ContactInfo from "../atom/MediaListCell";
+-
+-const Wrapper = styled.div`
+-  display: flex;
+-  justify-content: center;
+-  align-items: center;
+-  width: 100%;
+-  @media (max-width: 800px) {
+-    align-items: flex-start;
+-  }
+-`;
+-
+-const FooterWrapper = styled.div`
+-  max-width: 800px;
+-  padding: 10px 20px;
+-  box-sizing: border-box;
+-  display: flex;
+-  justify-content: space-between;
+-  align-items: center;
+-  font-size: 15px;
+-  color: #00aaff;
+-  text-align: left;
+-  margin-top: 50px;
+-  width: 100%; /* FooterWrapper가 전체 너비를 차지하도록 설정 */
+-  @media (max-width: 800px) {
+-    flex-direction: column;
+-    align-items: flex-start;
+-  }
+-`;
+-
+-const IntroduceWrapper = styled.div`
+-  display: flex;
+-  font-weight: 100;
+-  flex: 1; /* IntroduceWrapper가 더 많은 공간을 차지하도록 설정 */
+-`;
+-
+-const LogoImage = styled.img`
+-  width: 40px;
+-  height: 48px;
+-  margin-top: 20px;
+-  margin-right: 20px;
+-`;
+-
+-const IntroText = styled.div`
+-  ${FontStyle.body1Regular}
+-  white-space: nowrap;
+-`;
+-
+-const IntroTitle = styled.h4`
+-  margin-bottom: 5px;
+-  ${FontStyle.body1Regular}
+-  white-space: nowrap;
+-`;
+-
+-const IntroWrapper = styled.div`
+-  display: flex;
+-  flex-direction: column;
+-  gap: 5px;
+-`;
+-
+-const Footer = () => {
+-  return (
+-    <Wrapper>
+-      <FooterWrapper>
+-        <IntroduceWrapper>
+-          <LogoImage src={reallogo} alt="HI-ARC 로고" />
+-          <IntroWrapper>
+-            <IntroTitle>HI-ARC 하이아크</IntroTitle>
+-            <IntroText>홍익대학교 컴퓨터공학과 알고리즘 학회</IntroText>
+-          </IntroWrapper>
+-        </IntroduceWrapper>
+-
+-        <ContactInfo />
+-      </FooterWrapper>
+-    </Wrapper>
+-  );
+-};
+-
+-export default Footer;
+diff --git a/src/component/block/Header.jsx b/src/component/block/Header.jsx
+deleted file mode 100644
+index 30c9c9c..0000000
+--- a/src/component/block/Header.jsx
++++ /dev/null
+@@ -1,151 +0,0 @@
+-import { useNavigate } from "react-router-dom";
+-import styled from "styled-components";
+-import TextButton from "../atom/TextButton";
+-import { useState, useEffect } from "react";
+-import Color from "../ui/Color";
+-import FontStyle from "../ui/FontStyle";
+-
+-const HeaderStyle = styled.div`
+-  ${FontStyle.body3Medium}
+-  color: #00aaff;
+-  display: flex;
+-  justify-content: center;
+-  align-items: center;
+-  padding: 30px 0px;
+-  width: 100%;
+-`;
+-
+-const ContentStyle = styled.div`
+-  display: flex;
+-  justify-content: space-between;
+-  align-items: center;
+-  width: 100%;
+-  max-width: 800px;
+-  box-sizing: border-box;
+-`;
+-
+-const AnkerStyle = styled.a`
+-  text-decoration: none;
+-  ${FontStyle.headlineBold}
+-  color: ${Color.primary};
+-  padding: 4px 8px;
+-  border-radius: 8px;
+-
+-  &:hover {
+-    background-color: ${Color.primary};
+-    color: white;
+-    transition: 0.5s;
+-  }
+-`;
+-
+-const MenuWrapper = styled.div`
+-  display: flex;
+-  align-items: center;
+-  gap: 20px;
+-
+-  @media (max-width: 800px) {
+-    display: none;
+-  }
+-`;
+-
+-const DropdownWrapper = styled.div`
+-  position: relative;
+-  display: none;
+-
+-  @media (max-width: 800px) {
+-    display: flex;
+-    gap: 20px;
+-  }
+-`;
+-
+-const DropdownMenu = styled.div`
+-  position: absolute;
+-  width: 120px;
+-  top: 100%;
+-  right: 0;
+-  background-color: #ffffff;
+-  border: 1px solid #ddd;
+-  border-radius: 8px;
+-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+-  padding: 20px;
+-  display: ${(props) => (props.visible ? "block" : "none")};
+-  z-index: 1000;
+-  text-align: left;
+-`;
+-
+-const MenuItem = styled.div`
+-  margin: 10px 0;
+-  color: #00aaff;
+-  cursor: pointer;
+-
+-  &:hover {
+-    text-decoration: underline;
+-  }
+-`;
+-
+-const MenuButton = styled.div`
+-  font-size: 24px;
+-  cursor: pointer;
+-  color: #00aaff;
+-`;
+-
+-const Header = () => {
+-  const navigate = useNavigate();
+-  const [menuVisible, setMenuVisible] = useState(false);
+-  const [isDesktop, setIsDesktop] = useState(window.innerWidth > 800);
+-
+-  useEffect(() => {
+-    const handleResize = () => {
+-      setIsDesktop(window.innerWidth > 800);
+-    };
+-    window.addEventListener("resize", handleResize);
+-    return () => window.removeEventListener("resize", handleResize);
+-  }, []);
+-
+-  const toggleMenu = () => {
+-    setMenuVisible(!menuVisible);
+-  };
+-
+-  return (
+-    <HeaderStyle>
+-      <ContentStyle>
+-        <TextButton text={"HI-ARC"} onClick={() => navigate("/")} />
+-
+-        {/* 너비 800px 이상: 메뉴들이 일렬로 보이게 */}
+-        {isDesktop ? (
+-          <MenuWrapper>
+-            <TextButton
+-              text="학회소개"
+-              onClick={() => navigate("/introduce_hiarc")}
+-            />
+-            <TextButton
+-              text="학회 활동"
+-              onClick={() => navigate("/activity")}
+-            />
+-            <TextButton text="스터디" onClick={() => navigate("/study")} />
+-            <TextButton text="수상경력" onClick={() => navigate("/award")} />
+-            <AnkerStyle href="http://hi-arc.quest/home/">하이팅</AnkerStyle>
+-          </MenuWrapper>
+-        ) : (
+-          /* 너비 800px 이하: 드롭다운 메뉴 */
+-          <DropdownWrapper>
+-            <AnkerStyle href="http://hi-arc.quest/home/">하이팅</AnkerStyle>
+-            <MenuButton onClick={toggleMenu}>☰</MenuButton>
+-            <DropdownMenu visible={menuVisible}>
+-              <MenuItem onClick={() => navigate("/introduce_hiarc")}>
+-                학회소개
+-              </MenuItem>
+-              <MenuItem onClick={() => navigate("/activity")}>
+-                학회 활동
+-              </MenuItem>
+-              <MenuItem onClick={() => navigate("/study")}>스터디</MenuItem>
+-              <MenuItem onClick={() => navigate("/award")}>수상경력</MenuItem>
+-            </DropdownMenu>
+-          </DropdownWrapper>
+-        )}
+-      </ContentStyle>
+-    </HeaderStyle>
+-  );
+-};
+-
+-export default Header;
+diff --git a/src/component/block/HiconnectIntro.jsx b/src/component/block/HiconnectIntro.jsx
+deleted file mode 100644
+index 8a473a5..0000000
+--- a/src/component/block/HiconnectIntro.jsx
++++ /dev/null
+@@ -1,51 +0,0 @@
+-import React from "react";
+-import styled from "styled-components";
+-import TextCircle from "../atom/TextCircle";
+-import Color from "../ui/Color";
+-import Label from "../ui/Label";
+-
+-const HiconnectIntroWrapper = styled.div`
+-  display: flex;
+-  flex-direction: column;
+-  align-self: center; /* 부모 컨테이너에서 수직 정렬 제어 */
+-  max-width: 800px;
+-  padding-left: 1%;
+-  box-sizing: border-box;
+-  margin-top: 40px;
+-  margin-bottom: 40px;
+-`;
+-
+-const FirstLayer = styled.div`
+-  display: flex;
+-  align-items: center;
+-  margin-bottom: 10px;
+-`;
+-
+-const SecondLayer = styled.div`
+-  display: flex;
+-  font-size: 17px;
+-`;
+-
+-const HiconnectIntro = ({ title }) => {
+-  return (
+-    <HiconnectIntroWrapper>
+-      <FirstLayer>
+-        <TextCircle
+-          text={"HI-CONNECT"}
+-          backgroundColor={Color.background}
+-          border={"none"}
+-          fontSize="20px"
+-        />
+-        <TextCircle
+-          text={"OB 선배들과의 만남"}
+-          border={"1px solid"}
+-          backgroundColor={Color.background}
+-          padding="5px 10px"
+-        />
+-      </FirstLayer>
+-      <SecondLayer>{Label.HiconnectIntroduce}</SecondLayer>
+-    </HiconnectIntroWrapper>
+-  );
+-};
+-
+-export default HiconnectIntro;
+diff --git a/src/component/block/HitingIntro.jsx b/src/component/block/HitingIntro.jsx
+deleted file mode 100644
+index 1ebf340..0000000
+--- a/src/component/block/HitingIntro.jsx
++++ /dev/null
+@@ -1,49 +0,0 @@
+-import React from "react";
+-import styled from "styled-components";
+-import Label from "../ui/Label";
+-import Color from "../ui/Color";
+-import TextCircle from "../atom/TextCircle";
+-
+-const HitingIntroWrapper = styled.div`
+-  display: flex;
+-  flex-direction: column;
+-  align-self: center; /* 부모 컨테이너에서 수직 정렬 제어 */
+-  max-width: 800px;
+-  box-sizing: border-box;
+-  margin-bottom: 40px;
+-`;
+-
+-const FirstLayer = styled.div`
+-  display: flex;
+-  align-items: center;
+-  margin-bottom: 10px;
+-`;
+-
+-const SecondLayer = styled.div`
+-  display: flex;
+-  font-size: 17px;
+-`;
+-
+-const HitingIntro = () => {
+-  return (
+-    <HitingIntroWrapper>
+-      <FirstLayer>
+-        <TextCircle
+-          text={"하이팅"}
+-          backgroundColor={Color.background}
+-          border={"none"}
+-          fontSize="20px"
+-        />
+-        <TextCircle
+-          text={"hi-arc.quest/home"}
+-          border={"0.5px solid"}
+-          backgroundColor={Color.background}
+-          padding="5px 10px"
+-        />
+-      </FirstLayer>
+-      <SecondLayer>{Label.HitingIntroduce}</SecondLayer>
+-    </HitingIntroWrapper>
+-  );
+-};
+-
+-export default HitingIntro;
+diff --git a/src/component/block/Logo.jsx b/src/component/block/Logo.jsx
+deleted file mode 100644
+index 2461b9f..0000000
+--- a/src/component/block/Logo.jsx
++++ /dev/null
+@@ -1,30 +0,0 @@
+-import styled from "styled-components";
+-import logo from "../../assets/hiarc-logo.png";
+-import Color from "../ui/Color";
+-import FontStyle from "../ui/FontStyle";
+-import AssetImage from "../atom/AssetImage";
+-
+-const LogoWrapperStyle = styled.div`
+-  max-width: 800px;
+-  width: 100%;
+-  display: flex;
+-  padding: 40px 0px;
+-  flex-direction: column;
+-`;
+-
+-const OriginTextStyle = styled.section`
+-  ${FontStyle.captionMedium}
+-  padding-top: 12px;
+-  color: ${Color.primary};
+-`;
+-
+-const Logo = () => {
+-  return (
+-    <LogoWrapperStyle>
+-      <AssetImage src={logo} alt="HI-ARC Logo" />
+-      <OriginTextStyle>@제 1회 하이콘 대회 배경</OriginTextStyle>
+-    </LogoWrapperStyle>
+-  );
+-};
+-
+-export default Logo;
+diff --git a/src/component/block/Main.jsx b/src/component/block/Main.jsx
+deleted file mode 100644
+index 7b6731d..0000000
+--- a/src/component/block/Main.jsx
++++ /dev/null
+@@ -1,27 +0,0 @@
+-import styled from "styled-components";
+-import newHomeImg from "./../../assets/newHome.png";
+-
+-const MainImageWrapper = styled.div`
+-  max-width: 800px; /* 최대 너비를 1140px로 설정 */
+-  padding: 0 20px; /* 좌우에 약간의 패딩을 추가해줌 */
+-  box-sizing: border-box; /* padding을 포함한 너비 계산 */
+-  display: flex;
+-  justify-content: center;
+-  align-items: center;
+-  flex-direction: column;
+-`;
+-
+-const MainImage = styled.img`
+-  width: 100%; /* 너비를 100%로 설정 */
+-  height: auto; /* 비율에 맞춰 높이를 자동으로 설정 */
+-`;
+-
+-const Main = () => {
+-  return (
+-    <MainImageWrapper >
+-      <MainImage src={newHomeImg} alt="Main Image" />
+-    </MainImageWrapper >
+-  );
+-};
+-
+-export default Main;
+\ No newline at end of file
+diff --git a/src/component/block/MainTitle.jsx b/src/component/block/MainTitle.jsx
+deleted file mode 100644
+index 9a9d052..0000000
+--- a/src/component/block/MainTitle.jsx
++++ /dev/null
+@@ -1,331 +0,0 @@
+-import styled from "styled-components";
+-import Color from "../ui/Color";
+-import CurvedCornerType from "../../enum/CurevedCornerType";
+-import CellType from "../../enum/CellType";
+-import React, { useState, useEffect } from "react";
+-
+-import BottomLayerGridItem from "../atom/main_title/BottomLayerGridItem";
+-import TopLayerGridItem from "../atom/main_title/TopLayerGridItem";
+-
+-const LayeredContainer = styled.div`
+-  position: relative;
+-  width: ${(props) => props.width}px;
+-  height: ${(props) => props.height}px;
+-`;
+-
+-const GridContainer1 = styled.div`
+-  display: grid;
+-  grid-template-columns: ${(props) => `repeat(9, ${props.size}px)`};
+-  grid-template-rows: ${(props) => `repeat(5, ${props.size}px)`};
+-  position: absolute;
+-  align-items: start;
+-  top: ${(props) => props.padding}px;
+-  left: ${(props) => props.padding}px;
+-`;
+-
+-const GridContainer2 = styled.div`
+-  display: grid;
+-  grid-template-columns: ${(props) => `repeat(10, ${props.$cellSize}px)`};
+-  grid-template-rows: ${(props) => `repeat(6, ${props.$cellSize}px)`};
+-  position: absolute;
+-  gap: ${(props) => props.gap}px;
+-  top: 0;
+-  left: 0;
+-  width: 100%;
+-  height: 100%;
+-`;
+-
+-const TopLayerGridData = [
+-  { position: [2, 1], type: CellType.CIRCLE, color: Color.orange },
+-  { position: [7, 1], type: CellType.HORIZONTAL_RECTANGLE, color: Color.gray },
+-  { position: [9, 1], type: CellType.CIRCLE, color: Color.orange },
+-  { position: [1, 2], type: CellType.CIRCLE, color: Color.orange },
+-  { position: [4, 2], type: CellType.CIRCLE, color: Color.pink },
+-  { position: [5, 2], type: CellType.CIRCLE, color: Color.pink },
+-  { position: [6, 2], type: CellType.CIRCLE, color: Color.gray },
+-  { position: [7, 2], type: CellType.VERTICAL_RECTANGLE, color: Color.orange },
+-  { position: [10, 2], type: CellType.CIRCLE, color: Color.orange },
+-  { position: [2, 3], type: CellType.CIRCLE, color: Color.orange },
+-  { position: [3, 3], type: CellType.CIRCLE, color: Color.pink },
+-  { position: [4, 3], type: CellType.CIRCLE, color: Color.pink },
+-  { position: [8, 3], type: CellType.CIRCLE, color: Color.gray },
+-  { position: [9, 3], type: CellType.CIRCLE, color: Color.gray },
+-  { position: [8, 4], type: CellType.CIRCLE, color: Color.orange },
+-  { position: [8, 4], type: CellType.CIRCLE, color: Color.orange },
+-  { position: [9, 4], type: CellType.CIRCLE, color: Color.gray },
+-  { position: [10, 4], type: CellType.CIRCLE, color: Color.gray },
+-  { position: [5, 5], type: CellType.CIRCLE, color: Color.gray },
+-  { position: [6, 5], type: CellType.CIRCLE, color: Color.pink },
+-  { position: [7, 6], type: CellType.CIRCLE, color: Color.pink },
+-  { position: [6, 6], type: CellType.CIRCLE, color: Color.gray },
+-  { position: [8, 6], type: CellType.CIRCLE, color: Color.primary },
+-
+-  { position: [1, 1], type: CellType.CIRCLE, color: Color.gray, delay: 1 },
+-  { position: [3, 1], type: CellType.CIRCLE, color: Color.gray, delay: 2 },
+-  { position: [5, 6], type: CellType.CIRCLE, color: Color.gray, delay: 3 },
+-  { position: [10, 1], type: CellType.CIRCLE, color: Color.orange, delay: 4 },
+-  { position: [6, 1], type: CellType.CIRCLE, color: Color.gray, delay: 5 },
+-  { position: [10, 6], type: CellType.CIRCLE, color: Color.gray, delay: 6 },
+-  { position: [1, 3], type: CellType.CIRCLE, color: Color.gray, delay: 7 },
+-  { position: [9, 6], type: CellType.CIRCLE, color: Color.pink, delay: 8 },
+-  { position: [5, 1], type: CellType.CIRCLE, color: Color.pink, delay: 9 },
+-  { position: [1, 4], type: CellType.TEXT, color: Color.primary, delay: 10 },
+-
+-  {
+-    position: [8, 5],
+-    type: CellType.CIRCLE_WITH_TEXT,
+-    color: Color.yellow,
+-    text: "us",
+-  },
+-  {
+-    position: [5, 4],
+-    type: CellType.LONG_HORIZONTAL_RECTANGLE,
+-    color: Color.yellow,
+-    text: "solve with",
+-  },
+-  {
+-    position: [2, 2],
+-    type: CellType.BUTTON,
+-    color: Color.primary,
+-    buttonText: "학회 소개",
+-    index: 0,
+-    url: "introduce_hiarc",
+-  },
+-  {
+-    position: [4, 1],
+-    type: CellType.CIRCLE_WITH_ICON,
+-    color: Color.primary,
+-    index: 0,
+-  },
+-  {
+-    position: [8, 2],
+-    type: CellType.BUTTON,
+-    color: Color.primary,
+-    buttonText: "스터디",
+-    index: 1,
+-    url: "study",
+-  },
+-  {
+-    position: [10, 3],
+-    type: CellType.CIRCLE_WITH_ICON,
+-    color: Color.primary,
+-    index: 1,
+-  },
+-  {
+-    position: [5, 3],
+-    type: CellType.BUTTON,
+-    color: Color.primary,
+-    buttonText: "학회 활동",
+-    index: 2,
+-    url: "activity",
+-  },
+-  {
+-    position: [4, 4],
+-    type: CellType.CIRCLE_WITH_ICON,
+-    color: Color.primary,
+-    index: 2,
+-  },
+-  {
+-    position: [7, 5],
+-    type: CellType.CIRCLE_WITH_ICON,
+-    color: Color.primary,
+-    index: 3,
+-  },
+-  {
+-    position: [9, 5],
+-    type: CellType.BUTTON,
+-    color: Color.primary,
+-    buttonText: "수상 경력",
+-    index: 3,
+-    url: "award",
+-  },
+-];
+-
+-const BottomLayerGridData = [
+-  {
+-    position: [1, 1],
+-    type: CellType.CURVE,
+-    direction: CurvedCornerType.TOP_RIGHT,
+-    backgroundColor: Color.orange,
+-  },
+-  {
+-    position: [6, 1],
+-    type: CellType.CURVE,
+-    direction: CurvedCornerType.TOP_RIGHT,
+-    backgroundColor: Color.gray,
+-  },
+-  {
+-    position: [9, 1],
+-    type: CellType.CURVE,
+-    direction: CurvedCornerType.TOP_LEFT,
+-    backgroundColor: Color.orange,
+-  },
+-  {
+-    position: [1, 2],
+-    type: CellType.CURVE,
+-    direction: CurvedCornerType.TOP_LEFT,
+-    backgroundColor: Color.orange,
+-  },
+-  {
+-    position: [3, 2],
+-    type: CellType.CURVE,
+-    direction: CurvedCornerType.TOP_RIGHT,
+-    backgroundColor: Color.pink,
+-  },
+-  {
+-    position: [4, 2],
+-    type: CellType.CURVE,
+-    direction: CurvedCornerType.TOP_RIGHT,
+-    backgroundColor: Color.pink,
+-  },
+-  {
+-    position: [7, 3],
+-    type: CellType.CURVE,
+-    direction: CurvedCornerType.TOP_LEFT,
+-    backgroundColor: Color.orange,
+-  },
+-  {
+-    position: [8, 3],
+-    type: CellType.CURVE,
+-    direction: CurvedCornerType.TOP_LEFT,
+-    backgroundColor: Color.gray,
+-  },
+-  {
+-    position: [9, 3],
+-    type: CellType.CURVE,
+-    direction: CurvedCornerType.TOP_LEFT,
+-    backgroundColor: Color.gray,
+-  },
+-  {
+-    position: [7, 4],
+-    type: CellType.CURVE,
+-    direction: CurvedCornerType.TOP_LEFT,
+-    backgroundColor: Color.yellow,
+-  },
+-  {
+-    position: [5, 5],
+-    type: CellType.CURVE,
+-    direction: CurvedCornerType.BOTTOM_RIGHT,
+-    backgroundColor: Color.gray,
+-  },
+-  {
+-    position: [6, 5],
+-    type: CellType.CURVE,
+-    direction: CurvedCornerType.BOTTOM_RIGHT,
+-    backgroundColor: Color.pink,
+-  },
+-
+-  {
+-    position: [3, 1],
+-    type: CellType.ANIMATE_CURVE,
+-    direction: CurvedCornerType.TOP_RIGHT,
+-    backgroundColor: Color.primary,
+-    index: 0,
+-  },
+-  {
+-    position: [9, 2],
+-    type: CellType.ANIMATE_CURVE,
+-    direction: CurvedCornerType.BOTTOM_RIGHT,
+-    backgroundColor: Color.primary,
+-    index: 1,
+-  },
+-  {
+-    position: [4, 3],
+-    type: CellType.ANIMATE_CURVE,
+-    direction: CurvedCornerType.BOTTOM_LEFT,
+-    backgroundColor: Color.primary,
+-    index: 2,
+-  },
+-  {
+-    position: [8, 5],
+-    type: CellType.ANIMATE_CURVE_WITH_DELAY,
+-    direction: CurvedCornerType.BOTTOM_LEFT,
+-    backgroundColor: Color.primary,
+-    index: 3,
+-    sequence: 1,
+-  },
+-  {
+-    position: [7, 5],
+-    type: CellType.ANIMATE_CURVE_WITH_DELAY,
+-    direction: CurvedCornerType.TOP_LEFT,
+-    backgroundColor: Color.primary,
+-    index: 3,
+-    sequence: 2,
+-  },
+-];
+-
+-const MainTitle = ({ width }) => {
+-  const itemSize = Math.ceil((128 / 1252) * width);
+-  const cornerCurveSize = Math.ceil((78 / 1252) * width);
+-  const circleSize = Math.ceil((100 / 1252) * width);
+-  const circleSize2X = Math.ceil((228 / 1252) * width);
+-  const circleSize3X = Math.ceil((356 / 1252) * width);
+-  const paddingSize = Math.ceil((50 / 1252) * width);
+-  const gapSize = Math.ceil((28 / 1252) * width);
+-  const containerHeight = Math.ceil((740 / 1252) * width);
+-
+-  const [visibleItems, setVisibleItems] = useState([]);
+-  const [isHovered, setIsHovered] = useState([false, false, false, false]);
+-
+-  useEffect(() => {
+-    TopLayerGridData.forEach((data) => {
+-      setTimeout(() => {
+-        setVisibleItems((prev) => [...prev, data.delay]);
+-      }, data.delay * 200);
+-    });
+-  }, []);
+-
+-  const handleMouseEnter = (index) => {
+-    console.log(index);
+-    setIsHovered((prevHovered) => {
+-      const newHovered = [...prevHovered];
+-      newHovered[index] = true;
+-      return newHovered;
+-    });
+-  };
+-
+-  const handleMouseLeave = (index) => {
+-    console.log(index);
+-    setIsHovered((prevHovered) => {
+-      const newHovered = [...prevHovered];
+-      newHovered[index] = false;
+-      return newHovered;
+-    });
+-  };
+-
+-  return (
+-    <LayeredContainer width={width} height={containerHeight}>
+-      <GridContainer1 padding={paddingSize} size={itemSize}>
+-        {BottomLayerGridData.map((data, index) => (
+-          <BottomLayerGridItem
+-            index={index}
+-            data={data}
+-            itemSize={itemSize}
+-            cornerCurveSize={cornerCurveSize}
+-            isHovered={isHovered}
+-            handleMouseEnter={handleMouseEnter}
+-            handleMouseLeave={handleMouseLeave}
+-          />
+-        ))}
+-      </GridContainer1>
+-
+-      <GridContainer2 gap={gapSize} $cellSize={circleSize}>
+-        {TopLayerGridData.map((data, index) => (
+-          <TopLayerGridItem
+-            key={index}
+-            data={data}
+-            circleSize={circleSize}
+-            circleSize2X={circleSize2X}
+-            circleSize3X={circleSize3X}
+-            isHovered={isHovered}
+-            handleMouseEnter={handleMouseEnter}
+-            handleMouseLeave={handleMouseLeave}
+-            visibleItems={visibleItems}
+-          />
+-        ))}
+-      </GridContainer2>
+-    </LayeredContainer>
+-  );
+-};
+-
+-export default MainTitle;
+diff --git a/src/component/block/SideImageLayout.jsx b/src/component/block/SideImageLayout.jsx
+deleted file mode 100644
+index abdb974..0000000
+--- a/src/component/block/SideImageLayout.jsx
++++ /dev/null
+@@ -1,61 +0,0 @@
+-import styled from "styled-components";
+-import AssetImage from "../atom/AssetImage";
+-
+-const ContainerStyle = styled.div`
+-  max-width: 800px;
+-  display: flex;
+-  justify-content: center;
+-  align-items: flex-start;
+-  gap: 20px;
+-
+-  /* 🎯 화면 크기가 800px 이하일 때 세로 정렬 */
+-  @media (max-width: 800px) {
+-    flex-direction: column;
+-    align-items: center; /* 중앙 정렬 */
+-  }
+-`;
+-
+-const ChildrenWrapper = styled.div`
+-  display: flex;
+-  flex-direction: column;
+-  align-items: flex-start;
+-  gap: 20px;
+-
+-  @media (max-width: 800px) {
+-    flex-direction: column;
+-  }
+-`;
+-
+-const SideImageLayout = ({
+-  imgSrc,
+-  width,
+-  maxWidth,
+-  isLeft = true,
+-  children,
+-  isToggleBar = true,
+-}) => {
+-  if (isToggleBar && !isLeft)
+-    return (
+-      <ContainerStyle>
+-        <ChildrenWrapper>{children}</ChildrenWrapper>
+-        <AssetImage src={imgSrc} width={width} maxWidth={maxWidth} />
+-      </ContainerStyle>
+-    );
+-
+-  if (isLeft)
+-    return (
+-      <ContainerStyle>
+-        <AssetImage src={imgSrc} width={width} maxWidth={maxWidth} />
+-        <ChildrenWrapper>{children}</ChildrenWrapper>
+-      </ContainerStyle>
+-    );
+-
+-  return (
+-    <ContainerStyle>
+-      <ChildrenWrapper>{children}</ChildrenWrapper>
+-      <AssetImage src={imgSrc} width={width} maxWidth={maxWidth} />
+-    </ContainerStyle>
+-  );
+-};
+-
+-export default SideImageLayout;
+diff --git a/src/component/block/StudyHeader.jsx b/src/component/block/StudyHeader.jsx
+deleted file mode 100644
+index c49c3c7..0000000
+--- a/src/component/block/StudyHeader.jsx
++++ /dev/null
+@@ -1,41 +0,0 @@
+-import React from "react";
+-import styled from "styled-components";
+-import hiarcLogo from "./../../assets/hiarc-reallogo.png";
+-import TextCircle from "../atom/TextCircle";
+-import Color from "../ui/Color";
+-
+-const Wrapper = styled.div`
+-  display: flex;
+-  align-items: flex-start;
+-  gap: 18px;
+-  margin: 10px 0px;
+-  margin-right: auto;
+-`;
+-
+-const LogoImage = styled.img`
+-  width: 40px;
+-  height: 48px;
+-`;
+-
+-const StudyHeader = () => {
+-  return (
+-    <Wrapper>
+-      <LogoImage src={hiarcLogo} />
+-      <TextCircle
+-        text={"학회 스터디"}
+-        backgroundColor={Color.yellow}
+-        color={Color.primary}
+-        padding="13px 28px"
+-        fontSize="20px"
+-      />
+-      <TextCircle
+-        text={"2024"}
+-        backgroundColor={Color.orange}
+-        color={Color.white}
+-        padding="15px 40px"
+-      />
+-    </Wrapper>
+-  );
+-};
+-
+-export default StudyHeader;
+diff --git a/src/component/block/StudyTable.jsx b/src/component/block/StudyTable.jsx
+deleted file mode 100644
+index dca28a4..0000000
+--- a/src/component/block/StudyTable.jsx
++++ /dev/null
+@@ -1,61 +0,0 @@
+-import React from "react";
+-import styled from "styled-components";
+-import Color from "../ui/Color";
+-import FontStyle from "../ui/FontStyle";
+-
+-// 스타일 컴포넌트 정의
+-const TableContainer = styled.div`
+-  display: flex;
+-  justify-content: center;
+-  padding-top: 20px;
+-  padding-bottom: 50px;
+-  width: 100%;
+-`;
+-
+-const Table = styled.table`
+-  border-collapse: collapse;
+-  width: 100%;
+-  border-top: 0.5px solid ${Color.orange}; /* 위쪽 바깥선 */
+-  border-bottom: 0.5px solid ${Color.orange}; /* 아래쪽 바깥선 */
+-`;
+-
+-const TableRow = styled.tr`
+-  ${FontStyle.body1Medium}
+-  width: 100%;
+-  height: 50px;
+-  &:nth-child(even) {
+-    background-color: ${Color.orange05}; /* 짝수 행의 배경색 */
+-  }
+-`;
+-
+-const TableCell = styled.td`
+-  ${FontStyle.body1Medium}
+-  padding: 12px;
+-  text-align: left;
+-  border-right: 0.5px solid ${Color.orange}; /* 세로선 */
+-  &:first-child {
+-    text-align: center;
+-  }
+-  &:last-child {
+-    border-right: none; /* 마지막 열의 세로선 제거 */
+-  }
+-`;
+-
+-const StudyTable = ({ data }) => {
+-  return (
+-    <TableContainer>
+-      <Table>
+-        <tbody>
+-          {data.map((item, index) => (
+-            <TableRow key={index}>
+-              <TableCell>{item.week}</TableCell>
+-              <TableCell>{item.topic}</TableCell>
+-            </TableRow>
+-          ))}
+-        </tbody>
+-      </Table>
+-    </TableContainer>
+-  );
+-};
+-
+-export default StudyTable;
+diff --git a/src/component/block/StudyTableIntro.jsx b/src/component/block/StudyTableIntro.jsx
+deleted file mode 100644
+index 25dd3f1..0000000
+--- a/src/component/block/StudyTableIntro.jsx
++++ /dev/null
+@@ -1,52 +0,0 @@
+-import React from "react";
+-import styled from "styled-components";
+-import TextCircle from "../atom/TextCircle";
+-import Color from "../ui/Color";
+-
+-const StudyIntroWrapper = styled.div`
+-  display: flex;
+-  gap: 18px;
+-  justify-content: flex-start;
+-  align-items: center;
+-  width: 100%;
+-  margin-right: auto;
+-  flex: 1;
+-
+-  @media (max-width: 800px) {
+-    gap: 10px;
+-  }
+-`;
+-
+-const LanguageImage = styled.img`
+-  width: 40px;
+-  height: 48px;
+-
+-  @media (max-width: 800px) {
+-    width: 30px;
+-    height: 38px;
+-  }
+-`;
+-
+-const StudyTableIntro = ({ semester, studyName, isSemester, icon }) => {
+-  return (
+-    <StudyIntroWrapper>
+-      {isSemester == true && (
+-        <TextCircle
+-          text={semester}
+-          color={Color.white}
+-          backgroundColor={Color.orange}
+-        />
+-      )}
+-      <TextCircle
+-        text={studyName}
+-        color={Color.orange}
+-        backgroundColor={Color.background}
+-        border="0.5px solid"
+-        borderColor={Color.orange}
+-      />
+-      <LanguageImage src={icon} />
+-    </StudyIntroWrapper>
+-  );
+-};
+-
+-export default StudyTableIntro;
+diff --git a/src/component/block/YearBar.jsx b/src/component/block/YearBar.jsx
+deleted file mode 100644
+index d29500b..0000000
+--- a/src/component/block/YearBar.jsx
++++ /dev/null
+@@ -1,85 +0,0 @@
+-import React, { useState } from "react";
+-import styled from "styled-components";
+-import Color from "../ui/Color";
+-import FontStyle from "../ui/FontStyle";
+-
+-const YearBarList = styled.div`
+-  display: flex;
+-  justify-content: space-between;
+-  width: 100%;
+-  position: relative; /* 🎯 선(Line)이 원들 뒤에서 배치되도록 설정 */
+-  padding-bottom: 20px;
+-`;
+-
+-// 원들 뒤에 관통하는 선 스타일
+-const Line = styled.div`
+-  position: absolute;
+-  top: 5px;
+-  width: 100%;
+-  max-width: 800px;
+-  height: 2px;
+-  background-color: ${Color.primary}; /* 선 색상 */
+-  z-index: -1; /* 🎯 원들보다 뒤에 배치 */
+-  transform: translateY(-50%);
+-`;
+-
+-const YearBarItemWrapper = styled.div`
+-  display: flex;
+-  flex-direction: column;
+-  gap: 10px;
+-  align-items: center;
+-`;
+-
+-const CircleButton = styled.button`
+-  width: 10px;
+-  height: 10px;
+-  border-radius: 50%;
+-  border: none;
+-  padding: 0;
+-  background-color: ${(props) =>
+-    props.selected ? Color.toggledButtonColor : Color.primary};
+-  z-index: 1; /* 🎯 원들이 선보다 앞으로 오도록 배치 */
+-`;
+-
+-const YearText = styled.div`
+-  ${FontStyle.subhead2Bold}
+-  color: ${(props) =>
+-    props.selected ? Color.toggledButtonColor : Color.primary};
+-
+-  @media (max-width: 500px) {
+-    ${FontStyle.descriptionBold}
+-  }
+-`;
+-
+-const YearBar = ({ startYear, endYear, onYearSelect }) => {
+-  const [selectedYear, setSelectedYear] = useState(2017); // 선택된 연도 관리
+-
+-  // 연도 클릭 시 호출되는 함수
+-  const handleYearClick = (year) => {
+-    setSelectedYear(year);
+-    onYearSelect(year);
+-  };
+-
+-  // startYear부터 endYear까지의 연도 배열 생성
+-  const years = [];
+-  for (let i = startYear; i <= endYear; i++) {
+-    years.push(i);
+-  }
+-
+-  return (
+-    <YearBarList>
+-      <Line /> {/* 🎯 원들 뒤에 배치되는 선 */}
+-      {years.map((year) => (
+-        <YearBarItemWrapper key={year}>
+-          <CircleButton
+-            selected={selectedYear === year}
+-            onClick={() => handleYearClick(year)}
+-          />
+-          <YearText selected={selectedYear === year}>{year}</YearText>
+-        </YearBarItemWrapper>
+-      ))}
+-    </YearBarList>
+-  );
+-};
+-
+-export default YearBar;
+diff --git a/src/component/block/awards_block/Competition.jsx b/src/component/block/awards_block/Competition.jsx
+deleted file mode 100644
+index 675d6bc..0000000
+--- a/src/component/block/awards_block/Competition.jsx
++++ /dev/null
+@@ -1,52 +0,0 @@
+-import styled from "styled-components";
+-import winnerData from "../../ui/WinnerData";
+-import Winner from "../../atom/award_atom/Winner";
+-import Color from "../../ui/Color";
+-import FontStyle from "../../ui/FontStyle";
+-
+-const Wrapper = styled.div`
+-  display: flex;
+-  justify-content: space-between;
+-  width: 100%;
+-`;
+-
+-const NameWrapper = styled.div`
+-  display: flex;
+-  ${FontStyle.subhead2Bold}
+-
+-  @media (max-width: 500px) {
+-    max-width: 40%;
+-    line-height: 1.6;
+-  }
+-`;
+-
+-const WinnerWrapper = styled.div`
+-  width: 50%;
+-  display: flex;
+-  flex-direction: column; /* 우승자 목록 세로 정렬 */
+-  gap: 3px; /* 각 우승자 간 간격 추가 */
+-  ${FontStyle.body1Regular}
+-`;
+-
+-//대회명 받아와서 랜더링한다. winner데이터를 다루는곳
+-const Competition = ({ competitionName }) => {
+-  const competitionWinner = winnerData[competitionName] || [];
+-
+-  return (
+-    <Wrapper>
+-      <NameWrapper>| {competitionName}</NameWrapper>
+-      <WinnerWrapper>
+-        {competitionWinner.map(([winnerIndex, result, name], index) => (
+-          <Winner
+-            key={index}
+-            result={result}
+-            winnerName={name}
+-            color={winnerIndex % 2 == 1 ? Color.toggleColor : Color.transparent}
+-          />
+-        ))}
+-      </WinnerWrapper>
+-    </Wrapper>
+-  );
+-};
+-
+-export default Competition;
+diff --git a/src/component/page/ActivityPage.jsx b/src/component/page/ActivityPage.jsx
+deleted file mode 100644
+index 810ca7d..0000000
+--- a/src/component/page/ActivityPage.jsx
++++ /dev/null
+@@ -1,62 +0,0 @@
+-import ActivityHeader from "../block/ActivityHeader";
+-import HiconnectIntro from "../block/HiconnectIntro";
+-import HitingIntro from "../block/HitingIntro";
+-import ActiviySection from "../block/ActivitySection";
+-import ICPCIntro from "../block/ActivitySection";
+-import Label from "../ui/Label";
+-import Layout from "../ui/Layout";
+-import React from "react";
+-import styled, { keyframes } from "styled-components";
+-
+-const fadeIn = keyframes`
+-  from {
+-    opacity: 0;
+-    transform: translateY(-20px);
+-  }
+-  to {
+-    opacity: 1;
+-    transform: translateY(0);
+-  }
+-`;
+-
+-const AnimatedContainer = styled.div`
+-  opacity: 0;
+-  animation: ${fadeIn} 1s ease-in-out forwards;
+-  animation-delay: ${(props) => props.delay || "0s"};
+-`;
+-
+-const ActivityPage = () => {
+-  return (
+-    <Layout>
+-      <AnimatedContainer delay="0s">
+-        <ActivityHeader />
+-      </AnimatedContainer>
+-
+-      <AnimatedContainer delay="0.5s">
+-        <ActiviySection
+-          titleText={"HI-CONNECT"}
+-          tagList={["OB 선배들과의 만남"]}
+-          content={Label.HiconnectIntroduce}
+-        />
+-      </AnimatedContainer>
+-
+-      <AnimatedContainer delay="1s">
+-        <ActiviySection
+-          titleText={"ICPC"}
+-          tagList={["국제 대학생 프로그래밍 대회", "예선"]}
+-          content={Label.ICPCIntroduce}
+-        />
+-      </AnimatedContainer>
+-
+-      <AnimatedContainer delay="1.5s">
+-        <ActiviySection
+-          titleText={"하이팅"}
+-          tagList={["hi-arc.quest/home"]}
+-          content={Label.HitingIntroduce}
+-        />
+-      </AnimatedContainer>
+-    </Layout>
+-  );
+-};
+-
+-export default ActivityPage;
+diff --git a/src/component/page/AwardPage.jsx b/src/component/page/AwardPage.jsx
+deleted file mode 100644
+index 8d935e6..0000000
+--- a/src/component/page/AwardPage.jsx
++++ /dev/null
+@@ -1,94 +0,0 @@
+-import YearBar from "../block/YearBar";
+-import Layout from "../ui/Layout";
+-import { useState } from "react";
+-import styled, { keyframes } from "styled-components";
+-import Color from "../ui/Color";
+-import FontStyle from "../ui/FontStyle";
+-import competitionData from "../ui/CompetitionData";
+-import Competition from "../block/awards_block/Competition";
+-
+-const fadeIn = keyframes`
+-  from {
+-    opacity: 0;
+-    transform: translateY(-20px);
+-  }
+-  to {
+-    opacity: 1;
+-    transform: translateY(0);
+-  }
+-`;
+-
+-// 애니메이션이 적용된 래퍼 스타일
+-const AnimatedContainer = styled.div`
+-  opacity: 0;
+-  animation: ${(props) => (props.animate ? fadeIn : "none")} 1s ease-in-out
+-    forwards;
+-`;
+-
+-const ResponsiveWrapper = styled.div`
+-  display: flex;
+-  align-items: flex-start; /* 왼쪽 정렬 */
+-  justify-content: space-between;
+-  width: 100%;
+-  padding-top: 30px;
+-  flex-direction: column;
+-`;
+-
+-const Wrapper = styled.div`
+-  display: flex;
+-  flex-direction: column;
+-  width: 100%;
+-  padding: 20px 0;
+-`;
+-
+-// 🎯 버튼이 텍스트 크기와 패딩만큼만 면적을 가지도록 설정
+-const ButtonStyle = styled.button`
+-  display: inline-block; /* 🎯 내용 크기에 맞게 버튼 크기 조정 */
+-  width: auto; /* 🎯 부모 요소의 영향을 받지 않고, 텍스트 크기만큼 조정 */
+-  max-width: fit-content; /* 🎯 내용 크기에 맞게 조정 */
+-  padding: 5px 20px; /* 🎯 패딩 설정 */
+-  color: ${Color.primary};
+-  ${FontStyle.display1Bold}
+-  border-radius: 100px;
+-  background-color: transparent;
+-  border: 0.5px solid ${Color.primary};
+-  text-align: center;
+-  margin-top: 20px;
+-  margin-right: auto;
+-`;
+-
+-const AwardPage = () => {
+-  const [selectedYear, setSelectedYear] = useState(2017);
+-  const competitions = competitionData[selectedYear] || [];
+-  const [animate, setAnimate] = useState(true);
+-
+-  const handleYearSelect = (year) => {
+-    setAnimate(false);
+-    setTimeout(() => {
+-      setSelectedYear(year);
+-      setAnimate(true);
+-    }, 0);
+-  };
+-
+-  return (
+-    <Layout>
+-      <Wrapper>
+-        <YearBar
+-          startYear={2017}
+-          endYear={2024}
+-          onYearSelect={handleYearSelect}
+-        />
+-        {selectedYear && <ButtonStyle>{selectedYear}</ButtonStyle>}
+-        <AnimatedContainer animate={animate}>
+-          <ResponsiveWrapper>
+-            {competitions.map((name, index) => (
+-              <Competition key={index} competitionName={name} />
+-            ))}
+-          </ResponsiveWrapper>
+-        </AnimatedContainer>
+-      </Wrapper>
+-    </Layout>
+-  );
+-};
+-
+-export default AwardPage;
+diff --git a/src/component/page/HomePage.jsx b/src/component/page/HomePage.jsx
+deleted file mode 100644
+index b4a9ad0..0000000
+--- a/src/component/page/HomePage.jsx
++++ /dev/null
+@@ -1,87 +0,0 @@
+-import React, { useState, useEffect } from "react";
+-import styled from "styled-components";
+-import Layout from "../ui/Layout";
+-import MainTitle from "../block/MainTitle";
+-import FontStyle from "../ui/FontStyle";
+-import Color from "../ui/Color";
+-import reallogo from "./../../assets/hiarc-reallogo.png";
+-
+-const HiarcContainer = styled.div`
+-  display: flex;
+-
+-  align-items: center;
+-  justify-content: center;
+-  text-align: center;
+-  gap: 10px;
+-  width: 60%;
+-  align-self: center;
+-`;
+-
+-const HiarcTitle = styled.span`
+-  ${FontStyle.display2Heavy}
+-  color: ${Color.primary};
+-  white-space: nowrap;
+-  border-right: 3px solid black;
+-  padding-right: 5px;
+-  animation: ${(props) =>
+-    props.isComplete ? "none" : "blink 0.6s step-end infinite"};
+-
+-  @keyframes blink {
+-    50% {
+-      border-color: transparent;
+-    }
+-  }
+-`;
+-
+-const LogoImage = styled.img`
+-  width: 100%;
+-  height: auto;
+-`;
+-
+-const HomePage = () => {
+-  const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth <= 800);
+-  const [text, setText] = useState("");
+-  const [isTypingDone, setIsTypingDone] = useState(false);
+-  const fullText = "HI-ARC";
+-
+-  useEffect(() => {
+-    const handleResize = () => {
+-      setIsSmallScreen(window.innerWidth <= 800);
+-    };
+-
+-    window.addEventListener("resize", handleResize);
+-    return () => window.removeEventListener("resize", handleResize);
+-  }, []);
+-
+-  useEffect(() => {
+-    if (!isSmallScreen) return;
+-
+-    let index = 0;
+-    const interval = setInterval(() => {
+-      if (index < fullText.length) {
+-        setText((prev) => prev + fullText[index]);
+-        index++;
+-      } else {
+-        clearInterval(interval);
+-        setIsTypingDone(true);
+-      }
+-    }, 150);
+-
+-    return () => clearInterval(interval);
+-  }, [isSmallScreen]);
+-
+-  return (
+-    <Layout>
+-      {isSmallScreen ? (
+-        <HiarcContainer>
+-          <LogoImage src={reallogo} alt="HI-ARC Logo" />
+-          {/* <HiarcTitle isComplete={isTypingDone}>{text}</HiarcTitle> */}
+-        </HiarcContainer>
+-      ) : (
+-        <MainTitle width={800} />
+-      )}
+-    </Layout>
+-  );
+-};
+-
+-export default HomePage;
+diff --git a/src/component/page/IntroduceHiarcPage.jsx b/src/component/page/IntroduceHiarcPage.jsx
+deleted file mode 100644
+index 8f13616..0000000
+--- a/src/component/page/IntroduceHiarcPage.jsx
++++ /dev/null
+@@ -1,95 +0,0 @@
+-import Layout from "../ui/Layout";
+-import SideImageLayout from "../block/SideImageLayout";
+-import ContentText from "../atom/ContentText";
+-import Label from "../ui/Label";
+-import introImg from "../../assets/introduceHiarc2.png";
+-import OTC from "../../assets/OrganizingTheContest2.png";
+-import styled, { keyframes } from "styled-components";
+-import Logo from "../block/Logo";
+-import ToggleButton from "../atom/ToggleButton";
+-import ToggleLabel from "../atom/ToggleLabel";
+-import BlueButton from "../atom/SinchonBlueButton";
+-
+-// 페이드 인 애니메이션 정의
+-const fadeIn = keyframes`
+-  from {
+-    opacity: 0;
+-    transform: translateY(-20px);
+-  }
+-  to {
+-    opacity: 1;
+-    transform: translateY(0);
+-  }
+-`;
+-
+-// 애니메이션이 적용된 래퍼 스타일
+-const AnimatedContainer = styled.div`
+-  opacity: 0;
+-  animation: ${fadeIn} 1s ease-in-out forwards;
+-  animation-delay: ${(props) => props.delay || "0s"};
+-`;
+-
+-const ContextAndToggle = styled.div`
+-  gap: 15px;
+-  max-width: 800px;
+-  display: flex;
+-  flex-direction: column;
+-  margin-bottom: 15px;
+-`;
+-
+-const ICPCSinchonLayout = styled.div`
+-  display: flex;
+-  gap: 15px;
+-  padding-top: 20px;
+-  @media (max-width: 800px) {
+-    flex-direction: column;
+-  }
+-`;
+-
+-const IntroduceHiarcPage = () => {
+-  return (
+-    <Layout>
+-      {/* 첫 번째 이미지와 텍스트 */}
+-      <AnimatedContainer delay="0s">
+-        <SideImageLayout imgSrc={introImg} width={200} maxWidth={200}>
+-          <ContentText contentText={Label.academyIntroduce} />
+-        </SideImageLayout>
+-      </AnimatedContainer>
+-
+-      {/* 로고 */}
+-      <AnimatedContainer delay="0.5s">
+-        <Logo />
+-      </AnimatedContainer>
+-
+-      {/* 두 번째 이미지와 텍스트 */}
+-      <AnimatedContainer delay="1s">
+-        <SideImageLayout
+-          imgSrc={OTC}
+-          width={200}
+-          maxWidth={200}
+-          isLeft={false}
+-          isToggleBar={true}
+-        >
+-          <ContentText contentText={Label.contestIntroduce} />
+-          <ToggleButton text="대회 모아보기" innerText={ToggleLabel} />
+-        </SideImageLayout>
+-      </AnimatedContainer>
+-
+-      {/* 세 번째 이미지와 텍스트 */}
+-      <AnimatedContainer delay="1.5s">
+-        <ICPCSinchonLayout>
+-          <ContextAndToggle>
+-            <ContentText contentText={Label.MoreIntroduce} />
+-            <ToggleButton
+-              text="ICPC 신촌 자세히 알아보기"
+-              innerText={Label.DetailSinchon}
+-            />
+-          </ContextAndToggle>
+-          <BlueButton text="ICPC 신촌" />
+-        </ICPCSinchonLayout>
+-      </AnimatedContainer>
+-    </Layout>
+-  );
+-};
+-
+-export default IntroduceHiarcPage;
+diff --git a/src/component/page/NotfoundPage.jsx b/src/component/page/NotfoundPage.jsx
+deleted file mode 100644
+index c3c92e0..0000000
+--- a/src/component/page/NotfoundPage.jsx
++++ /dev/null
+@@ -1,5 +0,0 @@
+-const NotfoundPage = () => {
+-  return <h1>404 NOT FOUND</h1>;
+-};
+-
+-export default NotfoundPage;
+diff --git a/src/component/page/StudyPage.jsx b/src/component/page/StudyPage.jsx
+deleted file mode 100644
+index a58bdb1..0000000
+--- a/src/component/page/StudyPage.jsx
++++ /dev/null
+@@ -1,133 +0,0 @@
+-import styled, { keyframes } from "styled-components";
+-import Layout from "../ui/Layout";
+-import TextCircle from "../atom/TextCircle";
+-import Color from "../ui/Color";
+-import StudyTableIntro from "../block/StudyTableIntro";
+-import StudyTable from "../block/StudyTable";
+-import Data from "../ui/Data";
+-import StudyHeader from "../block/StudyHeader";
+-import cppIcon from "../../assets/c++icon.png";
+-import pythonIcon from "./../../assets/python 3.png";
+-
+-const StudyPlanWrapper = styled.div`
+-  display: flex;
+-  flex-direction: column;
+-  width: 100%;
+-  flex: 1;
+-
+-  @media (max-width: 800px) {
+-    width: 100%;
+-  }
+-`;
+-
+-const PSTitleWrapper = styled.div`
+-  display: flex;
+-  justify-content: flex-start;
+-`;
+-
+-const fadeIn = keyframes`
+-  from {
+-    opacity: 0;
+-    transform: translateY(-20px);
+-  }
+-  to {
+-    opacity: 1;
+-    transform: translateY(0);
+-  }
+-`;
+-
+-const SemesterWrapper = styled.div`
+-  display: flex;
+-  gap: 20px;
+-  width: 100%;
+-
+-  @media (max-width: 800px) {
+-    flex-direction: column;
+-    gap: 40px;
+-  }
+-`;
+-
+-const AnimatedContainer = styled.div`
+-  opacity: 0;
+-  animation: ${fadeIn} 1s ease-in-out forwards;
+-  animation-delay: ${(props) => props.delay || "0s"};
+-  width: 100%;
+-`;
+-
+-const Blank = styled.div`
+-  display: flex;
+-  flex: 1;
+-  width: 100%;
+-  height: 30px;
+-
+-  @media (max-width: 800px) {
+-    display: none;
+-  }
+-`;
+-
+-const StudyPage = () => {
+-  return (
+-    <Layout>
+-      <StudyHeader />
+-      <AnimatedContainer delay="0s">
+-        <SemesterWrapper>
+-          <StudyPlanWrapper>
+-            <StudyTableIntro
+-              isSemester={true}
+-              semester={"1학기"}
+-              studyName={"기초 스터디"}
+-              icon={cppIcon}
+-            />
+-            <StudyTable data={Data.studyContent2024_1_1} />
+-          </StudyPlanWrapper>
+-          <StudyPlanWrapper>
+-            <StudyTableIntro
+-              semester={"2학기"}
+-              studyName={"초급 스터디"}
+-              icon={pythonIcon}
+-            />
+-            <StudyTable data={Data.studyContent2024_1_2} />
+-          </StudyPlanWrapper>
+-        </SemesterWrapper>
+-      </AnimatedContainer>
+-
+-      <AnimatedContainer delay="0.5s">
+-        <SemesterWrapper>
+-          <StudyPlanWrapper>
+-            <StudyTableIntro
+-              isSemester={true}
+-              semester={"2학기"}
+-              studyName={"초급 스터디"}
+-              icon={cppIcon}
+-            />
+-            <StudyTable data={Data.studyContent2024_2_1} />
+-          </StudyPlanWrapper>
+-          <StudyPlanWrapper>
+-            <StudyTableIntro studyName={"중급 스터디"} icon={pythonIcon} />
+-            <StudyTable data={Data.studyContent2024_2_2} />
+-          </StudyPlanWrapper>
+-        </SemesterWrapper>
+-      </AnimatedContainer>
+-
+-      <AnimatedContainer delay="1s">
+-        <SemesterWrapper>
+-          <StudyPlanWrapper>
+-            <PSTitleWrapper>
+-              <TextCircle
+-                text={"PS사용설명서"}
+-                color={Color.orange}
+-                backgroundColor={Color.background}
+-                border={"1px solid"}
+-                padding="12px 30px"
+-              />
+-            </PSTitleWrapper>
+-            <StudyTable data={Data.studyContent2024_2_3} />
+-          </StudyPlanWrapper>
+-          <Blank />
+-        </SemesterWrapper>
+-      </AnimatedContainer>
+-    </Layout>
+-  );
+-};
+-
+-export default StudyPage;
+diff --git a/src/component/ui/Color.jsx b/src/component/ui/Color.jsx
+deleted file mode 100644
+index 714ec7d..0000000
+--- a/src/component/ui/Color.jsx
++++ /dev/null
+@@ -1,17 +0,0 @@
+-const Color = {
+-  primary: "#00AAFF",
+-  background: "#FFFCED",
+-  gray: "#D9D9D9",
+-  gray100: "#f9f9e7",
+-  orange: "#FFA800",
+-  pink: "#FFCDCD",
+-  yellow: "#FFEC81",
+-  white: "#FFFFFF",
+-  black: "#000000",
+-  orange05: "#FFA8000D",
+-  transparent: "transparent",
+-  toggleColor: "#E2F5FF4D", //색 추가했음 수상경력페이지에 토글되는 색
+-  toggledButtonColor: "#516EBE", //색 추가했음 수상경력페이지에 토글되는 색
+-};
+-
+-export default Color;
+diff --git a/src/component/ui/CompetitionData.jsx b/src/component/ui/CompetitionData.jsx
+deleted file mode 100644
+index b806281..0000000
+--- a/src/component/ui/CompetitionData.jsx
++++ /dev/null
+@@ -1,47 +0,0 @@
+-const competitionData = {
+-  2017: ["2017 교내 프로그래밍 경진대회"],
+-  2018: [
+-    "이데일리 코딩 챌린지",
+-    "카카오 코드 페스티벌",
+-    "2018 ACM-ICPC Seoul Reginal",
+-    "UCPC 2018 예선",
+-    "2018 교내 프로그래밍 경진대회",
+-  ],
+-  2019: [
+-    "UCPC 2019 예선",
+-    "UCPC 2019 본선",
+-    "2019 ACM-ICPC Seoul Regional",
+-    "2019 교내 프로그래밍 경진대회",
+-  ],
+-  2020: [
+-    "SCPC 2020 본선",
+-    "2020 ACM-ICPC Seoul Regional 예선",
+-    "2020 ACM-ICPC Seoul Regional 본선",
+-    "SUAPC 2020 Summer Div.1",
+-    "SUAPC 2020 Summer Div.2",
+-    "UCPC 2020 예선",
+-    "UCPC 2020 본선",
+-  ],
+-  2021: [
+-    "2021 ACM-ICPC Seoul Regional 예선",
+-    "2021 ACM-ICPC Seoul Regional 본선",
+-    "SUAPC 2021 Winter",
+-    "SUAPC 2021 Summer",
+-    "UCPC 2021 예선",
+-    "홍익대학교 HI-ARC 프로그래밍 경진대회 (2021)",
+-  ],
+-  2022: [
+-    "SCPC 2022 예선",
+-    "Google Kick Start 2022",
+-    "SUAPC 2022 Winter",
+-    "SUAPC 2022 Summer",
+-    "UCPC 2022 예선",
+-    "UCPC 2022 본선",
+-    "22 현대모비스 알고리즘 경진대회",
+-    "홍익대학교 HI-ARC 프로그래밍 경진대회",
+-  ],
+-  2023: ["SUAPC 2023 Winter", "SUAPC 2023 Summer"],
+-  2024: ["2024 하이콘", "SUAPC 2024 Winter", "SUAPC 2024 Summer"],
+-};
+-
+-export default competitionData;
+diff --git a/src/component/ui/Data.jsx b/src/component/ui/Data.jsx
+deleted file mode 100644
+index 785f69a..0000000
+--- a/src/component/ui/Data.jsx
++++ /dev/null
+@@ -1,54 +0,0 @@
+-const Data = {
+-  studyContent2024_1_1: [
+-    { week: "1주차", topic: "입출력, 변수, 연산자, 자료형" },
+-    { week: "2주차", topic: "조건문, 반복문, 빠른 입출력" },
+-    { week: "3주차", topic: "문자열" },
+-    { week: "4주차", topic: "리스트" },
+-    { week: "5주차", topic: "브루트포스" },
+-    { week: "6주차", topic: "딕셔너리, 셋" },
+-    { week: "7주차", topic: "함수, 재귀함수" },
+-    { week: "8주차", topic: "기초 내부 대회" },
+-  ],
+-  studyContent2024_1_2: [
+-    { week: "1주차", topic: "입출력, 변수, 연산자, 자료형" },
+-    { week: "2주차", topic: "조건문, 반복문, 빠른 입출력" },
+-    { week: "3주차", topic: "문자열" },
+-    { week: "4주차", topic: "리스트" },
+-    { week: "5주차", topic: "브루트포스" },
+-    { week: "6주차", topic: "딕셔너리, 셋" },
+-    { week: "7주차", topic: "함수, 재귀함수" },
+-    { week: "8주차", topic: "기초 내부 대회" },
+-  ],
+-  studyContent2024_2_1: [
+-    { week: "1주차", topic: "입출력, 변수, 연산자, 자료형" },
+-    { week: "2주차", topic: "조건문, 반복문, 빠른 입출력" },
+-    { week: "3주차", topic: "문자열" },
+-    { week: "4주차", topic: "리스트" },
+-    { week: "5주차", topic: "브루트포스" },
+-    { week: "6주차", topic: "딕셔너리, 셋" },
+-    { week: "7주차", topic: "함수, 재귀함수" },
+-    { week: "8주차", topic: "기초 내부 대회" },
+-  ],
+-  studyContent2024_2_2: [
+-    { week: "1주차", topic: "입출력, 변수, 연산자, 자료형" },
+-    { week: "2주차", topic: "조건문, 반복문, 빠른 입출력" },
+-    { week: "3주차", topic: "문자열" },
+-    { week: "4주차", topic: "리스트" },
+-    { week: "5주차", topic: "브루트포스" },
+-    { week: "6주차", topic: "딕셔너리, 셋" },
+-    { week: "7주차", topic: "함수, 재귀함수" },
+-    { week: "8주차", topic: "기초 내부 대회" },
+-  ],
+-  studyContent2024_2_3: [
+-    { week: "1주차", topic: "입출력, 변수, 연산자, 자료형" },
+-    { week: "2주차", topic: "조건문, 반복문, 빠른 입출력" },
+-    { week: "3주차", topic: "문자열" },
+-    { week: "4주차", topic: "리스트" },
+-    { week: "5주차", topic: "브루트포스" },
+-    { week: "6주차", topic: "딕셔너리, 셋" },
+-    { week: "7주차", topic: "함수, 재귀함수" },
+-    { week: "8주차", topic: "기초 내부 대회" },
+-  ],
+-};
+-
+-export default Data;
+diff --git a/src/component/ui/FontStyle.jsx b/src/component/ui/FontStyle.jsx
+deleted file mode 100644
+index dde5582..0000000
+--- a/src/component/ui/FontStyle.jsx
++++ /dev/null
+@@ -1,64 +0,0 @@
+-const FontStyle = {
+-  display2Heavy:
+-    'font-size: 12rem; letter-spacing: 10px; line-height: 12rem; font-weight: 700; font-family: "NanumSquareNeoHeavy";',
+-  display1Heavy:
+-    'font-size: 2.8rem; font-weight: 700; font-family: "NanumSquareNeoHeavy";',
+-  display1ExtraBold:
+-    'font-size: 2.8rem; font-weight: 700; font-family: "NanumSquareNeoExtraBold";',
+-  display3Bold:
+-    'font-size: 3.2rem; font-weight: 700; font-family: "NanumSquareNeo";',
+-  display3SemiBold:
+-    'font-size: 3.2rem; font-weight: 600; font-family: "NanumSquareNeo";',
+-  display2Bold:
+-    'font-size: 2.8rem; font-weight: 700; font-family: "NanumSquareNeo";',
+-  display2SemiBold:
+-    'font-size: 2.8rem; font-weight: 600; font-family: "NanumSquareNeo";',
+-  display1Bold:
+-    'font-size: 2.4rem; font-weight: 700; font-family: "NanumSquareNeo";',
+-  display1SemiBold:
+-    'font-size: 2.4rem; font-weight: 600; font-family: "NanumSquareNeo";',
+-  headlineBold:
+-    'font-size: 2.0rem; font-weight: 700; font-family: "NanumSquareNeo";',
+-  headlineSemiBold:
+-    'font-size: 2.0rem; font-weight: 600; font-family: "NanumSquareNeo";',
+-  subhead3Bold:
+-    'font-size: 1.6rem; font-weight: 700; font-family: "NanumSquareNeo";',
+-  subhead3ExtraBold:
+-    'font-size: 1.6rem; font-weight: 800; font-family: "NanumSquareNeoExtraBold";',
+-  subhead3SemiBold:
+-    'font-size: 1.6rem; font-weight: 600; font-family: "NanumSquareNeo";',
+-  subhead2Bold:
+-    'font-size: 1.4rem; font-weight: 700; font-family: "NanumSquareNeo";',
+-  subhead2SemiBold:
+-    'font-size: 1.4rem; font-weight: 600; font-family: "NanumSquareNeo";',
+-  subhead1Bold:
+-    'font-size: 1.2rem; font-weight: 700; font-family: "NanumSquareNeo";',
+-  subhead1SemiBold:
+-    'font-size: 1.2rem; font-weight: 600; font-family: "NanumSquareNeo";',
+-  subhead1ExtraBold:
+-    'font-size: 1.2rem; font-weight: 800; font-family: "NanumSquareNeoExtraBold";',
+-  body3Medium:
+-    'font-size: 1.8rem; font-weight: 500; font-family: "NanumSquareNeo";',
+-  body3Regular:
+-    'font-size: 1.8rem; font-weight: 400; font-family: "NanumSquareNeo";',
+-  body2Medium:
+-    'font-size: 1.6rem; font-weight: 500; font-family: "NanumSquareNeo";',
+-  body2Regular:
+-    'font-size: 1.6rem; font-weight: 400; font-family: "NanumSquareNeo";',
+-  body1Medium:
+-    'font-size: 1.4rem; font-weight: 500; font-family: "NanumSquareNeo";',
+-  body1Regular:
+-    'font-size: 1.4rem; font-weight: 400; font-family: "NanumSquareNeo";',
+-  captionMedium:
+-    'font-size: 1.2rem; font-weight: 500; font-family: "NanumSquareNeo";',
+-  captionRegular:
+-    'font-size: 1.2rem; font-weight: 400; font-family: "NanumSquareNeo";',
+-  descriptionMedium:
+-    'font-size: 1rem; font-weight: 500; font-family: "NanumSquareNeo";',
+-  descriptionBold:
+-    'font-size: 0.8rem; font-weight: 700; font-family: "NanumSquareNeo";',
+-  descriptionRegular:
+-    'font-size: 1rem; font-weight: 400; font-family: "NanumSquareNeo";',
+-};
+-
+-export default FontStyle;
+diff --git a/src/component/ui/GlobalStyle.jsx b/src/component/ui/GlobalStyle.jsx
+deleted file mode 100644
+index 53bd153..0000000
+--- a/src/component/ui/GlobalStyle.jsx
++++ /dev/null
+@@ -1,64 +0,0 @@
+-import { createGlobalStyle } from 'styled-components';
+-
+-const GlobalStyle = createGlobalStyle`
+-@font-face {
+-    font-family: 'NanumSquareNeoLight';
+-    src: url(https://hangeul.pstatic.net/hangeul_static/webfont/NanumSquareNeo/NanumSquareNeoTTF-aLt.eot);
+-    src: url(https://hangeul.pstatic.net/hangeul_static/webfont/NanumSquareNeo/NanumSquareNeoTTF-aLt.eot?#iefix) format("embedded-opentype"), url(https://hangeul.pstatic.net/hangeul_static/webfont/NanumSquareNeo/NanumSquareNeoTTF-aLt.woff) format("woff"), url(https://hangeul.pstatic.net/hangeul_static/webfont/NanumSquareNeo/NanumSquareNeoTTF-aLt.ttf) format("truetype");
+-}
+-
+-@font-face {
+-    font-family: 'NanumSquareNeo';
+-    src: url(https://hangeul.pstatic.net/hangeul_static/webfont/NanumSquareNeo/NanumSquareNeoTTF-bRg.eot);
+-    src: url(https://hangeul.pstatic.net/hangeul_static/webfont/NanumSquareNeo/NanumSquareNeoTTF-bRg.eot?#iefix) format("embedded-opentype"), url(https://hangeul.pstatic.net/hangeul_static/webfont/NanumSquareNeo/NanumSquareNeoTTF-bRg.woff) format("woff"), url(https://hangeul.pstatic.net/hangeul_static/webfont/NanumSquareNeo/NanumSquareNeoTTF-bRg.ttf) format("truetype");
+-}
+-
+-@font-face {
+-    font-family: 'NanumSquareNeoBold';
+-    src: url(https://hangeul.pstatic.net/hangeul_static/webfont/NanumSquareNeo/NanumSquareNeoTTF-cBd.eot);
+-    src: url(https://hangeul.pstatic.net/hangeul_static/webfont/NanumSquareNeo/NanumSquareNeoTTF-cBd.eot?#iefix) format("embedded-opentype"), url(https://hangeul.pstatic.net/hangeul_static/webfont/NanumSquareNeo/NanumSquareNeoTTF-cBd.woff) format("woff"), url(https://hangeul.pstatic.net/hangeul_static/webfont/NanumSquareNeo/NanumSquareNeoTTF-cBd.ttf) format("truetype");
+-}
+-
+-@font-face {
+-    font-family: 'NanumSquareNeoExtraBold';
+-    src: url(https://hangeul.pstatic.net/hangeul_static/webfont/NanumSquareNeo/NanumSquareNeoTTF-dEb.eot);
+-    src: url(https://hangeul.pstatic.net/hangeul_static/webfont/NanumSquareNeo/NanumSquareNeoTTF-dEb.eot?#iefix) format("embedded-opentype"), url(https://hangeul.pstatic.net/hangeul_static/webfont/NanumSquareNeo/NanumSquareNeoTTF-dEb.woff) format("woff"), url(https://hangeul.pstatic.net/hangeul_static/webfont/NanumSquareNeo/NanumSquareNeoTTF-dEb.ttf) format("truetype");
+-}
+-
+-@font-face {
+-    font-family: 'NanumSquareNeoHeavy';
+-    src: url(https://hangeul.pstatic.net/hangeul_static/webfont/NanumSquareNeo/NanumSquareNeoTTF-eHv.eot);
+-    src: url(https://hangeul.pstatic.net/hangeul_static/webfont/NanumSquareNeo/NanumSquareNeoTTF-eHv.eot?#iefix) format("embedded-opentype"), url(https://hangeul.pstatic.net/hangeul_static/webfont/NanumSquareNeo/NanumSquareNeoTTF-eHv.woff) format("woff"), url(https://hangeul.pstatic.net/hangeul_static/webfont/NanumSquareNeo/NanumSquareNeoTTF-eHv.ttf) format("truetype");
+-}
+-
+-@font-face {
+-    font-family: 'NanumSquareNeoVariable';
+-    src: url(https://hangeul.pstatic.net/hangeul_static/webfont/NanumSquareNeo/NanumSquareNeo-Variable.eot);
+-    src: url(https://hangeul.pstatic.net/hangeul_static/webfont/NanumSquareNeo/NanumSquareNeo-Variable.eot?#iefix) format("embedded-opentype"), url(https://hangeul.pstatic.net/hangeul_static/webfont/NanumSquareNeo/NanumSquareNeo-Variable.woff) format("woff"), url(https://hangeul.pstatic.net/hangeul_static/webfont/NanumSquareNeo/NanumSquareNeo-Variable.ttf) format("truetype");
+-}
+-
+-  html {
+-    margin: 0;
+-    padding: 0;
+-    font-size: 62.5%;
+-  }
+-
+-  body {
+-    margin: 0 5.2rem;
+-    font-size: 1rem;
+-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+-      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+-      sans-serif;
+-    -webkit-font-smoothing: antialiased;
+-    -moz-osx-font-smoothing: grayscale;
+-    background-color: #FFFCED;
+-    
+-  }
+-
+-  code {
+-    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+-      monospace;
+-  }
+-`;
+-
+-export default GlobalStyle;
+\ No newline at end of file
+diff --git a/src/component/ui/HiarcCompetition.jsx b/src/component/ui/HiarcCompetition.jsx
+deleted file mode 100644
+index 5ae5742..0000000
+--- a/src/component/ui/HiarcCompetition.jsx
++++ /dev/null
+@@ -1,10 +0,0 @@
+-const HiarcCompetition = [
+-  "-제 1회 하이콘",
+-  "-2022 홍익대학교 HI-ARC 프로그래밍 경진대회",
+-  "-2021 홍익대학교 프로그래밍 경진대회",
+-  "-2019 홍익대학교 컴퓨터공학과 코딩대회",
+-  "-2018 홍익대학교 컴퓨터공학과 코딩대회",
+-  "-2017 홍익대학교 컴퓨터공학과 코딩대회",
+-];
+-
+-export default HiarcCompetition;
+diff --git a/src/component/ui/Label.jsx b/src/component/ui/Label.jsx
+deleted file mode 100644
+index 2241c7b..0000000
+--- a/src/component/ui/Label.jsx
++++ /dev/null
+@@ -1,18 +0,0 @@
+-const Label = {
+-  academyIntroduce:
+-    "HI_ARC(Hongik_Algorithm Research Club, 하이아크)는 2017년부터 이어져 내려온 홍익대학교 컴퓨터공학과 소속 알고리즘 학회입니다. 학회원들의 문제해결력및 PS(Problem Solving) 실력 향상을 위해 난이도별 스터디와 다양한 활동이 마련되어 있습니다. 또한 학회원들의 실전경험을 심어주고 CP (Competitive Programming) 수준을 올리기 위해 ICPC, UCPC와 같은 크고 작은 대회를 준비하고 있습니다.",
+-  contestIntroduce:
+-    "하이아크는 2017년 창립 이후 꾸준히 교내 프로그래밍 경진대회를 주최하고 있습니다. 각 분야에서 뛰어난 알고리즘 실력자들을 섭외하여 독창적이고 도전적인 문제를 제공합니다. 또한, 신뢰할 수 있는 검수진을 통해 문제의 완성도를 높이고, 이를 통해 학회원들의 문제 해결 능력을 향상 시키는 데 기여하고 있습니다. 이 대회는 단순한 경쟁을 넘어, 학생들이 프로그래밍 실력을 한 단계 더 발전시킬 수 있는 소중한 기회가 되고 있습니다.",
+-  HiconnectIntroduce:
+-    "하이아크에 참여했던 선배님들과 학회원들이 한자리에 모여 선후배 간의 네트워킹을 도모하는 행사입니다. 이 자리에서는 선배님들께 알고리즘 학습, 학교 생활, 보안, 금융 분야에 관한 실제 경험담을 들을 수 있으며 이로 인해 학회원들은 선배님들의 경험과 더불어 더 넓은 시야와 정보를 가져갈 수 있습니다.",
+-  ICPCIntroduce:
+-    "매해 각 학교에서 진행되는 ICPC Seoul Regional 예선의 신청, 접수 및 당일 운영을 담당합니다. 참가자들의 대회 접수 및 준비를 도와주어 좋은 성적을 낼 수 있게끔 지원합니다.",
+-  HitingIntroduce:
+-    "하이아크에서 직접 만든 레이팅 순위 사이트로, 학회원들의 solved.ac 레이팅 순위를 실시간으로 보여줍니다. 이 기능을 통해 학회원들은 서로 격려 및 경쟁하며 백준 문제풀이와 문제 해결력 향상을 이끌어냅니다.",
+-  MoreIntroduce:
+-    "더 나아가 신촌 소속의 대학들(연세, 이화, 숙명, 서강)의 알고리즘 학회들과 ICPC 신촌 연합을 맺어 같이 학회원들에게 알고리즘을 소개하고 실력향상을 위해 힘쓰고 있습니다.",
+-  DetailSinchon:
+-    "ICPC Sinchon는  매번 방학 기간을 이용하여 연합 스터디와 합동 캠프, 여러 대면 행사, 프로그래밍 대회 SUAPC 등을 진행하고 있습니다.  캠프 강사분들의 이야기를 들으며 알고리즘에 대한 궁금증을 해소할 수 있는 알고리즘 토크쇼와 같은 행사를 제공합니다.  이외에도 Discord 등을 통하여 다양한 정보와 지식을 함께 교류하는 알고리즘 커뮤니티를 생성에 힘쓰고 있습니다.",
+-};
+-
+-export default Label;
+diff --git a/src/component/ui/Layout.jsx b/src/component/ui/Layout.jsx
+deleted file mode 100644
+index 71c61c7..0000000
+--- a/src/component/ui/Layout.jsx
++++ /dev/null
+@@ -1,33 +0,0 @@
+-import React from "react";
+-import styled from "styled-components";
+-import Header from "../block/Header";
+-import Footer from "../block/Footer";
+-
+-const LayoutWrapper = styled.div`
+-  display: flex;
+-  flex-direction: column;
+-  width: 100%;
+-`;
+-
+-const MainContent = styled.div`
+-  display: flex;
+-  flex-direction: column;
+-  align-items: flex-start;
+-  justify-content: center;
+-  flex-grow: 1;
+-  align-self: center;
+-  max-width: 800px;
+-  width: 100%;
+-`;
+-
+-const Layout = ({ children }) => {
+-  return (
+-    <LayoutWrapper>
+-      <Header />
+-      <MainContent>{children}</MainContent>
+-      <Footer />
+-    </LayoutWrapper>
+-  );
+-};
+-
+-export default Layout;
+diff --git a/src/component/ui/SizeValue.jsx b/src/component/ui/SizeValue.jsx
+deleted file mode 100644
+index a41a645..0000000
+--- a/src/component/ui/SizeValue.jsx
++++ /dev/null
+@@ -1,54 +0,0 @@
+-const SizeValue = {
+-  space : {
+-    page: "5.2rem",
+-    xl5: "6rem",
+-    xl4: "5rem",
+-    xl3: "3rem",
+-    xl2: "2.5rem",
+-    xl: "2rem",
+-    lg: "1.5rem",
+-    md: "1rem",
+-    sm: "0.5rem",
+-    xs: "0.2rem",
+-    zero: "0rem",
+-  },
+-  radius : {
+-    xl3: "2rem",
+-    xl2: "1.6rem",
+-    x1: "1.2rem",
+-    lg: "0.8rem",
+-    md: "0.6rem",
+-    sm: "0.4rem",
+-    xs: "0.2rem",
+-    circular: "50%",
+-  },
+-  icon : {
+-    xl2: "4.8rem",
+-    xl: "3.6rem",
+-    lg: "2.4rem",
+-    md: "1.6rem",
+-    sm: "1.2rem",
+-  },
+-  width : {
+-    full: "100%",
+-    pageLg: "115.0rem",
+-    pageSm: "50.0rem",
+-    pageSmContent: "45.0rem",
+-  },
+-  height : {
+-    footerHeight: "40.0rem",
+-    textField: "5.0rem",
+-    button: "5.0rem",
+-    toggleButtonLg: "4.0rem",
+-    toggleButtonSm: "3.0rem",
+-    toggleButtonXs: "2.0rem",
+-    navBar: "6.0rem",
+-  },
+-  breakpoint: {
+-    tablet: "768px",
+-    mobile: "420px",
+-  }
+-};
+-
+-
+-export default SizeValue;
+\ No newline at end of file
+diff --git a/src/component/ui/WinnerData.jsx b/src/component/ui/WinnerData.jsx
+deleted file mode 100644
+index d41b852..0000000
+--- a/src/component/ui/WinnerData.jsx
++++ /dev/null
+@@ -1,175 +0,0 @@
+-const winnerData = {
+-  "2024 하이콘": [
+-    [1, "대상", "정재현"],
+-    [2, "금상", "이가은"],
+-    [3, "은상", "송한서"],
+-    [4, "은상", "권찬"],
+-    [5, "동상", "김현의"],
+-    [6, "동상", "백지웅"],
+-    [7, "동상", "신민규"],
+-    [8, "저학년 특별상", "이재국"],
+-    [9, "저학년 특별상", "박동욱"],
+-    [10, "저학년 특별상", "이호재"],
+-    [11, "저학년 특별상", "김수찬"],
+-    [12, "저학년 특별상", "구현호"],
+-  ],
+-  "SUAPC 2024 Winter": [
+-    [13, "8등", "정재헌, 김도현, 김재헌"],
+-    [14, "10등", "한승준, 전승민, 심동현"],
+-    [15, "12등", "이호재, 김재윤, 김성민"],
+-    [16, "18등", "권찬, 윤승혁, 이지은"],
+-    [17, "22등", "고정현, 박동욱, 최윤창"],
+-    [18, "31등", "최근호, 이도현, 박승범"],
+-    [19, "35등", "천민재, 하지희, 김예송"],
+-    [20, "39등", "박성준, 이상민, 최은지"],
+-    [21, "40등", "전형진, 이현석, 전찬민"],
+-    [22, "46등", "이혁, 정재훈, 이수현"],
+-    [23, "47등", "이승제, 강민제, 김태우"],
+-  ],
+-  "SUAPC 2024 Summer": [
+-    [24, "7등", "정재헌, 김도현, 김재헌"],
+-    [25, "11등", "정우진, 김하연, 박건휘"],
+-    [26, "13등", "심동현, 한승준, 전승민"],
+-    [27, "20등", "김기현, 신민규"],
+-    [28, "21등", "이가은, 이윤서, 임수빈"],
+-    [29, "27등", "김태경, 유진혁, 이지우"],
+-    [30, "29등", "이혁, 윤서현, 정지현"],
+-    [31, "31등", "최민기, 윤현일, 여희주"],
+-    [32, "33등", "이호재, 이주호, 이태경"],
+-    [33, "41등", "최윤창, 고정현, 박동욱"],
+-    [34, "43등", "허예린, 전소은, 여인욱"],
+-    [35, "44등", "이민경, 이유정, 김유진"],
+-  ],
+-
+-  "SUAPC 2023 Winter": [
+-    [1, "4등", "정재현, 김도현, 김재헌"],
+-    [2, "16등", "한승준, 김건회, 이선주"],
+-    [3, "19등", "이지은, 김성민, 권찬"],
+-    [4, "24등", "전정현, 최윤창, 심동현"],
+-    [5, "25등", "전지수, 박준서, 김성훈"],
+-    [6, "35등", "이수현, 이혁, 남예준"],
+-  ],
+-  "SUAPC 2023 Summer": [
+-    [7, "6등", "정재현, 김도현, 김재헌"],
+-    [8, "10등", "한승준, 전승민, 심동현"],
+-    [9, "13등", "박동욱, 최윤창, 고정현"],
+-    [10, "22등", "이수현, 이혁, 남예준"],
+-    [11, "29등", "최은지, 홍유민, 박성준"],
+-  ],
+-  "SCPC 2022 예선": [[1, "본선진출", "김재헌"]],
+-  "Google Kick Start 2022": [[2, "30등", "김재헌"]],
+-  "SUAPC 2022 Summer": [
+-    [3, "4등", "김도현, 김재현, 정재현"],
+-    [4, "28등", "김성민, 이지은, 안재현"],
+-    [5, "34등", "이혁, 이수현, 남예준"],
+-    [6, "37등", "최윤창, 진정현, 심동현"],
+-  ],
+-  "SUAPC 2022 Winter": [
+-    [7, "3등", "김도현, 김재현, 정재현"],
+-    [8, "21등", "이지은, 김성민, 정재현"],
+-    [9, "28등", "김기선, 김범준, 조규형"],
+-    [10, "32등", "전지수, 김다연, 안재현"],
+-    [11, "34등", "조상욱, 박준서, 김한성"],
+-  ],
+-  "UCPC 2022 예선": [[12, "48등", "김도현, 김재헌, 정재현"]],
+-  "UCPC 2022 본선": [[13, "31등", "김도현, 김재헌, 정재현"]],
+-  "22 현대모비스 알고리즘 경진대회": [[14, "장려상", "김재헌"]],
+-  "홍익대학교 HI-ARC 프로그래밍 경진대회": [
+-    [15, "금상(2등)", "김건회"],
+-    [16, "금상(3등)", "한승준"],
+-    [17, "은상(5등)", "구재혁"],
+-    [18, "은상(8등)", "이지은"],
+-    [19, "저학년 특별상(10등)", "이형민"],
+-    [20, "저학년 특별상(12등)", "문창일"],
+-    [21, "저학년 특별상(14등)", "이혁"],
+-    [22, "저학년 특별상(22등)", "윤승혁"],
+-    [23, "저학년 특별상(29등)", "최윤창"],
+-  ],
+-  "ICPC Sinchon Winter Algorithm Camp Contest (초급)": [[24, "2등", "이지은"]],
+-  "2021 ACM-ICPC Seoul Regional 예선": [
+-    [1, "65등", "김도현, 김희수, 이지은"],
+-    [2, "71등", "김재헌, 김길호, 하수민"],
+-    [3, "90등", "김기선, 김효원, 정재헌"],
+-    [4, "175등", "박준서, 황윤주, 김재헌"],
+-  ],
+-  "2021 ACM-ICPC Seoul Regional 본선": [[5, "60등", "김도현, 김희수, 이지은"]],
+-  "SUAPC 2021 Winter": [
+-    [6, "11등", "김정민, 김도현, 권찬"],
+-    [7, "13등", "김기선, 김효원, 정재현"],
+-    [8, "24등", "고민재, 권예빈, 박장성"],
+-  ],
+-  "SUAPC 2021 Summer": [
+-    [9, "5등", "김기선, 김효원, 정재현"],
+-    [10, "6등", "권찬, 김도현, 박건휘"],
+-    [11, "28등", "고민재, 이지은, 전지수"],
+-  ],
+-  "UCPC 2021 예선": [[12, "66등", "김기선, 김효원, 정재현"]],
+-  "홍익대학교 HI-ARC 프로그래밍 경진대회 (2021)": [
+-    [13, "대상(1등)", "김재헌"],
+-    [14, "금상(3등)", "정재현"],
+-    [15, "은상(4등)", "유준환"],
+-    [16, "은상(7등)", "김희수"],
+-    [17, "동상(12등)", "정혜원"],
+-    [18, "동상(13등)", "금세현"],
+-    [19, "동상(16등)", "김지은"],
+-    [20, "저학년 1등상(17등)", "안재현"],
+-    [21, "저학년 1등상(18등)", "이지은"],
+-    [22, "저학년 2등상(19등)", "천성호"],
+-    [23, "저학년 2등상(20등)", "박준서"],
+-    [24, "저학년 3등상(30등)", "한창희"],
+-    [25, "저학년 3등상(45등)", "권보민"],
+-  ],
+-  "SCPC 2020 본선": [[1, "4등", "정연두"]],
+-  "2020 ACM-ICPC Seoul Regional 예선": [
+-    [2, "37등", "정연두, 김효원, 정재현"],
+-    [3, "131등", "김기선, 고재욱, 강보경"],
+-    [4, "171등", "반보영, 박장성, 송효주"],
+-    [5, "267등", "이지은, 기동연, 강유진"],
+-    [6, "329등", "김도현, 김연욱, 노정윤"],
+-  ],
+-  "2020 ACM-ICPC Seoul Regional 본선": [[7, "10등", "정연두, 김효원, 정재현"]],
+-  "SUAPC 2020 Summer Div.1": [[8, "8등", "김경근, 정재현, 백지웅"]],
+-  "SUAPC 2020 Summer Div.2": [
+-    [9, "4등", "노정윤, 김효욱, 김연욱"],
+-    [10, "6등", "고민재, 권예빈, 권찬"],
+-    [11, "8등", "반보영, 박장성, 엄경호"],
+-  ],
+-  "UCPC 2020 예선": [[12, "28등", "정연두, 김효원, 정재현"]],
+-  "UCPC 2020 본선": [[13, "34등", "정연두, 김효원, 정재현"]],
+-  "UCPC 2019 예선": [[1, "35등", "김종욱, 정연두, 정윤석"]],
+-  "UCPC 2019 본선": [[2, "2등", "김종욱, 정연두, 정윤석"]],
+-  "2019 ACM-ICPC Seoul Regional": [[3, "16등", "김종욱, 정연두, 정윤석"]],
+-  "2019 교내 프로그래밍 경진대회": [
+-    [4, "1등", "김종욱"],
+-    [5, "7등", "서영진"],
+-    [6, "8등", "김성민"],
+-    [7, "11등", "백성익"],
+-    [8, "12등", "김민균"],
+-    [9, "13등", "김효원"],
+-    [10, "26등", "정재현"],
+-  ],
+-  "이데일리 코딩 챌린지": [[1, "6등", "정연두"]],
+-  "카카오 코드 페스티벌": [[2, "본선진출", "정연두"]],
+-  "2018 ACM-ICPC Seoul Reginal": [[3, "58등", "김민균, 김형석, 유지혁"]],
+-  "UCPC 2018 예선": [[4, "58등", "이재열, 문준오, 정연두"]],
+-  "2018 교내 프로그래밍 경진대회": [
+-    [5, "1등", "김효원"],
+-    [6, "2등", "민경태"],
+-    [7, "3등", "이재열"],
+-    [8, "8등", "김종욱"],
+-    [9, "9등", "박성빈"],
+-    [10, "17등", "양동우"],
+-  ],
+-  "2017 교내 프로그래밍 경진대회": [
+-    [1, "3등", "정윤석"],
+-    [2, "6등", "문준오"],
+-    [3, "7등", "김민호"],
+-    [4, "9등", "이재열"],
+-    [5, "12등", "장영석"],
+-    [6, "16등", "이승범"],
+-    [7, "18등", "이준희"],
+-  ],
+-  "ACM-ICPC Daejeon Regional": [[8, "18등", "김민균, 김형석, 유지혁"]],
+-};
+-
+-export default winnerData;
+diff --git a/src/main.jsx b/src/main.jsx
+index 5a147e5..b5b66da 100644
+--- a/src/main.jsx
++++ b/src/main.jsx
+@@ -1,7 +1,8 @@
+ import { createRoot } from "react-dom/client";
+ import App from "./App.jsx";
+ import { BrowserRouter } from "react-router-dom";
+-import  GlobalStyle  from "./component/ui/GlobalStyle.jsx";
++import GlobalStyle from "./components/ui/GlobalStyle.jsx";
++import "./index.css";
+ 
+ createRoot(document.getElementById("root")).render(
+   <BrowserRouter>
