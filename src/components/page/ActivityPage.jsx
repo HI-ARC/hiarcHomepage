@@ -7,6 +7,7 @@ import Label from "../ui/Label";
 import Layout from "../templates/PageTemplate";
 import React from "react";
 import styled, { keyframes } from "styled-components";
+import ArticleHeader from "../organisms/article_header/ArticleHedaer";
 
 const fadeIn = keyframes`
   from {
@@ -29,7 +30,7 @@ const ActivityPage = () => {
   return (
     <Layout align="top">
       <AnimatedContainer delay="0s">
-        <ActivityHeader />
+        <ArticleHeader />
       </AnimatedContainer>
 
       <AnimatedContainer delay="0.5s">
