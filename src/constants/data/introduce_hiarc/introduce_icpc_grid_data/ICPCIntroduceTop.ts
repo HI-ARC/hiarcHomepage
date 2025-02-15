@@ -6,9 +6,11 @@ import TopLayerGridItemData from "@/types/TopLayerGridItemData";
 const ICPCIntroduceTop: TopLayerGridItemData[] = [
   {
     position: [1, 1],
-    type: CellType.LONG_HORIZONTAL_RECTANGLE,
-    color: Color.primary,
-    text: "ICPC 신촌",
+    type: CellType.LONG_BUTTON_WITH_ICON,
+    backgroundColor: Color.primary,
+    contentColor: Color.white,
+    buttonText: "ICPC 신촌",
+    url: "https://icpc-sinchon.github.io/",
   },
 ];
 

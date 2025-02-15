@@ -2,22 +2,21 @@ import React from "react";
 import styled from "styled-components";
 import Color from "../../ui/Color";
 import NavigateArrow from "@/assets/icon/navigate_arrow.svg?react";
+import FontStyle from "@/components/ui/FontStyle";
 
-interface SectionRoundedRectangleContainerProps {
-  color: string;
+interface ArrowButtonProps {
+  backgroundColor?: string;
+  contentColor?: string;
+  buttonText: string;
   width: number;
   height: number;
-  text: string;
-  textColor?: string;
-  isButton?: boolean;
   onClick?: () => void;
 }
 
-const Container = styled.div<{
+const ButtonContainerStyle = styled.div<{
   width: number;
   height: number;
   bgColor: string;
-  isButton: boolean;
 }>`
   display: flex;
   align-items: center;
@@ -25,7 +24,7 @@ const Container = styled.div<{
   height: ${({ height }) => height}px;
   border-radius: ${({ height }) => height}px;
   background-color: ${({ bgColor }) => bgColor};
-  ${({ isButton }) => isButton && "cursor: pointer;"}
+  cursor: pointer;
 `;
 
 const TextContainer = styled.div`
@@ -35,12 +34,12 @@ const TextContainer = styled.div`
   align-items: center;
 `;
 
-const Text = styled.span<{ textColor: string }>`
-  color: ${({ textColor }) => textColor};
-  font-size: clamp(2.4rem, calc((100vw - 6rem) * 0.034), 2.7rem);
+const Text = styled.span<{ textColor?: string; height: number }>`
+  ${FontStyle.display1ExtraBold}
+  color: ${({ textColor }) => textColor || Color.white};
+  font-size: ${(props) => props.height * 0.4}px;
   word-spacing: -0.1rem;
   letter-spacing: -0.07em;
-  font-weight: 800; /* Extra Bold */
 `;
 
 const ArrowContainer = styled.div`
@@ -51,35 +50,31 @@ const ArrowContainer = styled.div`
   justify-content: center;
 `;
 
-const SectionRoundedRectangleContainer: React.FC<
-  SectionRoundedRectangleContainerProps
-> = ({
-  color,
+const ArrowButton: React.FC<ArrowButtonProps> = ({
+  backgroundColor,
+  contentColor,
+  buttonText,
   width,
   height,
-  text,
-  textColor = Color.primary,
-  isButton = false,
   onClick,
 }) => {
   return (
-    <Container
-      onClick={isButton ? onClick : undefined}
+    <ButtonContainerStyle
       width={width}
       height={height}
-      bgColor={color}
-      isButton={isButton}
+      bgColor={backgroundColor || Color.primary}
+      onClick={onClick}
     >
       <TextContainer>
-        <Text textColor={textColor}>{text}</Text>
+        <Text height={height} textColor={contentColor}>
+          {buttonText}
+        </Text>
       </TextContainer>
-      {isButton && (
-        <ArrowContainer>
-          <NavigateArrow width="40px" height="40px" />
-        </ArrowContainer>
-      )}
-    </Container>
+      <ArrowContainer>
+        <NavigateArrow width="40px" height="40px" />
+      </ArrowContainer>
+    </ButtonContainerStyle>
   );
 };
 
-export default SectionRoundedRectangleContainer;
+export default ArrowButton;

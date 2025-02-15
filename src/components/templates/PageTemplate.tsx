@@ -1,44 +1,66 @@
 import React, { ReactNode } from "react";
+import styled from "styled-components";
 import Header from "@/components/organisms/header/Header";
 import Footer from "@/components/organisms/footer/Footer";
 
 interface PageTemplateProps {
   children: ReactNode;
-  align?: "center" | "top"; // 정렬 옵션 추가
+  align?: "center" | "top";
 }
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 100vh;
+`;
+
+const HeaderContainer = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+`;
+
+const MainContent = styled.main<{ align: "center" | "top" }>`
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  align-self: center;
+  width: 100%;
+  max-width: 1000px;
+  padding: 0 1rem;
+  ${(props) =>
+    props.align === "center"
+      ? `
+    align-items: center;
+    justify-content: center;
+  `
+      : `
+    align-items: flex-start;
+    justify-content: flex-start;
+  `}
+`;
+
+const FooterContainer = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+`;
 
 const PageTemplate: React.FC<PageTemplateProps> = ({
   children,
   align = "center",
 }) => {
   return (
-    <div className="flex flex-col w-full min-h-screen">
-      {/* 헤더 (가운데 정렬) */}
-      <div className="w-full flex justify-center">
+    <Container>
+      <HeaderContainer>
         <Header />
-      </div>
-
-      {/* 메인 콘텐츠 (정렬 방식 결정) */}
-      <main
-        className={`
-          flex
-          flex-col
-          flex-grow
-          self-center
-          w-full
-          max-w-[1000px]
-          px-4
-          ${align === "center" ? "items-center justify-center" : "items-start justify-start"}
-        `}
-      >
-        {children}
-      </main>
-
-      {/* 푸터 (가운데 정렬) */}
-      <div className="w-full flex justify-center">
+      </HeaderContainer>
+      <MainContent align={align}>{children}</MainContent>
+      <FooterContainer>
         <Footer />
-      </div>
-    </div>
+      </FooterContainer>
+    </Container>
   );
 };
 

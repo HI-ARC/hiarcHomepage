@@ -1,16 +1,43 @@
+import React from "react";
+import styled from "styled-components";
 import FooterLogo from "@/components/atoms/footer/FooterLogo";
 import FooterContactInfo from "@/components/molecules/footer/FooterContactInfo";
 
+const OuterContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background-color: #fffdf0;
+  padding-top: 15px;
+  padding-bottom: 16px;
+  margin-top: 40px;
+  margin-bottom: 20px;
+`;
+
+const InnerContainer = styled.div`
+  width: 100%;
+  max-width: 1000px;
+  padding: 0 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 40px;
+
+  @media (min-width: 640px) {
+    flex-direction: row;
+  }
+`;
+
 const Footer: React.FC = () => {
   return (
-    <div className="flex justify-center items-center w-full bg-[#fffdf0] py-4 pt-15 mt-[40px] mb-[20px]">
-      <div className="w-full max-w-[1000px] px-6 flex flex-col  sm:flex-row justify-between items-start gap-10">
-        {/* 왼쪽: 로고 */}
+    <OuterContainer>
+      <InnerContainer>
         <FooterLogo />
-        {/* 오른쪽: 연락처 정보 */}
         <FooterContactInfo />
-      </div>
-    </div>
+      </InnerContainer>
+    </OuterContainer>
   );
 };
 

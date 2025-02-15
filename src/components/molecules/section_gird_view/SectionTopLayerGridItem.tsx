@@ -3,8 +3,8 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import CellType from "../../../enum/CellType"; // js 파일, 값으로 사용
 import Color from "../../ui/Color";
-import CircleContainer from "../../atoms/main_title/CircleContainer";
-import MenuButton from "../../atoms/main_title/MenuButton";
+import CircleContainer from "../../atoms/colored_grid_view/CircleContainer";
+import MenuButton from "../../atoms/colored_grid_view/MenuButton";
 import NavigateArrow from "../../../assets/icon/navigate_arrow.svg?react";
 import TopLayerGridItemData from "@/types/TopLayerGridItemData";
 import SectionRoundedRectangleContainer from "@/components/atoms/section_grid_view/SectionRoundedRectangleContainer";

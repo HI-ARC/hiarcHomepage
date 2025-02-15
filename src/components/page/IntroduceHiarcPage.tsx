@@ -1,15 +1,15 @@
-// src/components/IntroduceHiarcPage.tsx
+import React from "react";
 import Layout from "../templates/PageTemplate";
 import Label from "../ui/Label";
 import styled, { keyframes } from "styled-components";
 import logo from "../../assets/hiarc-logo.png";
 import SectionTemplate from "../templates/SectionTemplate";
-import IntroduceHiarcBottom from "@/constants/data/introduce_hiarc/IntroduceHiarcBottom";
-import IntroduceHiarcTop from "@/constants/data/introduce_hiarc/IntroduceHiarcTop";
-import ContestIntroduceBottom from "@/constants/data/introduce_hiarc/ContestIntroduceBottom";
-import ContestIntroduceTop from "@/constants/data/introduce_hiarc/ContestIntroduceTop";
+import IntroduceHiarcBottom from "@/constants/data/introduce_hiarc/introduce_hiarc_grid_data/IntroduceHiarcBottom";
+import IntroduceHiarcTop from "@/constants/data/introduce_hiarc/introduce_hiarc_grid_data/IntroduceHiarcTop";
+import ContestIntroduceBottom from "@/constants/data/introduce_hiarc/contest_introduce_grid_data/ContestIntroduceBottom";
+import ContestIntroduceTop from "@/constants/data/introduce_hiarc/contest_introduce_grid_data/ContestIntroduceTop";
 import AssetImage from "../atoms/image/AssetImage";
-import ICPCIntroduceTop from "@/constants/data/introduce_hiarc/ICPCIntroduceTop";
+import ICPCIntroduceTop from "@/constants/data/introduce_hiarc/introduce_icpc_grid_data/ICPCIntroduceTop";
 import HiarcCompetition from "../ui/HiarcCompetition";
 
 // 페이드 인 애니메이션 정의
@@ -25,13 +25,34 @@ const fadeIn = keyframes`
 `;
 
 // 애니메이션이 적용된 래퍼 스타일
-const AnimatedContainer = styled.div`
+const AnimatedContainer = styled.div<{ delay?: string }>`
   opacity: 0;
   animation: ${fadeIn} 1s ease-in-out forwards;
-  animation-delay: ${(props) => props.delay || "0s"};
+  animation-delay: ${({ delay }) => delay || "0s"};
 `;
 
-const IntroduceHiarcPage = () => {
+const ImageContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 54px;
+`;
+
+const StyledParagraph = styled.p`
+  font-size: clamp(14px, 2vw, 18px);
+  font-family: NanumSquareNeo;
+  margin-bottom: 0.5rem;
+`;
+
+const StyledList = styled.ul`
+  list-style: none;
+  padding-left: 10px;
+  font-size: clamp(14px, 2vw, 18px);
+  font-family: NanumSquareNeo;
+  margin-bottom: 0.5rem;
+`;
+
+const IntroduceHiarcPage: React.FC = () => {
   return (
     <Layout>
       <AnimatedContainer delay="0s">
@@ -45,12 +66,9 @@ const IntroduceHiarcPage = () => {
       </AnimatedContainer>
 
       <AnimatedContainer delay="0.5s">
-        <AssetImage
-          src={logo}
-          alt="하이아크 소개 이미지"
-          padding={"py-10"}
-          caption="@ 제 1회 하이콘 대회 배경"
-        />
+        <ImageContainer>
+          <AssetImage src={logo} caption="@ 제 1회 하이콘 대회 배경" />
+        </ImageContainer>
       </AnimatedContainer>
 
       <AnimatedContainer delay="1s">
@@ -64,15 +82,14 @@ const IntroduceHiarcPage = () => {
           showToggle={true}
           toggleText="대회 자세히 알아보기"
         >
-          <ul className="list-none pl-10 text-[clamp(14px,2vw,18px)] font-NanumSquareNeo mb-2">
+          <StyledList>
             {HiarcCompetition.map((item, index) => (
               <li key={index}>{item}</li>
             ))}
-          </ul>
+          </StyledList>
         </SectionTemplate>
       </AnimatedContainer>
 
-      {/* 세 번째 이미지와 텍스트 */}
       <AnimatedContainer delay="1.5s">
         <SectionTemplate
           align="right"
@@ -84,9 +101,7 @@ const IntroduceHiarcPage = () => {
           showToggle={true}
           toggleText="ICPC 신촌 자세히 알아보기"
         >
-          <p className="text-[clamp(14px,2vw,18px)] font-NanumSquareNeo mb-2">
-            {Label.DetailSinchon}
-          </p>
+          <StyledParagraph>{Label.DetailSinchon}</StyledParagraph>
         </SectionTemplate>
       </AnimatedContainer>
     </Layout>

@@ -1,6 +1,6 @@
 // src/components/BottomLayerGridItem.tsx
 import React from "react";
-import CurvedCornerCell from "../../atoms/main_title/CurvedCornerCell";
+import CurvedCornerCell from "../../atoms/colored_grid_view/CurvedCornerCell";
 import CellType from "@/enum/CellType";
 import Color from "@/components/ui/Color";
 import BottomLayerGridItemData from "@/types/BottomLayerGridItemData";

@@ -1,19 +1,40 @@
 import { useNavigate } from "react-router-dom";
 import HeaderMenuButton from "@/components/atoms/header/HeaderMenuButton";
-import HiTingButton from "@/components/atoms/header/HiTingButton";
+import styled from "styled-components";
+
+const DesktopHeaderContainer = styled.div`
+  display: none;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 1.5rem 0;
+`;
+
+const HeaderContent = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 1000px;
+`;
+
+const Navigation = styled.nav`
+  display: flex;
+  gap: 1.5rem;
+  margin-left: auto;
+`;
 
 const DesktopHeader: React.FC = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="hidden md:flex flex-col items-center justify-center w-full py-6">
-      {/* 컨텐츠를 감싸는 박스 */}
-      <div className="flex items-center justify-center w-full max-w-[1000px]">
-        {/* 왼쪽: HI-ARC */}
+    <DesktopHeaderContainer>
+      <HeaderContent>
         <HeaderMenuButton text="HI-ARC" onClick={() => navigate("/")} />
-
-        {/* 오른쪽: 네비게이션 메뉴들 */}
-        <nav className="flex space-x-6 ml-auto">
+        <Navigation>
           <HeaderMenuButton
             text="학회소개"
             onClick={() => navigate("/introduce_hiarc")}
@@ -27,10 +48,15 @@ const DesktopHeader: React.FC = () => {
             text="수상경력"
             onClick={() => navigate("/award")}
           />
-          <HiTingButton />
-        </nav>
-      </div>
-    </div>
+          <HeaderMenuButton
+            text="하이팅"
+            onClick={() =>
+              (window.location.href = "https://hi-rating-front-end.vercel.app/")
+            }
+          />
+        </Navigation>
+      </HeaderContent>
+    </DesktopHeaderContainer>
   );
 };
 

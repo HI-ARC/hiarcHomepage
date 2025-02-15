@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import BottomLayerGridItem from "../../molecules/main_title/BottomLayerGridItem";
-import TopLayerGridItem from "../../molecules/main_title/TopLayerGridItem";
+import BottomLayerGridItem from "@/components/molecules/colored_grid_view/BottomLayerGridItem";
+import TopLayerGridItem from "@/components/molecules/colored_grid_view/TopLayerGridItem";
 import BottomLayerGridItemData from "@/types/BottomLayerGridItemData";
 import TopLayerGridItemData from "@/types/TopLayerGridItemData";
 import SectionTopGridItem from "@/components/molecules/section_gird_view/SectionTopLayerGridItem";

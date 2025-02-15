@@ -1,4 +1,7 @@
+import FontStyle from "@/components/ui/FontStyle";
+import Colors from "@/constants/ui/Colors";
 import React from "react";
+import styled from "styled-components";
 
 interface AssetImageProps {
   src: string;
@@ -9,64 +12,57 @@ interface AssetImageProps {
   caption?: string;
 }
 
+// 숫자는 px 단위로, 문자열은 그대로 반환하는 헬퍼 함수
+const parseValue = (value: number | string): string =>
+  typeof value === "number" ? `${value}px` : value;
+
+const Container = styled.div<{ padding: number | string }>`
+  position: relative;
+  padding: ${({ padding }) => parseValue(padding)};
+`;
+
+interface StyledImageProps {
+  $maxWidth: number | string;
+  $minWidth?: number | string;
+  height: number | string;
+}
+
+const StyledImage = styled.img<StyledImageProps>`
+  object-fit: contain;
+  height: ${({ height }) => parseValue(height)};
+  max-height: 100%;
+  width: 100%;
+  max-width: ${({ $maxWidth }) => parseValue($maxWidth)};
+  ${({ $minWidth }) => $minWidth && `min-width: ${parseValue($minWidth)};`}
+`;
+
+const Caption = styled.div`
+  ${FontStyle.body1Medium}
+  position: absolute;
+  bottom: -2rem;
+  color: ${Colors.primary};
+  padding-top: 2.5rem;
+`;
+
 const AssetImage: React.FC<AssetImageProps> = ({
   src,
-  maxWidth = "w-full",
+  maxWidth = "100%",
   minWidth,
-  height = "h-auto",
-  padding = "p-0",
+  height = "auto",
+  padding = "0",
   caption,
 }) => {
-  // Tailwind 클래스로 변환하는 함수들
-  const getSizeClass = (value: number | string): string => {
-    if (typeof value === "number") {
-      return `h-[${value}px] max-h-full`;
-    }
-    return value === "h-auto" ? "h-full" : `${value} max-h-full`;
-  };
-
-  const getWidthClass = (value: number | string): string => {
-    if (typeof value === "number") {
-      return `max-w-[${value}px] w-full`;
-    }
-    return value === "w-full" ? "w-full max-w-full" : `max-w-[${value}px]`;
-  };
-
-  const getMinWidthClass = (value: number | string): string => {
-    if (typeof value === "number") {
-      return `min-w-[${value}px]`;
-    }
-    return value === "w-full" ? "min-w-full" : value;
-  };
-
-  const getPaddingClass = (value: number | string): string => {
-    if (typeof value === "number") {
-      return `p-[${value}px]`;
-    }
-    return value;
-  };
-
-  // 인라인 스타일로 minWidth를 강제 적용
-  const minWidthStyle = minWidth
-    ? { minWidth: typeof minWidth === "number" ? `${minWidth}px` : minWidth }
-    : {};
-
   return (
-    <div className={`relative ${getPaddingClass(padding)}`}>
-      <img
+    <Container padding={padding}>
+      <StyledImage
         src={src}
-        style={minWidthStyle}
-        className={`object-contain ${getSizeClass(height)} ${getWidthClass(
-          maxWidth
-        )} ${minWidth ? getMinWidthClass(minWidth) : ""}`}
+        $maxWidth={maxWidth}
+        $minWidth={minWidth}
+        height={height}
         alt="Asset"
       />
-      {caption && (
-        <div className="absolute bottom-2 text-primary captionRegular pt-10">
-          {caption}
-        </div>
-      )}
-    </div>
+      {caption && <Caption>{caption}</Caption>}
+    </Container>
   );
 };
 

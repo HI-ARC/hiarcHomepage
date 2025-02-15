@@ -1,13 +1,7 @@
-import ActivityHeader from "../blocks/ActivityHeader";
-import HiconnectIntro from "../blocks/HiconnectIntro";
-import HitingIntro from "../blocks/HitingIntro";
 import ActiviySection from "../blocks/ActivitySection";
-import ICPCIntro from "../blocks/ActivitySection";
 import Label from "../ui/Label";
 import Layout from "../templates/PageTemplate";
-import React from "react";
 import styled, { keyframes } from "styled-components";
-import ArticleHeader from "../organisms/article_header/ArticleHedaer";
 
 const fadeIn = keyframes`
   from {
@@ -29,9 +23,7 @@ const AnimatedContainer = styled.div`
 const ActivityPage = () => {
   return (
     <Layout align="top">
-      <AnimatedContainer delay="0s">
-        <ArticleHeader />
-      </AnimatedContainer>
+      <AnimatedContainer delay="0s"></AnimatedContainer>
 
       <AnimatedContainer delay="0.5s">
         <ActiviySection

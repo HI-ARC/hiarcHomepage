@@ -2,7 +2,27 @@ import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import HamburgerButton from "@/components/atoms/header/HamburgerButton";
 import HeaderMenuButton from "@/components/atoms/header/HeaderMenuButton";
-import HiTingButton from "@/components/atoms/header/HiTingButton";
+import styled from "styled-components";
+
+const HeaderContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 1.5rem 0;
+`;
+
+const LeftContainer = styled.div`
+  flex-grow: 1;
+`;
+
+const RightContainer = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+`;
 
 const TabletHeader: React.FC = () => {
   const navigate = useNavigate();
@@ -29,18 +49,20 @@ const TabletHeader: React.FC = () => {
   }, [menuOpen]);
 
   return (
-    <div className="flex md:hidden items-center w-full max-w-[1000px] mx-auto py-6 justify-between">
-      {/* 왼쪽: HI-ARC (최대 너비를 차지하도록 flex-grow 적용) */}
-      <div className="flex-grow">
+    <HeaderContainer ref={dropdownRef}>
+      <LeftContainer>
         <HeaderMenuButton text="HI-ARC" onClick={() => navigate("/")} />
-      </div>
-
-      {/* 오른쪽: 하이팅 버튼 & 햄버거 메뉴 */}
-      <div className="flex items-center space-x-4">
-        <HiTingButton />
+      </LeftContainer>
+      <RightContainer>
+        <HeaderMenuButton
+          text="하이팅"
+          onClick={() =>
+            (window.location.href = "https://hi-rating-front-end.vercel.app/")
+          }
+        />
         <HamburgerButton />
-      </div>
-    </div>
+      </RightContainer>
+    </HeaderContainer>
   );
 };
 
