@@ -28,7 +28,7 @@ const TableRow = styled.tr`
 `;
 
 const TableCell = styled.td`
-  padding: 6px;
+  padding: 10px 35px;
   align-items: center;
   justify-content: center;
   border-right: 0.5px solid ${Color.orange}; /* 세로선 */
@@ -40,6 +40,19 @@ const TableCell = styled.td`
   }
 `;
 
+const TextStyle = styled.span`
+  ${FontStyle.body1Regular}
+  font-size: clamp(14px, 2vw, 18px);
+  letter-spacing: -0.3px;
+`;
+
+const TextStyleNoWrap = styled.span`
+  ${FontStyle.body1Regular}
+  font-size: clamp(14px, 2vw, 18px);
+  letter-spacing: -0.3px;
+  white-space: nowrap;
+`;
+
 const StudyTable = ({ data }) => {
   return (
     <TableContainer>
@@ -48,10 +61,10 @@ const StudyTable = ({ data }) => {
           {data.map((item, index) => (
             <TableRow key={index}>
               <TableCell>
-                <ContentText textAlign="center" text={item.week} />
+                <TextStyleNoWrap>{item.week}</TextStyleNoWrap>
               </TableCell>
               <TableCell>
-                <ContentText textAlign="center" text={item.topic} />
+                <TextStyle>{item.topic}</TextStyle>
               </TableCell>
             </TableRow>
           ))}

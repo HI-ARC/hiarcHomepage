@@ -1,42 +1,47 @@
 import Label from "../ui/Label";
 import Layout from "../templates/PageTemplate";
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 import ColoredGridView from "../organisms/colored_grid_view/ColoredGridView";
 import HiarcActivityTop from "@/constants/data/hiarc_activity/hiarc_activity_grid_data/HiarcActivityTop";
 import HiarcActivityBottom from "@/constants/data/hiarc_activity/hiarc_activity_grid_data/HiarcActivityBottom";
 import ActivitySection from "../organisms/ActivitySection";
+import AnimatedContainer from "../atoms/\bAnimatedContainer";
+import MobileHiarcActivityTop from "@/constants/data/hiarc_activity/hiarc_activity_grid_data/mobile/MobileHiarcActivityTop";
 
-const fadeIn = keyframes`
-  from {
-    opacity: 0;
-    transform: translateY(-20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+const DesktopOnly = styled.div`
+  @media (max-width: 480px) {
+    display: none;
   }
 `;
 
-interface AnimatedContainerProps {
-  delay?: string;
-}
+const MobileOnly = styled.div`
+  display: none;
 
-const AnimatedContainer = styled.div<AnimatedContainerProps>`
-  opacity: 0;
-  animation: ${fadeIn} 1s ease-in-out forwards;
-  animation-delay: ${(props) => props.delay || "0s"};
+  @media (max-width: 480px) {
+    display: block;
+  }
 `;
 
 const ActivityPage: React.FC = () => {
   return (
     <Layout align="top">
       <AnimatedContainer delay="0s">
-        <ColoredGridView
-          colCount={12}
-          rowCount={4}
-          bottomLayerGridData={HiarcActivityBottom}
-          topLayerGridData={HiarcActivityTop}
-        />
+        <DesktopOnly>
+          <ColoredGridView
+            colCount={12}
+            rowCount={4}
+            bottomLayerGridData={HiarcActivityBottom}
+            topLayerGridData={HiarcActivityTop}
+          />
+        </DesktopOnly>
+        <MobileOnly>
+          <ColoredGridView
+            colCount={4}
+            rowCount={10}
+            bottomLayerGridData={[]}
+            topLayerGridData={MobileHiarcActivityTop}
+          />
+        </MobileOnly>
       </AnimatedContainer>
 
       <AnimatedContainer delay="0.5s">

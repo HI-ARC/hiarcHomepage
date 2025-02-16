@@ -10,6 +10,7 @@ interface ArrowButtonProps {
   buttonText: string;
   width: number;
   height: number;
+  arrowSize: number;
   onClick?: () => void;
 }
 
@@ -61,6 +62,7 @@ const ArrowButton: React.FC<ArrowButtonProps> = ({
   buttonText,
   width,
   height,
+  arrowSize,
   onClick,
 }) => {
   return (
@@ -76,10 +78,7 @@ const ArrowButton: React.FC<ArrowButtonProps> = ({
         </Text>
       </TextContainer>
       <ArrowContainer>
-        <NavigateArrow
-          width="clamp(10px, 4vw, 40px)"
-          height="clamp(10px, 4vw, 40px)"
-        />
+        <NavigateArrow width={arrowSize} height={arrowSize} />
       </ArrowContainer>
     </ButtonContainerStyle>
   );
