@@ -135,8 +135,6 @@ const ColoredGridView: React.FC<ColoredGridViewProps> = ({
     });
   };
 
-  console.log("containerHeight", containerHeight);
-
   return (
     <LayeredContainer width={finalWidth} height={containerHeight}>
       <GridContainer
