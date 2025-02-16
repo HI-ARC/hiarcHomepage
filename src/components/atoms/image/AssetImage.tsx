@@ -1,72 +1,81 @@
+import FontStyle from "@/components/ui/FontStyle";
+import Colors from "@/constants/ui/Colors";
 import React from "react";
+import styled from "styled-components";
+import ContentText from "../text/ContentText";
 
 interface AssetImageProps {
   src: string;
+  width?: number | string;
   maxWidth?: number | string;
   minWidth?: number | string;
   height?: number | string;
   padding?: number | string;
+  borderRadius?: number | string;
   caption?: string;
 }
 
+const parseValue = (value: number | string): string =>
+  typeof value === "number" ? `${value}px` : value;
+
+const Container = styled.div<{ padding: number | string }>`
+  position: relative;
+  padding: ${({ padding }) => parseValue(padding)};
+`;
+
+interface StyledImageProps {
+  width?: number | string;
+  $maxWidth?: number | string;
+  $minWidth?: number | string;
+  height: number | string;
+  borderRadius?: number | string;
+}
+
+const StyledImage = styled.img<StyledImageProps>`
+  object-fit: cover;
+  height: ${({ height }) => parseValue(height)};
+  max-height: 100%;
+  ${({ width }) => width && `width: ${parseValue(width)};`}
+  ${({ $maxWidth }) => $maxWidth && `max-width: ${parseValue($maxWidth)};`}
+  ${({ $minWidth }) => $minWidth && `min-width: ${parseValue($minWidth)};`}
+  ${({ borderRadius }) =>
+    borderRadius && `border-radius: ${parseValue(borderRadius)};`}
+`;
+
+const Caption = styled.div`
+  ${FontStyle.body1Medium}
+  font-size: clamp(8px, 2vw, 14px);
+  position: absolute;
+  bottom: -clamp(0px, 2vw, 10px);
+  color: ${Colors.primary};
+  padding-top: 4px;
+  white-space: nowrap;
+`;
+
 const AssetImage: React.FC<AssetImageProps> = ({
   src,
-  maxWidth = "w-full",
+  width,
+  maxWidth,
   minWidth,
-  height = "h-auto",
-  padding = "p-0",
+  height = "auto",
+  padding = "0",
+  borderRadius = "0",
   caption,
 }) => {
-  // Tailwind 클래스로 변환하는 함수들
-  const getSizeClass = (value: number | string): string => {
-    if (typeof value === "number") {
-      return `h-[${value}px] max-h-full`;
-    }
-    return value === "h-auto" ? "h-full" : `${value} max-h-full`;
-  };
-
-  const getWidthClass = (value: number | string): string => {
-    if (typeof value === "number") {
-      return `max-w-[${value}px] w-full`;
-    }
-    return value === "w-full" ? "w-full max-w-full" : `max-w-[${value}px]`;
-  };
-
-  const getMinWidthClass = (value: number | string): string => {
-    if (typeof value === "number") {
-      return `min-w-[${value}px]`;
-    }
-    return value === "w-full" ? "min-w-full" : value;
-  };
-
-  const getPaddingClass = (value: number | string): string => {
-    if (typeof value === "number") {
-      return `p-[${value}px]`;
-    }
-    return value;
-  };
-
-  // 인라인 스타일로 minWidth를 강제 적용
-  const minWidthStyle = minWidth
-    ? { minWidth: typeof minWidth === "number" ? `${minWidth}px` : minWidth }
-    : {};
-
   return (
-    <div className={`relative ${getPaddingClass(padding)}`}>
-      <img
+    <Container padding={padding}>
+      <StyledImage
         src={src}
-        style={minWidthStyle}
-        className={`object-contain ${getSizeClass(height)} ${getWidthClass(
-          maxWidth
-        )} ${minWidth ? getMinWidthClass(minWidth) : ""}`}
-        alt="Asset"
+        width={width}
+        $maxWidth={maxWidth}
+        $minWidth={minWidth}
+        height={height}
+        borderRadius={borderRadius}
+        alt={caption}
       />
-      {caption && (
-        <div className="absolute bottom-2 text-primary captionRegular pt-10">
-          {caption}
-        </div>
-      )}
-    </div>
+
+      {caption && <Caption>{caption}</Caption>}
+    </Container>
   );
 };
 

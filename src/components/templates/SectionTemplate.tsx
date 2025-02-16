@@ -1,6 +1,10 @@
 import React, { useState } from "react";
-import SectionGridView from "../organisms/section/SectionGridView";
+import styled from "styled-components";
 import ToggleIcon from "@/assets/icon/toggle_icon.svg?react";
+import ColoredGridView from "../organisms/colored_grid_view/ColoredGridView";
+import FontStyle from "../ui/FontStyle";
+import Color from "../ui/Color";
+import ContentText from "../atoms/text/ContentText";
 
 interface SectionTemplateProps {
   colCount: number;
@@ -13,6 +17,62 @@ interface SectionTemplateProps {
   align?: "left" | "right";
   children?: React.ReactNode;
 }
+
+const SectionContainer = styled.section<{ align: "left" | "right" }>`
+  display: flex;
+  width: 100%;
+  gap: 24px;
+  padding-top: 54px;
+
+  flex-direction: column;
+  align-items: center;
+
+  @media (min-width: 640px) {
+    flex-direction: ${({ align }) =>
+      align === "right" ? "row-reverse" : "row"};
+    align-items: flex-start;
+  }
+`;
+
+const ContentContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+const ToggleButton = styled.button`
+  display: flex;
+  align-items: center;
+  padding: 12px;
+  border: none;
+  background: none;
+  cursor: pointer;
+`;
+
+const ToggleIconStyled = styled(ToggleIcon)<{ isOpen: boolean }>`
+  transition: transform 0.3s;
+  transform: ${({ isOpen }) => (isOpen ? "rotate(-90deg)" : "rotate(0deg)")};
+  width: clamp(12px, 5vw, 24px);
+  height: clamp(12px, 5vw, 24px);
+`;
+
+const ToggleText = styled.span`
+  ${FontStyle.display1ExtraBold}
+  font-size: clamp(14px, 2vw, 18px);
+  margin-left: 8px;
+  color: ${Color.primary};
+`;
+
+const ToggleContent = styled.div<{ isOpen: boolean }>`
+  transition:
+    max-height 0.3s,
+    opacity 0.3s;
+  overflow: hidden;
+  max-height: ${({ isOpen }) => (isOpen ? "1000px" : "0")};
+  opacity: ${({ isOpen }) => (isOpen ? "1" : "0")};
+
+  text-align: left;
+  line-height: 1.5;
+`;
 
 const SectionTemplate: React.FC<SectionTemplateProps> = ({
   colCount,
@@ -28,63 +88,31 @@ const SectionTemplate: React.FC<SectionTemplateProps> = ({
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <section
-      className={`flex w-full gap-8 pt-16 flex-col items-center ${
-        align === "right"
-          ? "sm:flex-row-reverse sm:items-start"
-          : "sm:flex-row sm:items-start"
-      }`}
-    >
-      {/* 그리드 뷰 */}
-      <div className="flex-1">
-        <SectionGridView
+    <SectionContainer align={align}>
+      <div style={{ display: "flex" }}>
+        <ColoredGridView
+          maxWidth={250}
+          minWidth={150}
           rowCount={rowCount}
           colCount={colCount}
-          bottomLayerData={bottomLayerData}
-          topLayerData={topLayerData}
+          bottomLayerGridData={bottomLayerData}
+          topLayerGridData={topLayerData}
         />
       </div>
-
-      {/* 오른쪽 컨텐츠 */}
-      <div className="flex flex-col">
-        <p className="text-[clamp(14px,2vw,18px)] font-NanumSquareNeo mb-2">
-          {contentText}
-        </p>
-
-        {/* ✅ showToggle이 true일 때만 토글 버튼 표시 */}
+      <ContentContainer>
+        <ContentText text={contentText}></ContentText>
         {showToggle && (
-          <button
-            className="flex items-center p-3 border-none"
+          <ToggleButton
             onClick={() => setIsOpen(!isOpen)}
             aria-expanded={isOpen}
           >
-            <ToggleIcon
-              className={`transition-transform duration-300 ${
-                isOpen ? "rotate-90" : "rotate-0"
-              }`}
-              width="clamp(12px, 5vw, 24px)"
-              height="clamp(12px, 5vw, 24px)"
-            />
-            <span className="text-[clamp(14px,2vw,18px)] font-NanumSquareNeoExtraBold font-extrabold text-primary pl-2">
-              {toggleText}
-            </span>
-          </button>
+            <ToggleIconStyled isOpen={isOpen} />
+            <ToggleText>{toggleText}</ToggleText>
+          </ToggleButton>
         )}
-
-        {/* 토글이 있는 경우 isOpen에 따라 children 표시, 없는 경우 항상 표시 */}
-        <div
-          className={`transition-all overflow-hidden ${
-            showToggle
-              ? isOpen
-                ? "max-h-full opacity-100 py-2"
-                : "max-h-0 opacity-0"
-              : "max-h-full opacity-100 py-2"
-          }`}
-        >
-          {children}
-        </div>
-      </div>
-    </section>
+        <ToggleContent isOpen={isOpen || !showToggle}>{children}</ToggleContent>
+      </ContentContainer>
+    </SectionContainer>
   );
 };
 

@@ -1,17 +1,42 @@
 import Layout from "../templates/PageTemplate";
-import MainTitle from "../organisms/main_title/MainTitle";
-import MainMobileTitle from "../organisms/main_title/MainMobileTitle";
+import TopLayerGridData from "@/constants/data/main_title/TopLayerGridData";
+import BottomLayerGridData from "@/constants/data/main_title/BottomLayerGridData";
+import MobileBottomLayerGridData from "@/constants/data/main_mobile_title/MobileBottomLayerGridData";
+import MobileTopLayerGridData from "@/constants/data/main_mobile_title/MobileTopLayerGridData";
+import styled from "styled-components";
+import ColoredGridView from "../organisms/colored_grid_view/ColoredGridView";
+
+const DesktopContainer = styled.div`
+  @media (max-width: 640px) {
+    display: none;
+  }
+`;
+
+const MobileContainer = styled.div`
+  @media (min-width: 641px) {
+    display: none;
+  }
+`;
 
 const HomePage = () => {
   return (
-    <Layout align="center">
-      {/* xs 사이즈 이하에서는 모바일 타이틀, xs 이상에서는 일반 타이틀을 보여줍니다. */}
-      <div className="block xs:hidden">
-        <MainMobileTitle />
-      </div>
-      <div className="hidden xs:block">
-        <MainTitle />
-      </div>
+    <Layout>
+      <MobileContainer>
+        <ColoredGridView
+          rowCount={10}
+          colCount={6}
+          bottomLayerGridData={MobileBottomLayerGridData}
+          topLayerGridData={MobileTopLayerGridData}
+        />
+      </MobileContainer>
+      <DesktopContainer>
+        <ColoredGridView
+          rowCount={6}
+          colCount={10}
+          bottomLayerGridData={BottomLayerGridData}
+          topLayerGridData={TopLayerGridData}
+        />
+      </DesktopContainer>
     </Layout>
   );
 };
