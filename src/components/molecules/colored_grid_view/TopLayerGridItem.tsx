@@ -146,6 +146,7 @@ const TopLayerGridItem: React.FC<TopLayerGridItemProps> = ({
           contentColor={data.contentColor}
           height={circleSize}
           width={circleSize2X}
+          arrowSize={circleSize * 0.6}
           onClick={() => navigate(data.url || "")}
         />
       )}
@@ -157,6 +158,7 @@ const TopLayerGridItem: React.FC<TopLayerGridItemProps> = ({
           contentColor={data.contentColor}
           height={circleSize}
           width={circleSize3X}
+          arrowSize={circleSize * 0.6}
           onClick={
             data.websiteUrl !== undefined
               ? () => (window.location.href = data.websiteUrl!)
