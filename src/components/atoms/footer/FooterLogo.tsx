@@ -37,12 +37,7 @@ const Subtitle = styled.p`
 const FooterLogo: React.FC = () => {
   return (
     <FooterLogoContainer>
-      <AssetImage
-        src={HiarcLogo}
-        minWidth={40}
-        maxWidth={40}
-        height={56} /* Converted from "w-14 h-14" to 56px (3.5rem) */
-      />
+      <AssetImage src={HiarcLogo} width={40} height={40} />
       <TextContainer>
         <Title>HI-ARC 하이아크</Title>
         <Subtitle>홍익대학교 컴퓨터공학과 알고리즘 학회</Subtitle>

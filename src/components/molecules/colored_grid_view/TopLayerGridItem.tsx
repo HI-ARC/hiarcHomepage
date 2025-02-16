@@ -10,12 +10,15 @@ import NavigateArrow from "../../../assets/icon/navigate_arrow.svg?react";
 import TopLayerGridItemData from "@/types/TopLayerGridItemData";
 import FontStyles from "@/constants/ui/FontStyles";
 import ArrowButton from "@/components/atoms/colored_grid_view/ArrowButton";
+import AssetImage from "@/components/atoms/image/AssetImage";
+import BorderedRectangleContainer from "@/components/atoms/colored_grid_view/BorderedRectangleContainer";
 
 interface TopLayerGridItemProps {
   data: TopLayerGridItemData;
   circleSize: number;
   circleSize2X: number;
   circleSize3X: number;
+  circleSize4X: number;
   isHovered: { [key: number]: boolean };
   handleMouseEnter: (index: number) => void;
   handleMouseLeave: (index: number) => void;
@@ -45,6 +48,7 @@ const TopLayerGridItem: React.FC<TopLayerGridItemProps> = ({
   circleSize,
   circleSize2X,
   circleSize3X,
+  circleSize4X,
   isHovered,
   handleMouseEnter,
   handleMouseLeave,
@@ -104,6 +108,15 @@ const TopLayerGridItem: React.FC<TopLayerGridItemProps> = ({
         />
       )}
 
+      {data.type === CellType.BORDERED_LONG_HORIZONTAL_RECTANGLE && (
+        <BorderedRectangleContainer
+          contentColor={data.contentColor}
+          height={circleSize}
+          width={circleSize3X}
+          text={data.text as string}
+        />
+      )}
+
       {data.type === CellType.VERTICAL_RECTANGLE && (
         <RoundedRectangleContainer
           backgroundColor={data.backgroundColor}
@@ -127,14 +140,12 @@ const TopLayerGridItem: React.FC<TopLayerGridItemProps> = ({
       )}
 
       {data.type === CellType.BUTTON_WITH_ICON && (
-        <MenuButton
+        <ArrowButton
           buttonText={data.buttonText || ""}
           backgroundColor={data.backgroundColor}
           contentColor={data.contentColor}
           height={circleSize}
           width={circleSize2X}
-          onMouseEnter={() => handleMouseEnter(data.index!)}
-          onMouseLeave={() => handleMouseLeave(data.index!)}
           onClick={() => navigate(data.url || "")}
         />
       )}
@@ -151,6 +162,20 @@ const TopLayerGridItem: React.FC<TopLayerGridItemProps> = ({
               ? () => (window.location.href = data.websiteUrl!)
               : () => navigate(data.url || "")
           }
+        />
+      )}
+
+      {data.type === CellType.ICON && (
+        <AssetImage src={data.image!} height={circleSize} width={circleSize} />
+      )}
+
+      {data.type === CellType.IMAGE && (
+        <AssetImage
+          src={data.image!}
+          borderRadius={circleSize / 2}
+          height={circleSize2X}
+          width={circleSize4X}
+          caption={data.caption}
         />
       )}
 

@@ -1,9 +1,10 @@
-import React from "react";
 import styled from "styled-components";
 import Color from "../../ui/Color";
+import FontStyle from "@/components/ui/FontStyle";
+import ContentText from "../text/ContentText";
 
 const TopicCellWrapper = styled.td`
-  font-size: 12px;
+  ${FontStyle.body1Regular}
   padding-left: 10px;
 
   border: 1px solid ${Color.gray};
@@ -12,7 +13,11 @@ const TopicCellWrapper = styled.td`
 `;
 
 const TopicCell = ({ topicCell }) => {
-  return <TopicCellWrapper>{topicCell}</TopicCellWrapper>;
+  return (
+    <TopicCellWrapper>
+      <ContentText>{topicCell}</ContentText>
+    </TopicCellWrapper>
+  );
 };
 
 export default TopicCell;

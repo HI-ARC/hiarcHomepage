@@ -25,6 +25,11 @@ const ButtonContainerStyle = styled.div<{
   border-radius: ${({ height }) => height}px;
   background-color: ${({ bgColor }) => bgColor};
   cursor: pointer;
+
+  &:hover {
+    transition: all 0.3s;
+    background-color: ${Color.primaryLight};
+  }
 `;
 
 const TextContainer = styled.div`
@@ -32,6 +37,7 @@ const TextContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  padding-left: clamp(0px, 0.5vw, 8px);
 `;
 
 const Text = styled.span<{ textColor?: string; height: number }>`
@@ -43,8 +49,7 @@ const Text = styled.span<{ textColor?: string; height: number }>`
 `;
 
 const ArrowContainer = styled.div`
-  width: 35px;
-  margin-right: 16px;
+  margin-right: clamp(0px, 0.5vw, 16px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -71,7 +76,10 @@ const ArrowButton: React.FC<ArrowButtonProps> = ({
         </Text>
       </TextContainer>
       <ArrowContainer>
-        <NavigateArrow width="40px" height="40px" />
+        <NavigateArrow
+          width="clamp(10px, 4vw, 40px)"
+          height="clamp(10px, 4vw, 40px)"
+        />
       </ArrowContainer>
     </ButtonContainerStyle>
   );

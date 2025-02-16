@@ -10,7 +10,7 @@ const ICPCIntroduceTop: TopLayerGridItemData[] = [
     backgroundColor: Color.primary,
     contentColor: Color.white,
     buttonText: "ICPC 신촌",
-    url: "https://icpc-sinchon.github.io/",
+    websiteUrl: "https://icpc-sinchon.github.io/",
   },
 ];
 

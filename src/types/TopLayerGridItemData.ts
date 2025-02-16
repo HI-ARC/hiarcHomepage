@@ -9,6 +9,8 @@ interface TopLayerGridItemData {
   buttonText?: string;
   url?: string;
   websiteUrl?: string;
+  image?: string;
+  caption?: string;
 }
 
 export default TopLayerGridItemData;

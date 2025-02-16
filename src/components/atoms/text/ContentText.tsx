@@ -6,12 +6,15 @@ interface ContentTextProps {
   text: string;
   normalStyle?: React.CSSProperties;
   boldStyle?: React.CSSProperties;
+  textAlign?: "left" | "center" | "right";
 }
 
-const ContentTextContainer = styled.p`
+const ContentTextContainer = styled.p<{
+  textAlign: "left" | "center" | "right";
+}>`
   line-height: 1.8;
   margin: 0;
-  text-align: left;
+  text-align: ${(props) => props.textAlign};
 `;
 
 const NormalSpan = styled.span`
@@ -32,6 +35,7 @@ const ContentText: React.FC<ContentTextProps> = ({
   text,
   normalStyle,
   boldStyle,
+  textAlign = "left",
 }) => {
   const regex = /-(.*?)-/g;
   const parts: React.ReactNode[] = [];
@@ -64,7 +68,9 @@ const ContentText: React.FC<ContentTextProps> = ({
     );
   }
 
-  return <ContentTextContainer>{parts}</ContentTextContainer>;
+  return (
+    <ContentTextContainer textAlign={textAlign}>{parts}</ContentTextContainer>
+  );
 };
 
 export default ContentText;

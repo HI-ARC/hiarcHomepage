@@ -67,7 +67,11 @@ const IntroduceHiarcPage: React.FC = () => {
 
       <AnimatedContainer delay="0.5s">
         <ImageContainer>
-          <AssetImage src={logo} caption="@ 제 1회 하이콘 대회 배경" />
+          <AssetImage
+            src={logo}
+            caption="@ 제 1회 하이콘 대회 배경"
+            maxWidth={"100%"}
+          />
         </ImageContainer>
       </AnimatedContainer>
 
