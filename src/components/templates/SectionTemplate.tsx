@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import ToggleIcon from "@/assets/icon/toggle_icon.svg?react";
-import ColoredGridView from "../organisms/colored_grid_view/ColoredGridView";
+import ColoredGridView from "../organisms/ColoredGridView";
 import FontStyle from "../ui/FontStyle";
 import Color from "../ui/Color";
 import ContentText from "../atoms/text/ContentText";
@@ -22,7 +22,7 @@ const SectionContainer = styled.section<{ align: "left" | "right" }>`
   display: flex;
   width: 100%;
   gap: 24px;
-  padding-top: 54px;
+  padding-bottom: 54px;
 
   flex-direction: column;
   align-items: center;

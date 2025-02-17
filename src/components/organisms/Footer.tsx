@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import FooterLogo from "@/components/atoms/footer/FooterLogo";
-import FooterContactInfo from "@/components/molecules/footer/FooterContactInfo";
+import FooterContactInfo from "@/components/molecules/FooterContactInfo";
 
 const OuterContainer = styled.div`
   display: flex;
@@ -17,7 +17,7 @@ const OuterContainer = styled.div`
 
 const InnerContainer = styled.div`
   width: 100%;
-  max-width: 1000px;
+  max-width: 800px;
   padding: 0 24px;
   display: flex;
   flex-direction: column;

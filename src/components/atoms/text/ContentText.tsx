@@ -19,14 +19,14 @@ const ContentTextContainer = styled.p<{
 
 const NormalSpan = styled.span`
   ${FontStyle.body1Regular}
-  font-size: clamp(14px, 2vw, 18px);
+  font-size: clamp(12px, 2vw, 16px);
   letter-spacing: 0.3px;
   display: inline;
 `;
 
 const BoldSpan = styled.span`
   ${FontStyle.display1ExtraBold}
-  font-size: clamp(14px, 2vw, 18px);
+  font-size: clamp(12px, 2vw, 16px);
   letter-spacing: 0.3px;
   display: inline;
 `;

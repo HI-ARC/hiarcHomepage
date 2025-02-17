@@ -50,6 +50,10 @@ const Caption = styled.div`
   color: ${Colors.primary};
   padding-top: 4px;
   white-space: nowrap;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 
 const AssetImage: React.FC<AssetImageProps> = ({

@@ -8,7 +8,7 @@ const YearBarList = styled.div`
   justify-content: space-between;
   width: 100%;
   position: relative; /* 🎯 선(Line)이 원들 뒤에서 배치되도록 설정 */
-  padding-bottom: 20px;
+  padding-bottom: 37px;
 `;
 
 // 원들 뒤에 관통하는 선 스타일
@@ -46,13 +46,11 @@ const YearText = styled.div`
   color: ${(props) =>
     props.selected ? Color.toggledButtonColor : Color.primary};
 
-  @media (max-width: 500px) {
-    ${FontStyle.descriptionBold}
-  }
+  font-size: clamp(8px, 2vw, 16px);
 `;
 
 const YearBar = ({ startYear, endYear, onYearSelect }) => {
-  const [selectedYear, setSelectedYear] = useState(2017); // 선택된 연도 관리
+  const [selectedYear, setSelectedYear] = useState(2017);
 
   // 연도 클릭 시 호출되는 함수
   const handleYearClick = (year) => {

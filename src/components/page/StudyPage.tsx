@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import Layout from "../templates/PageTemplate";
-import StudyTable from "../blocks/StudyTable";
+import StudyTable from "../organisms/StudyTable";
 import Data from "../ui/Data";
-import ColoredGridView from "../organisms/colored_grid_view/ColoredGridView";
+import ColoredGridView from "../organisms/ColoredGridView";
 import Study2024HeaderBottomData from "@/constants/data/study/study_2024_grid_data/Study2024HeaderBottomData";
 import Study2024HeaderTopData from "@/constants/data/study/study_2024_grid_data/Study2024HeaderTopData";
 import Study2025HeaderBottomData from "@/constants/data/study/study_2025_grid_data/Study2025HeaderBottomData";
@@ -10,7 +10,7 @@ import Study2025HeaderTopData from "@/constants/data/study/study_2025_grid_data/
 
 import BasicStudy2025HeaderTopData from "@/constants/data/study/study_2025_grid_data/mobile/BasicStudy2025HeaderTopData";
 import ElementaryStudy2025HeaderTopData from "@/constants/data/study/study_2025_grid_data/mobile/ElementaryStudy2025HeaderTopData";
-import AnimatedContainer from "../atoms/\bAnimatedContainer";
+import AnimatedContainer from "../atoms/common/AnimatedContainer";
 import BasicStudy2024HeaderTopData from "@/constants/data/study/study_2024_grid_data/mobile/BasicStudy2024HeaderTopData";
 import PsManualTopData from "@/constants/data/study/PsManualTopData";
 import ElementaryStudy2024HeaderTopData from "@/constants/data/study/study_2024_grid_data/mobile/ElementaryStudy2024HeaderTopData";

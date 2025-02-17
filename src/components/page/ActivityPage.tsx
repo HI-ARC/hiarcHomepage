@@ -1,12 +1,13 @@
 import Label from "../ui/Label";
 import Layout from "../templates/PageTemplate";
 import styled from "styled-components";
-import ColoredGridView from "../organisms/colored_grid_view/ColoredGridView";
+import ColoredGridView from "../organisms/ColoredGridView";
 import HiarcActivityTop from "@/constants/data/hiarc_activity/hiarc_activity_grid_data/HiarcActivityTop";
 import HiarcActivityBottom from "@/constants/data/hiarc_activity/hiarc_activity_grid_data/HiarcActivityBottom";
 import ActivitySection from "../organisms/ActivitySection";
-import AnimatedContainer from "../atoms/\bAnimatedContainer";
+import AnimatedContainer from "../atoms/common/AnimatedContainer";
 import MobileHiarcActivityTop from "@/constants/data/hiarc_activity/hiarc_activity_grid_data/mobile/MobileHiarcActivityTop";
+import MobileHiarcActivityBottom from "@/constants/data/hiarc_activity/hiarc_activity_grid_data/mobile/MobileHiarcActivityBottom";
 
 const DesktopOnly = styled.div`
   @media (max-width: 480px) {
@@ -36,9 +37,9 @@ const ActivityPage: React.FC = () => {
         </DesktopOnly>
         <MobileOnly>
           <ColoredGridView
-            colCount={4}
+            colCount={6}
             rowCount={10}
-            bottomLayerGridData={[]}
+            bottomLayerGridData={MobileHiarcActivityBottom}
             topLayerGridData={MobileHiarcActivityTop}
           />
         </MobileOnly>

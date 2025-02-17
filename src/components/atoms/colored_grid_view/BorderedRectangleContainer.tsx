@@ -28,7 +28,7 @@ const BorderedRectangleContainerStyle = styled.div<{
 const TextStyle = styled.div<{ height: number; contentColor?: string }>`
   color: ${(props) => props.contentColor || Color.primary};
   ${FontStyle.display1ExtraBold};
-  font-size: ${(props) => props.height * 0.45}px;
+  font-size: ${(props) => props.height * 0.4}px;
   word-spacing: -0.1rem;
   letter-spacing: -0.07em;
 `;

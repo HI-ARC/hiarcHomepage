@@ -1,4 +1,5 @@
-const competitionData = {
+// competitionData.ts
+const competitionData: Record<number, string[]> = {
   2017: ["2017 교내 프로그래밍 경진대회"],
   2018: [
     "이데일리 코딩 챌린지",
@@ -42,6 +43,7 @@ const competitionData = {
   ],
   2023: ["SUAPC 2023 Winter", "SUAPC 2023 Summer"],
   2024: ["2024 하이콘", "SUAPC 2024 Winter", "SUAPC 2024 Summer"],
+  2025: ["제 1회 HI-ARC Contest"],
 };
 
 export default competitionData;

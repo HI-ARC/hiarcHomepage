@@ -1,8 +1,8 @@
 import React from "react";
 import Layout from "../templates/PageTemplate";
 import Label from "../ui/Label";
-import styled, { keyframes } from "styled-components";
-import logo from "../../assets/hiarc-logo.png";
+import styled from "styled-components";
+import bannerImage from "../../assets/image/banner.png";
 import SectionTemplate from "../templates/SectionTemplate";
 import IntroduceHiarcBottom from "@/constants/data/introduce_hiarc/introduce_hiarc_grid_data/IntroduceHiarcBottom";
 import IntroduceHiarcTop from "@/constants/data/introduce_hiarc/introduce_hiarc_grid_data/IntroduceHiarcTop";
@@ -11,31 +11,13 @@ import ContestIntroduceTop from "@/constants/data/introduce_hiarc/contest_introd
 import AssetImage from "../atoms/image/AssetImage";
 import ICPCIntroduceTop from "@/constants/data/introduce_hiarc/introduce_icpc_grid_data/ICPCIntroduceTop";
 import HiarcCompetition from "../ui/HiarcCompetition";
-
-// 페이드 인 애니메이션 정의
-const fadeIn = keyframes`
-  from {
-    opacity: 0;
-    transform: translateY(-20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-`;
-
-// 애니메이션이 적용된 래퍼 스타일
-const AnimatedContainer = styled.div<{ delay?: string }>`
-  opacity: 0;
-  animation: ${fadeIn} 1s ease-in-out forwards;
-  animation-delay: ${({ delay }) => delay || "0s"};
-`;
+import AnimatedContainer from "../atoms/common/AnimatedContainer";
 
 const ImageContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 54px;
+  margin-bottom: 54px;
 `;
 
 const StyledParagraph = styled.p`
@@ -68,7 +50,7 @@ const IntroduceHiarcPage: React.FC = () => {
       <AnimatedContainer delay="0.5s">
         <ImageContainer>
           <AssetImage
-            src={logo}
+            src={bannerImage}
             caption="@ 제 1회 하이콘 대회 배경"
             maxWidth={"100%"}
           />

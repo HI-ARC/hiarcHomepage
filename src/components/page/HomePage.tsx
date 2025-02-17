@@ -4,7 +4,7 @@ import BottomLayerGridData from "@/constants/data/main_title/BottomLayerGridData
 import MobileBottomLayerGridData from "@/constants/data/main_mobile_title/MobileBottomLayerGridData";
 import MobileTopLayerGridData from "@/constants/data/main_mobile_title/MobileTopLayerGridData";
 import styled from "styled-components";
-import ColoredGridView from "../organisms/colored_grid_view/ColoredGridView";
+import ColoredGridView from "../organisms/ColoredGridView";
 
 const DesktopContainer = styled.div`
   @media (max-width: 640px) {

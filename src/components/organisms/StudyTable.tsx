@@ -1,3 +1,4 @@
+import React from "react";
 import styled from "styled-components";
 import Color from "../ui/Color";
 import FontStyle from "../ui/FontStyle";
@@ -19,7 +20,6 @@ const Table = styled.table`
 `;
 
 const TableRow = styled.tr`
-  ${FontStyle.body1Medium}
   width: 100%;
 
   &:nth-child(even) {
@@ -28,7 +28,7 @@ const TableRow = styled.tr`
 `;
 
 const TableCell = styled.td`
-  padding: 15px 35px;
+  padding: clamp(0px, 2vw, 10px) clamp(10px, 2vw, 30px);
   align-items: center;
   justify-content: center;
   border-right: 0.5px solid ${Color.orange}; /* 세로선 */
@@ -42,18 +42,27 @@ const TableCell = styled.td`
 
 const TextStyle = styled.span`
   ${FontStyle.body1Regular}
-  font-size: clamp(14px, 2vw, 18px);
+  font-size: clamp(10px, 2vw, 14px);
   letter-spacing: -0.3px;
 `;
 
 const TextStyleNoWrap = styled.span`
   ${FontStyle.body1Regular}
-  font-size: clamp(14px, 2vw, 18px);
+  font-size: clamp(10px, 2vw, 14px);
   letter-spacing: -0.3px;
   white-space: nowrap;
 `;
 
-const StudyTable = ({ data }) => {
+interface StudyData {
+  week: string;
+  topic: string;
+}
+
+interface StudyTableProps {
+  data: StudyData[];
+}
+
+const StudyTable: React.FC<StudyTableProps> = ({ data }) => {
   return (
     <TableContainer>
       <Table>
