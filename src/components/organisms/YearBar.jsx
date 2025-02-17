@@ -8,13 +8,13 @@ const YearBarList = styled.div`
   justify-content: space-between;
   width: 100%;
   position: relative; /* 🎯 선(Line)이 원들 뒤에서 배치되도록 설정 */
-  padding-bottom: 20px;
+  padding-bottom: 37px;
 `;
 
 // 원들 뒤에 관통하는 선 스타일
 const Line = styled.div`
   position: absolute;
-  top: clamp(5px, 1vw, 7px);
+  top: 5px;
   width: 100%;
   max-width: 1000px;
   height: 2px;
@@ -31,8 +31,8 @@ const YearBarItemWrapper = styled.div`
 `;
 
 const CircleButton = styled.button`
-  width: clamp(10px, 2vw, 14px);
-  height: clamp(10px, 2vw, 14px);
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
   border: none;
   padding: 0;

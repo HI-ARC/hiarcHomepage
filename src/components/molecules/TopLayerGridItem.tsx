@@ -117,6 +117,15 @@ const TopLayerGridItem: React.FC<TopLayerGridItemProps> = ({
         />
       )}
 
+      {data.type === CellType.BORDERED_HORIZONTAL_RECTANGLE && (
+        <BorderedRectangleContainer
+          contentColor={data.contentColor}
+          height={circleSize}
+          width={circleSize2X}
+          text={data.text as string}
+        />
+      )}
+
       {data.type === CellType.VERTICAL_RECTANGLE && (
         <RoundedRectangleContainer
           backgroundColor={data.backgroundColor}

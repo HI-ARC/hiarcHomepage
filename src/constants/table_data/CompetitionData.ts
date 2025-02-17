@@ -1,4 +1,5 @@
-const competitionData = {
+// competitionData.ts
+const competitionData: Record<number, string[]> = {
   2017: ["2017 교내 프로그래밍 경진대회"],
   2018: [
     "이데일리 코딩 챌린지",
