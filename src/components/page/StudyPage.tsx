@@ -13,6 +13,8 @@ import ElementaryStudy2025HeaderTopData from "@/constants/data/study/study_2025_
 import AnimatedContainer from "../atoms/\bAnimatedContainer";
 import BasicStudy2024HeaderTopData from "@/constants/data/study/study_2024_grid_data/mobile/BasicStudy2024HeaderTopData";
 import PsManualTopData from "@/constants/data/study/PsManualTopData";
+import ElementaryStudy2024HeaderTopData from "@/constants/data/study/study_2024_grid_data/mobile/ElementaryStudy2024HeaderTopData";
+import InterMediateStudy2025HeaderData from "@/constants/data/study/study_2025_grid_data/mobile/IntermediateStudy2025HeaderTopData";
 
 const StudyPlanWrapper = styled.div`
   display: flex;
@@ -44,7 +46,7 @@ const SemesterWrapper = styled.div`
   display: flex;
   gap: 20px;
   width: 100%;
-  padding-bottom: 100px;
+  padding-bottom: 40px;
 
   @media (max-width: 480px) {
     flex-direction: column;
@@ -88,7 +90,7 @@ const StudyPage: React.FC = () => {
                 topLayerGridData={BasicStudy2025HeaderTopData}
               />
             </MobileOnly>
-            <StudyTable data={Data.studyContent2024_1_1} />
+            <StudyTable data={Data.studyContent2025_1_1} />
           </StudyPlanWrapper>
           <StudyPlanWrapper>
             <MobileOnly>
@@ -99,8 +101,35 @@ const StudyPage: React.FC = () => {
                 topLayerGridData={ElementaryStudy2025HeaderTopData}
               />
             </MobileOnly>
-            <StudyTable data={Data.studyContent2024_1_2} />
+            <StudyTable data={Data.studyContent2025_1_2} />
           </StudyPlanWrapper>
+        </SemesterWrapper>
+      </AnimatedContainer>
+
+      <DesktopOnly>
+        <AnimatedContainer delay="0s">
+          <ColoredGridView
+            rowCount={1}
+            colCount={12}
+            bottomLayerGridData={[]}
+            topLayerGridData={InterMediateStudy2025HeaderData}
+          />
+        </AnimatedContainer>
+      </DesktopOnly>
+      <AnimatedContainer delay="0s">
+        <SemesterWrapper>
+          <StudyPlanWrapper>
+            <MobileOnly>
+              <ColoredGridView
+                rowCount={1}
+                colCount={8}
+                bottomLayerGridData={[]}
+                topLayerGridData={InterMediateStudy2025HeaderData}
+              />
+            </MobileOnly>
+            <StudyTable data={Data.studyContent2025_1_3} />
+          </StudyPlanWrapper>
+          <Blank></Blank>
         </SemesterWrapper>
       </AnimatedContainer>
 
@@ -133,7 +162,7 @@ const StudyPage: React.FC = () => {
                 rowCount={1}
                 colCount={8}
                 bottomLayerGridData={[]}
-                topLayerGridData={ElementaryStudy2025HeaderTopData}
+                topLayerGridData={ElementaryStudy2024HeaderTopData}
               />
             </MobileOnly>
             <StudyTable data={Data.studyContent2024_2_2} />
@@ -162,7 +191,7 @@ const StudyPage: React.FC = () => {
                 topLayerGridData={PsManualTopData}
               />
             </MobileOnly>
-            <StudyTable data={Data.studyContent2024_2_3} />
+            <StudyTable data={Data.studyContentPsManual} />
           </StudyPlanWrapper>
           <Blank />
         </SemesterWrapper>

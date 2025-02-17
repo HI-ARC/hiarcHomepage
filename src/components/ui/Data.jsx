@@ -1,5 +1,5 @@
 const Data = {
-  studyContent2024_1_1: [
+  studyContent2025_1_1: [
     { week: "1주차", topic: "기초문법1" },
     { week: "2주차", topic: "기초문법2" },
     { week: "3주차", topic: "시간복잡도, 브루트포스, 백트래킹" },
@@ -9,13 +9,22 @@ const Data = {
     { week: "7주차", topic: "큐, 스택, 자료구조" },
     { week: "8주차", topic: "그래프(미정)" },
   ],
-  studyContent2024_1_2: [
+  studyContent2025_1_2: [
     { week: "1주차", topic: "about C++, 혼자 알고리즘 공부하는 법" },
     { week: "2주차", topic: "브루트포스, 그리디" },
     { week: "3주차", topic: "다이나믹 프로그래밍" },
     { week: "4주차", topic: "이분탐색" },
     { week: "5주차", topic: "재귀, 백트래킹" },
     { week: "6주차", topic: "DFS, BFS" },
+  ],
+  studyContent2025_1_3: [
+    { week: "1주차", topic: "나는 알고리즘은 다 배웠는데 왜 문제를 못풀까?" },
+    { week: "2주차", topic: "문제에서 어떤 알고리즘을 쓸지 알아내는 방법" },
+    { week: "3주차", topic: "각종 웰노운과 사용되는 아이디어" },
+    { week: "4주차", topic: "union-find, mst, topology sort" },
+    { week: "5주차", topic: "tree, sparsetable, lca" },
+    { week: "6주차", topic: "query(seg, ett, lazb, mo’s)" },
+    { week: "7주차", topic: "실전 랜덤 문제 풀이" },
   ],
   studyContent2024_2_1: [
     { week: "1주차", topic: "시간복잡도, 정렬, 그리디" },
@@ -37,7 +46,7 @@ const Data = {
     { week: "7주차", topic: "실전 랜덤 문제 풀이" },
     { week: "8주차", topic: "중급 스터디 대회" },
   ],
-  studyContent2024_2_3: [
+  studyContentPsManual: [
     { week: "1주차", topic: "기본적인 접근법 및 팁" },
     { week: "2주차", topic: "정수론" },
     { week: "3주차", topic: "탐색과 정렬" },

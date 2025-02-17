@@ -28,7 +28,7 @@ const TableRow = styled.tr`
 `;
 
 const TableCell = styled.td`
-  padding: 10px 35px;
+  padding: 15px 35px;
   align-items: center;
   justify-content: center;
   border-right: 0.5px solid ${Color.orange}; /* 세로선 */
