@@ -6,6 +6,8 @@ import Color from "../ui/Color";
 import FontStyle from "../ui/FontStyle";
 import competitionData from "../ui/CompetitionData";
 import Competition from "../blocks/awards_block/Competition";
+import ColoredGridView from "../organisms/colored_grid_view/ColoredGridView";
+import AwardHeaderTopData from "@/constants/data/award/AwardHeaderTopData";
 
 const fadeIn = keyframes`
   from {
@@ -39,6 +41,7 @@ const Wrapper = styled.div`
   flex-direction: column;
   width: 100%;
   padding: 20px 0;
+  padding-top: 50px;
 `;
 
 // 🎯 버튼이 텍스트 크기와 패딩만큼만 면적을 가지도록 설정
@@ -72,6 +75,12 @@ const AwardPage = () => {
 
   return (
     <Layout align="top">
+      <ColoredGridView
+        rowCount={1}
+        colCount={12}
+        topLayerGridData={AwardHeaderTopData}
+        bottomLayerGridData={[]}
+      />
       <Wrapper>
         <YearBar
           startYear={2017}
