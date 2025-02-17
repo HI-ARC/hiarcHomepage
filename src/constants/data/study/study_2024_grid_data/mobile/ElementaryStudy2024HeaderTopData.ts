@@ -23,7 +23,7 @@ const ElementaryStudy2024HeaderTopData: TopLayerGridItemData[] = [
     type: CellType.BORDERED_LONG_HORIZONTAL_RECTANGLE,
     backgroundColor: Color.transparent,
     contentColor: Color.orange,
-    text: "초급 스터디",
+    text: "중급 스터디",
   },
 
   {
