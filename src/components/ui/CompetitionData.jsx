@@ -42,6 +42,7 @@ const competitionData = {
   ],
   2023: ["SUAPC 2023 Winter", "SUAPC 2023 Summer"],
   2024: ["2024 하이콘", "SUAPC 2024 Winter", "SUAPC 2024 Summer"],
+  2025: ["제 1회 HI-ARC Contest"],
 };
 
 export default competitionData;

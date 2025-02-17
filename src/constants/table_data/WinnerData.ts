@@ -1,4 +1,4 @@
-const winnerData = {
+const winnerData: { [competitionName: string]: (string | number)[][] } = {
   "2024 하이콘": [
     [1, "대상", "정재현"],
     [2, "금상", "이가은"],
@@ -40,7 +40,6 @@ const winnerData = {
     [34, "43등", "허예린, 전소은, 여인욱"],
     [35, "44등", "이민경, 이유정, 김유진"],
   ],
-
   "SUAPC 2023 Winter": [
     [1, "4등", "정재현, 김도현, 김재헌"],
     [2, "16등", "한승준, 김건회, 이선주"],
@@ -170,6 +169,12 @@ const winnerData = {
     [7, "18등", "이준희"],
   ],
   "ACM-ICPC Daejeon Regional": [[8, "18등", "김민균, 김형석, 유지혁"]],
+  "제 1회 HI-ARC Contest": [
+    [1, "1등", "한승준"],
+    [2, "2등", "전승민"],
+    [3, "3등", "권찬"],
+    [4, "Div2 1등", "김수찬"],
+  ],
 };
 
 export default winnerData;

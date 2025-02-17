@@ -1,12 +1,12 @@
-import YearBar from "../blocks/YearBar";
+import YearBar from "../organisms/YearBar";
 import Layout from "../templates/PageTemplate";
 import { useState } from "react";
 import styled, { keyframes } from "styled-components";
 import Color from "../ui/Color";
 import FontStyle from "../ui/FontStyle";
 import competitionData from "../ui/CompetitionData";
-import Competition from "../blocks/awards_block/Competition";
-import ColoredGridView from "../organisms/colored_grid_view/ColoredGridView";
+import Competition from "../organisms/CompetitionTable";
+import ColoredGridView from "../organisms/ColoredGridView";
 import AwardHeaderTopData from "@/constants/data/award/AwardHeaderTopData";
 
 const fadeIn = keyframes`
@@ -46,10 +46,10 @@ const Wrapper = styled.div`
 
 // 🎯 버튼이 텍스트 크기와 패딩만큼만 면적을 가지도록 설정
 const ButtonStyle = styled.button`
-  display: inline-block; /* 🎯 내용 크기에 맞게 버튼 크기 조정 */
-  width: auto; /* 🎯 부모 요소의 영향을 받지 않고, 텍스트 크기만큼 조정 */
-  max-width: fit-content; /* 🎯 내용 크기에 맞게 조정 */
-  padding: 5px 20px; /* 🎯 패딩 설정 */
+  display: inline-block;
+  width: auto;
+  max-width: fit-content;
+  padding: 5px 20px;
   color: ${Color.primary};
   ${FontStyle.display1Bold}
   border-radius: 100px;
@@ -58,6 +58,20 @@ const ButtonStyle = styled.button`
   text-align: center;
   margin-top: 20px;
   margin-right: auto;
+`;
+
+const DesktopOnly = styled.div`
+  @media (max-width: 600px) {
+    display: none;
+  }
+`;
+
+const MobileOnly = styled.div`
+  display: none;
+
+  @media (max-width: 600px) {
+    display: block;
+  }
 `;
 
 const AwardPage = () => {
@@ -77,14 +91,14 @@ const AwardPage = () => {
     <Layout align="top">
       <ColoredGridView
         rowCount={1}
-        colCount={12}
+        colCount={10}
         topLayerGridData={AwardHeaderTopData}
         bottomLayerGridData={[]}
       />
       <Wrapper>
         <YearBar
           startYear={2017}
-          endYear={2024}
+          endYear={2025}
           onYearSelect={handleYearSelect}
         />
         {selectedYear && <ButtonStyle>{selectedYear}</ButtonStyle>}

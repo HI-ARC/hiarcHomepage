@@ -1,7 +1,7 @@
 import React, { ReactNode } from "react";
 import styled from "styled-components";
-import Header from "@/components/organisms/header/Header";
-import Footer from "@/components/organisms/footer/Footer";
+import Header from "@/components/organisms/Header";
+import Footer from "@/components/organisms/Footer";
 
 interface PageTemplateProps {
   children: ReactNode;
@@ -19,6 +19,7 @@ const HeaderContainer = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
+  margin-bottom: 20px;
 `;
 
 const MainContent = styled.main<{ align: "center" | "top" }>`
@@ -27,7 +28,7 @@ const MainContent = styled.main<{ align: "center" | "top" }>`
   flex-grow: 1;
   align-self: center;
   width: 100%;
-  max-width: 1000px;
+  max-width: 800px;
   padding: 0 1rem;
   ${(props) =>
     props.align === "center"
@@ -45,6 +46,7 @@ const FooterContainer = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
+  margin-top: 20px;
 `;
 
 const PageTemplate: React.FC<PageTemplateProps> = ({

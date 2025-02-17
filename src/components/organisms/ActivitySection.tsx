@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import Tag from "../atoms/Tag";
+import Tag from "../atoms/common/Tag";
 import FontStyle from "../ui/FontStyle";
 import Color from "../ui/Color";
 import ContentText from "../atoms/text/ContentText";

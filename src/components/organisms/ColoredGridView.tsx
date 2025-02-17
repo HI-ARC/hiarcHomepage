@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import BottomLayerGridItem from "@/components/molecules/colored_grid_view/BottomLayerGridItem";
-import TopLayerGridItem from "@/components/molecules/colored_grid_view/TopLayerGridItem";
+import BottomLayerGridItem from "../molecules/BottomLayerGridItem";
+import TopLayerGridItem from "../molecules/TopLayerGridItem";
 import BottomLayerGridItemData from "@/types/BottomLayerGridItemData";
 import TopLayerGridItemData from "@/types/TopLayerGridItemData";
 
@@ -56,17 +56,17 @@ const ColoredGridView: React.FC<ColoredGridViewProps> = ({
 
   const getDynamicWidth = () => {
     const remValue = remToPx(6.0);
-    const maxWidthValue = maxWidth !== undefined ? maxWidth! : 1000;
+    const maxWidthValue = maxWidth !== undefined ? maxWidth! : 800;
     const minWidthValue = minWidth !== undefined ? minWidth! : 200;
 
     if (
       maxWidth !== undefined &&
       minWidth !== undefined &&
-      window.innerWidth < 1000
+      window.innerWidth < 800
     ) {
       return (
         minWidthValue +
-        (maxWidthValue - minWidthValue) * (window.innerWidth / 1000)
+        (maxWidthValue - minWidthValue) * (window.innerWidth / 800)
       );
     }
 

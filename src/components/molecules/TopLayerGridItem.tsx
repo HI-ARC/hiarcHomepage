@@ -1,17 +1,17 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import CellType from "../../../enum/CellType";
-import Color from "../../ui/Color";
-import CircleContainer from "../../atoms/colored_grid_view/CircleContainer";
+import CellType from "@/enum/CellType";
+import CircleContainer from "../atoms/colored_grid_view/CircleContainer";
 import RoundedRectangleContainer from "@/components/atoms/colored_grid_view/RoundedRectangleContainer";
-import MenuButton from "../../atoms/colored_grid_view/MenuButton";
-import NavigateArrow from "../../../assets/icon/navigate_arrow.svg?react";
+import MenuButton from "../atoms/colored_grid_view/MenuButton";
+import NavigateArrow from "@/assets/icon/navigate_arrow.svg?react";
 import TopLayerGridItemData from "@/types/TopLayerGridItemData";
 import FontStyles from "@/constants/ui/FontStyles";
 import ArrowButton from "@/components/atoms/colored_grid_view/ArrowButton";
 import AssetImage from "@/components/atoms/image/AssetImage";
 import BorderedRectangleContainer from "@/components/atoms/colored_grid_view/BorderedRectangleContainer";
+import Color from "../ui/Color";
 
 interface TopLayerGridItemProps {
   data: TopLayerGridItemData;

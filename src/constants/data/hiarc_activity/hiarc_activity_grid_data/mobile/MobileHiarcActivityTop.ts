@@ -22,6 +22,17 @@ const MobileHiarcActivityTop: TopLayerGridItemData[] = [
     text: "학회 활동",
   },
   {
+    position: [5, 1],
+    type: CellType.CIRCLE,
+    backgroundColor: Color.gray,
+  },
+  {
+    position: [6, 1],
+    type: CellType.CIRCLE,
+    backgroundColor: Color.gray,
+  },
+
+  {
     position: [1, 2],
     type: CellType.LONG_HORIZONTAL_RECTANGLE,
     backgroundColor: Color.primary,
@@ -30,8 +41,13 @@ const MobileHiarcActivityTop: TopLayerGridItemData[] = [
   },
   {
     position: [4, 2],
-    type: CellType.CIRCLE,
+    type: CellType.HORIZONTAL_RECTANGLE,
     backgroundColor: Color.gray,
+  },
+  {
+    position: [6, 2],
+    type: CellType.CIRCLE,
+    backgroundColor: Color.yellow,
   },
   {
     position: [1, 3],
@@ -43,19 +59,55 @@ const MobileHiarcActivityTop: TopLayerGridItemData[] = [
   },
 
   {
+    position: [5, 3],
+    type: CellType.CIRCLE,
+    backgroundColor: Color.yellow,
+  },
+  {
+    position: [6, 3],
+    type: CellType.CIRCLE,
+    backgroundColor: Color.primary,
+  },
+  {
+    position: [5, 4],
+    type: CellType.HORIZONTAL_RECTANGLE,
+    backgroundColor: Color.gray,
+  },
+  {
     position: [1, 5],
+    type: CellType.VERTICAL_RECTANGLE,
+    backgroundColor: Color.gray,
+  },
+  {
+    position: [2, 5],
     type: CellType.HORIZONTAL_RECTANGLE,
     backgroundColor: Color.primary,
     contentColor: Color.white,
     text: "ICPC",
   },
   {
-    position: [3, 5],
+    position: [4, 5],
     type: CellType.HORIZONTAL_RECTANGLE,
     backgroundColor: Color.primary,
     contentColor: Color.white,
     text: "하이팅",
   },
+  {
+    position: [6, 5],
+    type: CellType.CIRCLE,
+    backgroundColor: Color.gray,
+  },
+  {
+    position: [6, 6],
+    type: CellType.VERTICAL_RECTANGLE,
+    backgroundColor: Color.gray,
+  },
+  {
+    position: [1, 7],
+    type: CellType.CIRCLE,
+    backgroundColor: Color.yellow,
+  },
+
   {
     position: [1, 8],
     type: CellType.CIRCLE,
@@ -64,19 +116,39 @@ const MobileHiarcActivityTop: TopLayerGridItemData[] = [
   {
     position: [2, 8],
     type: CellType.CIRCLE,
-    backgroundColor: Color.gray,
+    backgroundColor: Color.yellow,
   },
   {
     position: [3, 8],
+    type: CellType.HORIZONTAL_RECTANGLE,
+    backgroundColor: Color.gray,
+  },
+  {
+    position: [5, 8],
     type: CellType.BUTTON_WITH_ICON,
     backgroundColor: Color.primary,
     contentColor: Color.white,
     buttonText: "스터디",
     url: "/study",
   },
+  {
+    position: [1, 9],
+    type: CellType.CIRCLE,
+    backgroundColor: Color.yellow,
+  },
+  {
+    position: [2, 9],
+    type: CellType.CIRCLE,
+    backgroundColor: Color.gray,
+  },
+  {
+    position: [1, 10],
+    type: CellType.HORIZONTAL_RECTANGLE,
+    backgroundColor: Color.gray,
+  },
 
   {
-    position: [1, 6],
+    position: [2, 6],
     type: CellType.IMAGE,
     backgroundColor: Color.primary,
     contentColor: Color.white,
@@ -84,7 +156,7 @@ const MobileHiarcActivityTop: TopLayerGridItemData[] = [
     caption: "@2024 ICPC예선",
   },
   {
-    position: [1, 9],
+    position: [3, 9],
     type: CellType.IMAGE,
     backgroundColor: Color.primary,
     image: HiConnectImage2,

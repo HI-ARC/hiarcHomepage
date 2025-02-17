@@ -14,7 +14,7 @@ const YearBarList = styled.div`
 // 원들 뒤에 관통하는 선 스타일
 const Line = styled.div`
   position: absolute;
-  top: 5px;
+  top: clamp(5px, 1vw, 7px);
   width: 100%;
   max-width: 1000px;
   height: 2px;
@@ -31,8 +31,8 @@ const YearBarItemWrapper = styled.div`
 `;
 
 const CircleButton = styled.button`
-  width: 10px;
-  height: 10px;
+  width: clamp(10px, 2vw, 14px);
+  height: clamp(10px, 2vw, 14px);
   border-radius: 50%;
   border: none;
   padding: 0;
@@ -46,13 +46,11 @@ const YearText = styled.div`
   color: ${(props) =>
     props.selected ? Color.toggledButtonColor : Color.primary};
 
-  @media (max-width: 500px) {
-    ${FontStyle.descriptionBold}
-  }
+  font-size: clamp(8px, 2vw, 16px);
 `;
 
 const YearBar = ({ startYear, endYear, onYearSelect }) => {
-  const [selectedYear, setSelectedYear] = useState(2017); // 선택된 연도 관리
+  const [selectedYear, setSelectedYear] = useState(2017);
 
   // 연도 클릭 시 호출되는 함수
   const handleYearClick = (year) => {

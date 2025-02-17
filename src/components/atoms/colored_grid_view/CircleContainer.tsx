@@ -54,7 +54,7 @@ const InnerContainer = styled.div<{
   color: ${({ $contentColor }) => $contentColor};
   opacity: ${({ $isHovered }) => ($isHovered ? 1 : 0)};
   ${FontStyle.display1ExtraBold}
-  font-size: ${(props) => props.$size * 0.45}px;
+  font-size: ${(props) => props.$size * 0.4}px;
   word-spacing: -0.1rem;
   letter-spacing: -0.07em;
   transition: opacity 500ms;

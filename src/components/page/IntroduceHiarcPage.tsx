@@ -2,7 +2,7 @@ import React from "react";
 import Layout from "../templates/PageTemplate";
 import Label from "../ui/Label";
 import styled, { keyframes } from "styled-components";
-import logo from "../../assets/hiarc-logo.png";
+import logo from "../../assets/image/hiarc_logo.png";
 import SectionTemplate from "../templates/SectionTemplate";
 import IntroduceHiarcBottom from "@/constants/data/introduce_hiarc/introduce_hiarc_grid_data/IntroduceHiarcBottom";
 import IntroduceHiarcTop from "@/constants/data/introduce_hiarc/introduce_hiarc_grid_data/IntroduceHiarcTop";
@@ -35,7 +35,7 @@ const ImageContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 54px;
+  margin-bottom: 54px;
 `;
 
 const StyledParagraph = styled.p`

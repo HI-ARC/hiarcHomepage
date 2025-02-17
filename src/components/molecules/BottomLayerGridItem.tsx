@@ -1,11 +1,9 @@
-// src/components/BottomLayerGridItem.tsx
 import React from "react";
-import CurvedCornerCell from "../../atoms/colored_grid_view/CurvedCornerCell";
+import CurvedCornerCell from "../atoms/colored_grid_view/CurvedCornerCell";
 import CellType from "@/enum/CellType";
 import Color from "@/components/ui/Color";
 import BottomLayerGridItemData from "@/types/BottomLayerGridItemData";
 
-// CellType의 값들을 유니온 타입으로 추출합니다.
 export type CellTypeValue = (typeof CellType)[keyof typeof CellType];
 
 interface BottomLayerGridItemProps {
@@ -13,7 +11,6 @@ interface BottomLayerGridItemProps {
   itemSize: number;
   cornerCurveSize: number;
   isHovered: { [key: number]: boolean };
-
   columnSpan?: number;
   rowSpan?: number;
 }
@@ -23,7 +20,6 @@ const BottomLayerGridItem: React.FC<BottomLayerGridItemProps> = ({
   itemSize,
   cornerCurveSize,
   isHovered,
-
   columnSpan = 1,
   rowSpan = 1,
 }) => {

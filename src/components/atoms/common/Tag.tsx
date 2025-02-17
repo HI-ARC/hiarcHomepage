@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import Color from "../ui/Color";
-import FontStyle from "../ui/FontStyle";
+import Color from "../../ui/Color";
+import FontStyle from "../../ui/FontStyle";
 
 interface TagProps {
   text: string;
