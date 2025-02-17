@@ -12,9 +12,11 @@ import BasicStudy2025HeaderTopData from "@/constants/data/study/study_2025_grid_
 import ElementaryStudy2025HeaderTopData from "@/constants/data/study/study_2025_grid_data/mobile/ElementaryStudy2025HeaderTopData";
 import AnimatedContainer from "../atoms/common/AnimatedContainer";
 import BasicStudy2024HeaderTopData from "@/constants/data/study/study_2024_grid_data/mobile/BasicStudy2024HeaderTopData";
-import PsManualTopData from "@/constants/data/study/PsManualTopData";
+import PsManualTopData from "@/constants/data/study/study_2024_grid_data/mobile/PsManualTopData";
 import ElementaryStudy2024HeaderTopData from "@/constants/data/study/study_2024_grid_data/mobile/ElementaryStudy2024HeaderTopData";
 import InterMediateStudy2025HeaderData from "@/constants/data/study/study_2025_grid_data/mobile/IntermediateStudy2025HeaderTopData";
+import Study2025HeaderTopData2 from "@/constants/data/study/study_2025_grid_data/Study2025HeaderTopData2";
+import Study2024HeaderTopData2 from "@/constants/data/study/study_2024_grid_data/Study2024HeaderTopData2";
 
 const StudyPlanWrapper = styled.div`
   display: flex;
@@ -112,7 +114,7 @@ const StudyPage: React.FC = () => {
             rowCount={1}
             colCount={12}
             bottomLayerGridData={[]}
-            topLayerGridData={InterMediateStudy2025HeaderData}
+            topLayerGridData={Study2025HeaderTopData2}
           />
         </AnimatedContainer>
       </DesktopOnly>
@@ -176,7 +178,7 @@ const StudyPage: React.FC = () => {
             rowCount={1}
             colCount={12}
             bottomLayerGridData={[]}
-            topLayerGridData={PsManualTopData}
+            topLayerGridData={Study2024HeaderTopData2}
           />
         </DesktopOnly>
       </AnimatedContainer>
