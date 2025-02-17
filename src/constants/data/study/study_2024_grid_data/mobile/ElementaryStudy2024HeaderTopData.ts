@@ -25,7 +25,6 @@ const ElementaryStudy2024HeaderTopData: TopLayerGridItemData[] = [
     contentColor: Color.orange,
     text: "중급 스터디",
   },
-
   {
     position: [8, 1],
     type: CellType.ICON,
