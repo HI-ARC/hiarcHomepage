@@ -28,6 +28,18 @@ const Wrapper = styled.div`
   padding-top: 30px;
 `;
 
+const MobileContainer = styled.div`
+  @media (min-width: 641px) {
+    display: none;
+  }
+`;
+
+const DesktopOnly = styled.div`
+  @media (max-width: 480px) {
+    display: none;
+  }
+`;
+
 const AwardPage: React.FC = () => {
   const [selectedYear, setSelectedYear] = useState<number>(2017);
   const competitions: string[] = competitionData[selectedYear] || [];
@@ -44,6 +56,8 @@ const AwardPage: React.FC = () => {
   return (
     <Layout align="top">
       <ColoredGridView
+        minWidth={400}
+        maxWidth={800}
         rowCount={1}
         colCount={12}
         topLayerGridData={AwardHeaderTopData}
@@ -57,6 +71,8 @@ const AwardPage: React.FC = () => {
         />
         {selectedYear && (
           <ColoredGridView
+            minWidth={400}
+            maxWidth={800}
             rowCount={1}
             colCount={12}
             bottomLayerGridData={[]}
