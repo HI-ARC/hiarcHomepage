@@ -48,7 +48,7 @@ const ActivityPage: React.FC = () => {
       <AnimatedContainer delay="0.5s">
         <ActivitySection
           title="HI-CONNECT"
-          tagList={["개인 프로젝트", "팀 프로젝트"]}
+          tagList={["OB 선배들과의 만남"]}
           content={Label.HiconnectIntroduce}
         />
       </AnimatedContainer>

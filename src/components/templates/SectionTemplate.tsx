@@ -15,15 +15,18 @@ interface SectionTemplateProps {
   toggleText?: string;
   showToggle?: boolean;
   align?: "left" | "right";
+  paddingBottom?: string;
   children?: React.ReactNode;
 }
 
-const SectionContainer = styled.section<{ align: "left" | "right" }>`
+const SectionContainer = styled.section<{
+  align: "left" | "right";
+  paddingBottom?: string;
+}>`
   display: flex;
   width: 100%;
   gap: 24px;
-  padding-bottom: 54px;
-
+  padding-bottom: ${({ paddingBottom }) => paddingBottom || "54px"};
   flex-direction: column;
   align-items: center;
 
@@ -83,12 +86,13 @@ const SectionTemplate: React.FC<SectionTemplateProps> = ({
   toggleText,
   showToggle = false,
   align = "left",
+  paddingBottom,
   children,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <SectionContainer align={align}>
+    <SectionContainer align={align} paddingBottom={paddingBottom}>
       <div style={{ display: "flex" }}>
         <ColoredGridView
           maxWidth={250}

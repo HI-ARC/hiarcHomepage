@@ -49,8 +49,8 @@ const Text = styled.span<{ textColor?: string; height: number }>`
   letter-spacing: -0.07em;
 `;
 
-const ArrowContainer = styled.div`
-  margin-right: clamp(0px, 0.5vw, 16px);
+const ArrowContainer = styled.div<{ height: number }>`
+  margin-right: ${(props) => props.height * 0.2}px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -77,7 +77,7 @@ const ArrowButton: React.FC<ArrowButtonProps> = ({
           {buttonText}
         </Text>
       </TextContainer>
-      <ArrowContainer>
+      <ArrowContainer height={height}>
         <NavigateArrow width={arrowSize} height={arrowSize} />
       </ArrowContainer>
     </ButtonContainerStyle>

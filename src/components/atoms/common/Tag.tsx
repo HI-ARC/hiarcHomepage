@@ -14,7 +14,7 @@ const StyledTag = styled.div`
   background-color: ${Color.transparent};
   color: ${Color.primary};
   ${FontStyle.body1Regular}
-  font-size: clamp(14px, 2vw, 18px);
+  font-size: clamp(10px, 2vw, 18px);
 `;
 
 const Tag: React.FC<TagProps> = ({ text }) => {
