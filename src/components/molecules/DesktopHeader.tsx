@@ -51,7 +51,8 @@ const DesktopHeader: React.FC = () => {
           <HeaderMenuButton
             text="하이팅"
             onClick={() =>
-              (window.location.href = "https://www.hi-rating.com")
+              // (window.location.href = "https://www.hi-rating.com")
+              alert("하이팅 페이지는 준비 중입니다!")
             }
           />
         </Navigation>
