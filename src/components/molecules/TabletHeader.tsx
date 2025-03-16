@@ -57,8 +57,7 @@ const TabletHeader: React.FC = () => {
         <HeaderMenuButton
           text="하이팅"
           onClick={() =>
-            // (window.location.href = "https://www.hi-rating.com")
-            alert("하이팅 페이지는 준비 중입니다!")
+            (window.location.href = "https://www.hi-rating.com")
           }
         />
         <HamburgerButton />
